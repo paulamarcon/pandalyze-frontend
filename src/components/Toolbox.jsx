@@ -81,9 +81,29 @@ const Toolbox = () => {
     setCode(frontendCode);
   };
 
+  const updateOptions = () => {
+    // Definir las nuevas opciones
+    var newOptions = [["hola", "Hola"]];
+
+    // Obtener el bloque dropdown y cambiar la función generateOptions
+    Blockly.Blocks["read_csv"].generateOptions = function() {
+        return newOptions;
+    };
+
+    // Actualizar los bloques en el workspace
+    workspace = Blockly.getMainWorkspace()
+    var blocksXML = Blockly.Xml.workspaceToDom(workspace);
+    workspace.clear();
+    Blockly.Xml.domToWorkspace(blocksXML, workspace);
+  }
+
   return (
     <>
       <CsvUploader />
+
+      {/* todo borrar este boton */}
+      <button onClick={updateOptions}>Actualizar los dropdowns</button>
+      
       <div style={{ display: "flex", width: "100%", marginTop: "20px" }}>
         <div id="blocklyDiv" style={{ flex: 1, height: "680px" }}></div>
         <div style={{ flex: 1 }}>
