@@ -5,7 +5,10 @@ import CodeEditor from "./CodeEditor";
 import CsvUploader from "./CsvUploader";
 
 const Toolbox = () => {
-  const [code, setCode] = useState('print("hola")');
+  const [frontendCode, setFrontendCode] = useState("_");
+  const [backendCode, setBackendCode] = useState("_");
+  const [csvInfo, setCsvInfo] = useState({ csvName: "", csvId: "" });
+
   var useFront = true;
 
   var workspace;
@@ -57,10 +60,19 @@ const Toolbox = () => {
     };
 
     pythonGenerator.forBlock["read_csv"] = function (block, generator) {
+      const { csvName, csvId } = csvInfo;
       if (useFront) {
-        return "front";
+        return `
+import pandas as pd
+
+pd.read_csv(${csvName})`;
       } else {
-        return "back";
+        return `
+import pandas as pd
+
+csvId = getCsvById(${csvId})
+df = pd.read_csv(csvId)
+print(df)`;
       }
     };
 
@@ -69,33 +81,38 @@ const Toolbox = () => {
     });
 
     workspace.addChangeListener(updateCode);
-  }, []);
+  }, [csvInfo]);
 
   const updateCode = (event) => {
     useFront = true;
     const frontendCode = pythonGenerator.workspaceToCode(workspace);
+    setFrontendCode(frontendCode);
+    console.log("frontendCode", frontendCode);
 
     useFront = false;
+    // dudosa la linea 94. la 90 y 97 primero imprimen bien, pero cuando apreto el boton imprimen lo mismo (lo del front)
     const backendCode = pythonGenerator.workspaceToCode(workspace);
 
-    setCode(frontendCode);
+    setBackendCode(backendCode);
+    console.log("backendCode", backendCode);
   };
 
   const updateOptions = () => {
     // Definir las nuevas opciones
-    var newOptions = [["hola", "Hola"]];
+    var newOptions = [["Alumnos.csv", "1"]];
+    setCsvInfo({ csvName: newOptions[0][0], csvId: newOptions[0][1] });
 
     // Obtener el bloque dropdown y cambiar la función generateOptions
-    Blockly.Blocks["read_csv"].generateOptions = function() {
-        return newOptions;
+    Blockly.Blocks["read_csv"].generateOptions = function () {
+      return newOptions;
     };
 
     // Actualizar los bloques en el workspace
-    workspace = Blockly.getMainWorkspace()
+    workspace = Blockly.getMainWorkspace();
     var blocksXML = Blockly.Xml.workspaceToDom(workspace);
     workspace.clear();
     Blockly.Xml.domToWorkspace(blocksXML, workspace);
-  }
+  };
 
   return (
     <>
@@ -103,11 +120,11 @@ const Toolbox = () => {
 
       {/* todo borrar este boton */}
       <button onClick={updateOptions}>Actualizar los dropdowns</button>
-      
+
       <div style={{ display: "flex", width: "100%", marginTop: "20px" }}>
         <div id="blocklyDiv" style={{ flex: 1, height: "680px" }}></div>
         <div style={{ flex: 1 }}>
-          <CodeEditor code={code} />
+          <CodeEditor frontendCode={frontendCode} />
         </div>
       </div>
     </>
