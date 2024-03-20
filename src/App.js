@@ -17,9 +17,10 @@ function App() {
 
   return (
     <div className="App">
-      {/*TODO <div style={{ display: "flex", width: "100%", marginTop: "20px" }}> */}
-      <BlocksEditor updateCode={updateCode} />
-      <PythonEditor frontendCode={frontendCode} backendCode={backendCode} />
+      <div style={{ display: "flex" }}>
+        <BlocksEditor updateCode={updateCode} />
+        <PythonEditor frontendCode={frontendCode} backendCode={backendCode} />
+      </div>
     </div>
   );
 }

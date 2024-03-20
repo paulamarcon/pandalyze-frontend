@@ -79,14 +79,14 @@ print(df)`;
   };
 
   return (
-    <>
+    <div style={{ width: "50%" }}>
       <CsvUploader
         setCsvResponse={setCsvResponse}
         updateDropdownOptions={updateDropdownOptions}
       />
 
       <div id="blocklyDiv" style={{ flex: 1, height: "680px" }}></div>
-    </>
+    </div>
   );
 };
 
