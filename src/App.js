@@ -11,8 +11,8 @@ function App() {
     setFrontendCode(frontendCode);
     setBackendCode(backendCode);
 
-    console.log("front code ", frontendCode);
-    console.log("back code ", backendCode);
+    console.log("front ", frontendCode);
+    console.log("back ", backendCode);
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const CsvUploader = ({ setCsvResponse, updateDropdownOptions }) => {
+const CsvUploader = ({ updateDropdownOptions }) => {
   const [csvFile, setCsvFile] = useState(null);
 
   // Función para manejar la carga del archivo CSV
@@ -24,7 +24,8 @@ const CsvUploader = ({ setCsvResponse, updateDropdownOptions }) => {
         body: formData,
       })
         .then((response) => {
-          setCsvResponse(response); //TODO: revisar esto, no testeado
+          //TODO: convertir response en una matriz
+          updateDropdownOptions(response);
         })
         .catch((error) => {
           console.log("Error:", error);
@@ -37,8 +38,7 @@ const CsvUploader = ({ setCsvResponse, updateDropdownOptions }) => {
 
   const updateCsvOptions = () => {
     // TODO dejar de hardcodearlo y llamarlo en la respuesta de la pegada al back
-    var newOptions = [["Alumnos.csv", "1"]];
-    setCsvResponse({ csvName: newOptions[0][0], csvId: newOptions[0][1] });
+    const newOptions = [["Profesores", "2"]];
 
     updateDropdownOptions(newOptions);
   };
