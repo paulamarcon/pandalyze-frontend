@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 
-const CsvUploader = ({
-  setCsvResponse,
-  updateCsvBlockCode,
-  updateDropdownOptions,
-}) => {
+const CsvUploader = ({ setCsvResponse, updateDropdownOptions }) => {
   const [csvFile, setCsvFile] = useState(null);
 
   // Función para manejar la carga del archivo CSV
@@ -43,8 +39,6 @@ const CsvUploader = ({
     // TODO dejar de hardcodearlo y llamarlo en la respuesta de la pegada al back
     var newOptions = [["Alumnos.csv", "1"]];
     setCsvResponse({ csvName: newOptions[0][0], csvId: newOptions[0][1] });
-
-    //updateCsvBlockCode();
 
     updateDropdownOptions(newOptions);
   };

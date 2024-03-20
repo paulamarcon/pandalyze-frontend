@@ -4,9 +4,10 @@ import Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./constants";
 
-const BlocksEditor = ({ useFront, updateCode }) => {
+const BlocksEditor = ({ updateCode }) => {
   const [csvResponse, setCsvResponse] = useState({ csvName: "", csvId: "" });
   var workspace;
+  var useFront;
 
   useEffect(() => {
     Blockly.Blocks["read_csv"] = {
@@ -28,19 +29,8 @@ const BlocksEditor = ({ useFront, updateCode }) => {
       },
     };
 
-    updateCsvBlockCode();
-
-    workspace = Blockly.inject("blocklyDiv", {
-      toolbox: toolbox,
-    });
-
-    workspace.addChangeListener(updateCode);
-  }, []);
-
-  const updateCsvBlockCode = () => {
     pythonGenerator.forBlock["read_csv"] = function (block, generator) {
       const { csvName, csvId } = csvResponse;
-      console.log("generando codigo, usefront = ", useFront);
       if (useFront) {
         return `
 import pandas as pd
@@ -55,14 +45,31 @@ df = pd.read_csv(csvId)
 print(df)`;
       }
     };
+
+    workspace = Blockly.inject("blocklyDiv", {
+      toolbox: toolbox,
+    });
+
+    workspace.addChangeListener(onBlocksChange);
+  }, []);
+
+  const onBlocksChange = (event) => {
+    //TODO ojo con esta linea
+    const workspace = Blockly.getMainWorkspace();
+
+    useFront = true;
+    const frontendCode = pythonGenerator.workspaceToCode(workspace);
+
+    useFront = false;
+    const backendCode = pythonGenerator.workspaceToCode(workspace);
+
+    updateCode(frontendCode, backendCode);
   };
 
   const updateDropdownOptions = (newOptions) => {
     Blockly.Blocks["read_csv"].generateOptions = function () {
       return newOptions;
     };
-
-    updateCsvBlockCode();
 
     // Actualizar los bloques en el workspace
     workspace = Blockly.getMainWorkspace();
@@ -75,7 +82,6 @@ print(df)`;
     <>
       <CsvUploader
         setCsvResponse={setCsvResponse}
-        updateCsvBlockCode={updateCsvBlockCode}
         updateDropdownOptions={updateDropdownOptions}
       />
 
