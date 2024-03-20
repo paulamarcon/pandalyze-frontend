@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
-const CsvUploader = () => {
+const CsvUploader = ({
+  setCsvResponse,
+  updateCsvBlockCode,
+  updateDropdownOptions,
+}) => {
   const [csvFile, setCsvFile] = useState(null);
-  const [response, setResponse] = useState("");
 
   // Función para manejar la carga del archivo CSV
   const handleFileChange = (event) => {
@@ -25,7 +28,7 @@ const CsvUploader = () => {
         body: formData,
       })
         .then((response) => {
-          console.log("response", response);
+          setCsvResponse(response); //TODO: revisar esto, no testeado
         })
         .catch((error) => {
           console.log("Error:", error);
@@ -36,40 +39,14 @@ const CsvUploader = () => {
     }
   };
 
-  const handleSubmit = () => {
-    const pythonCode = `
-import pandas as pd
-import plotly.express as px
+  const updateCsvOptions = () => {
+    // TODO dejar de hardcodearlo y llamarlo en la respuesta de la pegada al back
+    var newOptions = [["Alumnos.csv", "1"]];
+    setCsvResponse({ csvName: newOptions[0][0], csvId: newOptions[0][1] });
 
-# Crear un DataFrame de ejemplo
-data = {
-    'x': [1, 2, 3, 4, 5],
-    'y': [2, 3, 5, 7, 11]
-}
-df = pd.DataFrame(data)
+    //updateCsvBlockCode();
 
-# Crear un gráfico de dispersión con Plotly Express
-fig = px.scatter(df, x='x', y='y', title='Gráfico de dispersión')
-
-# Mostrar el gráfico
-fig.show()
-print('hola')
-    `;
-    fetch("http://127.0.0.1:5000/run_python_code", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ code: pythonCode }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("data", data);
-        setResponse(data.output);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    updateDropdownOptions(newOptions);
   };
 
   return (
@@ -77,8 +54,7 @@ print('hola')
       <h1>Subir CSV</h1>
       <input type="file" accept=".csv" onChange={handleFileChange} />
       <button onClick={handleSave}>Guardar</button>
-      <button onClick={handleSubmit}>Run Python Code</button>
-      <pre>{response}</pre>
+      <button onClick={updateCsvOptions}>Actualizar los dropdowns</button>
     </div>
   );
 };
