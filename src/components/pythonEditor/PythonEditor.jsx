@@ -43,7 +43,7 @@ print('hola')
   };
 
   return (
-    <>
+    <div style={{ width: "50%" }}>
       <button onClick={handleSubmit}>Run Python Code</button>
       <pre>{response}</pre>
       <CodeMirror
@@ -53,7 +53,7 @@ print('hola')
         readOnly={true}
         extensions={[python({ jsx: true })]}
       />
-    </>
+    </div>
   );
 };
 

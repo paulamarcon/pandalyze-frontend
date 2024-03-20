@@ -72,7 +72,7 @@ print(df)`;
   };
 
   return (
-    <>
+    <div style={{ width: "50%" }}>
       <CsvUploader
         setCsvResponse={setCsvResponse}
         updateCsvBlockCode={updateCsvBlockCode}
@@ -80,7 +80,7 @@ print(df)`;
       />
 
       <div id="blocklyDiv" style={{ flex: 1, height: "680px" }}></div>
-    </>
+    </div>
   );
 };
 
