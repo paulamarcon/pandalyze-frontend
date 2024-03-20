@@ -1,33 +1,24 @@
 import { useState } from "react";
 import "./App.css";
-import Blockly from "blockly";
 import BlocksEditor from "./components/blocksEditor/BlocksEditor";
 import PythonEditor from "./components/pythonEditor/PythonEditor";
-import { pythonGenerator } from "blockly/python";
 
 function App() {
   const [frontendCode, setFrontendCode] = useState("");
   const [backendCode, setBackendCode] = useState("");
-  const [useFront, setUseFront] = useState(false);
 
-  const updateCode = (event) => {
-    //TODO ojo con esta linea
-    const workspace = Blockly.getMainWorkspace();
-
-    setUseFront(true);
-    const frontendCode = pythonGenerator.workspaceToCode(workspace);
+  const updateCode = (frontendCode, backendCode) => {
     setFrontendCode(frontendCode);
-
-    setUseFront(false);
-    // dudosa la linea 94. la 90 y 97 primero imprimen bien, pero cuando apreto el boton imprimen lo mismo (lo del front)
-    const backendCode = pythonGenerator.workspaceToCode(workspace);
     setBackendCode(backendCode);
+
+    console.log("front code ", frontendCode);
+    console.log("back code ", backendCode);
   };
 
   return (
     <div className="App">
       <div style={{ display: "flex" }}>
-        <BlocksEditor useFront={useFront} updateCode={updateCode} />
+        <BlocksEditor updateCode={updateCode} />
         <PythonEditor frontendCode={frontendCode} backendCode={backendCode} />
       </div>
     </div>
