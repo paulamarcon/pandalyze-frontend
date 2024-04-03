@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const CsvUploader = ({ updateDropdownOptions }) => {
   const [csvFile, setCsvFile] = useState(null);
 
-  // Función para manejar la carga del archivo CSV
+  // Función para manejar la carga del archivo CSV en el front
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file && file.type === "text/csv") {
@@ -13,7 +13,7 @@ const CsvUploader = ({ updateDropdownOptions }) => {
     }
   };
 
-  // Función para enviar el archivo CSV al endpoint
+  // Función para enviar el archivo CSV al back y guardarlo en la BD
   const handleSave = () => {
     if (csvFile) {
       const formData = new FormData();
@@ -25,7 +25,6 @@ const CsvUploader = ({ updateDropdownOptions }) => {
       })
         .then((response) => response.json())
         .then((jsonData) => {
-          //TODO: convertir response en una matriz
           updateCsvOptions(jsonData);
         })
         .catch((error) => {

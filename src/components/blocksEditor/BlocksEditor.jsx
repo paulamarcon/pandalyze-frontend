@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CsvUploader from "../csvUploader/CsvUploader";
 import Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
-import { toolbox } from "./constants";
+import { toolbox } from "./constants/toolbox";
 
 const BlocksEditor = ({ updateCode }) => {
   const [csvResponse, setCsvResponse] = useState([["Alumnos", "1"]]);
@@ -57,16 +57,11 @@ const BlocksEditor = ({ updateCode }) => {
       var selectedValue = block.getField("csvOptions").getText();
 
       if (useFront) {
-        const code = `
-import pandas as pd
-
-pd.read_csv(${selectedValue})`;
+        const code = `pd.read_csv(${selectedValue})`;
         return [code, pythonGenerator.ORDER_FUNCTION_CALL];
       } else {
-        const code = `
-from app.services.csv_service import read_csv
-read_csv(${selectedKey})
-`;
+        //from app.services.csv_service import read_csv
+        const code = `read_csv(${selectedKey})`;
         return [code, pythonGenerator.ORDER_FUNCTION_CALL];
       }
     };

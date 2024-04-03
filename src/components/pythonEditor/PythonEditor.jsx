@@ -7,7 +7,6 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
 
   //Pegada al back para correr el codigo
   const handleSubmit = () => {
-    //TODO: usar backendCode para la pegada al back
     const pythonCode = backendCode;
     fetch("http://127.0.0.1:5000/run_python_code", {
       method: "POST",
