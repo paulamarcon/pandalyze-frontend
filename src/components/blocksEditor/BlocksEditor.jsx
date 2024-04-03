@@ -10,6 +10,31 @@ const BlocksEditor = ({ updateCode }) => {
   var useFront;
 
   useEffect(() => {
+    Blockly.Blocks["print_with_argument"] = {
+      init: function () {
+        this.appendDummyInput().appendField("print(");
+        this.appendValueInput("ARGUMENT").setCheck(null); // Acepta cualquier tipo de bloque como argumento
+        this.appendDummyInput().appendField(")");
+        this.setInputsInline(true);
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(160);
+        this.setTooltip("");
+        this.setHelpUrl("");
+      },
+    };
+
+    pythonGenerator.forBlock["print_with_argument"] = function (block) {
+      var value_argument = pythonGenerator.valueToCode(
+        block,
+        "ARGUMENT",
+        pythonGenerator.ORDER_NONE
+      );
+      // Generar código para la función print() con el argumento proporcionado
+      var code = "print(" + value_argument + ")\n";
+      return code;
+    };
+
     Blockly.Blocks["read_csv"] = {
       init: function () {
         this.appendDummyInput()
@@ -18,6 +43,7 @@ const BlocksEditor = ({ updateCode }) => {
             new Blockly.FieldDropdown(this.generateOptions),
             "csvOptions"
           );
+        this.setOutput(true, null); // Permite que este bloque pueda ser conectado a otro bloque
       },
 
       generateOptions: function () {
@@ -31,15 +57,17 @@ const BlocksEditor = ({ updateCode }) => {
       var selectedValue = block.getField("csvOptions").getText();
 
       if (useFront) {
-        return `
+        const code = `
 import pandas as pd
 
 pd.read_csv(${selectedValue})`;
+        return [code, pythonGenerator.ORDER_FUNCTION_CALL];
       } else {
-        return `
+        const code = `
 from app.services.csv_service import read_csv
 read_csv(${selectedKey})
 `;
+        return [code, pythonGenerator.ORDER_FUNCTION_CALL];
       }
     };
 

@@ -21,5 +21,15 @@ export const toolbox = {
         },
       ],
     },
+    {
+      kind: "category",
+      name: "Custom",
+      contents: [
+        {
+          kind: "block",
+          type: "print_with_argument",
+        },
+      ],
+    },
   ],
 };
