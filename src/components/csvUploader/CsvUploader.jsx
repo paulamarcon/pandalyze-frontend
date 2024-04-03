@@ -23,9 +23,10 @@ const CsvUploader = ({ updateDropdownOptions }) => {
         method: "POST",
         body: formData,
       })
-        .then((response) => {
+        .then((response) => response.json())
+        .then((jsonData) => {
           //TODO: convertir response en una matriz
-          updateDropdownOptions(response);
+          updateCsvOptions(jsonData);
         })
         .catch((error) => {
           console.log("Error:", error);
@@ -36,9 +37,8 @@ const CsvUploader = ({ updateDropdownOptions }) => {
     }
   };
 
-  const updateCsvOptions = () => {
-    // TODO dejar de hardcodearlo y llamarlo en la respuesta de la pegada al back
-    const newOptions = [["Profesores", "2"]];
+  const updateCsvOptions = (jsonData) => {
+    const newOptions = [[jsonData.fileName, `"${jsonData.csvId}"`]];
 
     updateDropdownOptions(newOptions);
   };

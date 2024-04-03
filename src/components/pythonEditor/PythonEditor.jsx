@@ -8,24 +8,7 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
   //Pegada al back para correr el codigo
   const handleSubmit = () => {
     //TODO: usar backendCode para la pegada al back
-    const pythonCode = `
-import pandas as pd
-import plotly.express as px
-
-# Crear un DataFrame de ejemplo
-data = {
-    'x': [1, 2, 3, 4, 5],
-    'y': [2, 3, 5, 7, 11]
-}
-df = pd.DataFrame(data)
-
-# Crear un gráfico de dispersión con Plotly Express
-fig = px.scatter(df, x='x', y='y', title='Gráfico de dispersión')
-
-# Mostrar el gráfico
-fig.show()
-print('hola')
-    `;
+    const pythonCode = backendCode;
     fetch("http://127.0.0.1:5000/run_python_code", {
       method: "POST",
       headers: {

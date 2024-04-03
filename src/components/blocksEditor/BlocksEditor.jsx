@@ -37,11 +37,9 @@ import pandas as pd
 pd.read_csv(${selectedValue})`;
       } else {
         return `
-import pandas as pd
-
-csvId = getCsvById(${selectedKey})
-df = pd.read_csv(csvId)
-print(df)`;
+from app.services.csv_service import read_csv
+read_csv(${selectedKey})
+`;
       }
     };
 
