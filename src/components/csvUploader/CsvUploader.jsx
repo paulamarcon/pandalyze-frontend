@@ -37,7 +37,7 @@ const CsvUploader = ({ updateDropdownOptions }) => {
   };
 
   const updateCsvOptions = (jsonData) => {
-    const newOptions = [[jsonData.fileName, `"${jsonData.csvId}"`]];
+    const newOptions = [[jsonData.fileName, `${jsonData.csvId}`]];
 
     updateDropdownOptions(newOptions);
   };
