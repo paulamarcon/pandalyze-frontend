@@ -10,12 +10,25 @@ const BlocksEditor = ({ updateCode }) => {
   var workspace;
   const useFrontRef = useRef(true);
 
+  const onCreateVariableClick = (button) => {
+    // Blockly.Variables.createVariableButtonHandler(
+    //   button.getTargetWorkspace(),
+    //   null
+    //   //tipo de dato
+    // );
+  };
+
   useEffect(() => {
     BlocksService.initBlocks(useFrontRef);
 
     workspace = Blockly.inject("blocklyDiv", {
       toolbox: toolbox,
     });
+
+    workspace.registerButtonCallback(
+      "createVariableCallbackKey",
+      onCreateVariableClick
+    );
 
     workspace.addChangeListener(onBlocksChange);
   }, []);
