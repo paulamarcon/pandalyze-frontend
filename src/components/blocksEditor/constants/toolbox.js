@@ -3,6 +3,26 @@ export const toolbox = {
   contents: [
     {
       kind: "category",
+      name: "Variables",
+      colour: "280",
+      contents: [
+        {
+          kind: "button",
+          text: "Crear variable",
+          callbackKey: "createVariableCallbackKey",
+        },
+        {
+          kind: "block",
+          type: "variables_get",
+        },
+        {
+          kind: "block",
+          type: "variables_set",
+        },
+      ],
+    },
+    {
+      kind: "category",
       name: "Text",
       colour: "10",
       contents: [
@@ -50,26 +70,7 @@ export const toolbox = {
         },
       ],
     },
-    {
-      kind: "category",
-      name: "Variables",
-      colour: "280",
-      contents: [
-        {
-          kind: "button",
-          text: "Crear variable",
-          callbackKey: "createVariableCallbackKey",
-        },
-        {
-          kind: "block",
-          type: "variables_get",
-        },
-        {
-          kind: "block",
-          type: "variables_set",
-        },
-      ],
-    },
+
     {
       kind: "sep",
       gap: "8",

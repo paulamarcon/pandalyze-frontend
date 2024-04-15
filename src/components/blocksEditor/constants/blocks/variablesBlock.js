@@ -10,6 +10,7 @@ export const initVariablesBlocks = () => {
           new Blockly.FieldDropdown(this.generateOptions),
           "variableGetterKey"
         );
+      this.setColour(280);
       this.setOutput(true, null); // Permite que este bloque pueda ser conectado a otro bloque
     },
 
@@ -27,6 +28,7 @@ export const initVariablesBlocks = () => {
           "variableSetterKey"
         )
         .appendField("to");
+      this.setColour(280);
       this.appendValueInput("VALUE").setCheck(null);
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);

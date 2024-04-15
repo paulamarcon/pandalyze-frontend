@@ -10,7 +10,7 @@ export const initReadCsvBlock = (useFrontRef) => {
           new Blockly.FieldDropdown(this.generateOptions),
           "csvOptions"
         );
-      this.setColour("#FF69B4");
+      this.setColour(10);
       this.setOutput(true, null); // Permite que este bloque pueda ser conectado a otro bloque
     },
 

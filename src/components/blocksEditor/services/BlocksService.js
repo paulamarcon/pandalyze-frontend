@@ -4,7 +4,7 @@ import { initInfoBlock } from "../constants/blocks/infoBlock";
 import { initMeanBlock } from "../constants/blocks/meanBlock";
 import { initPrintBlock } from "../constants/blocks/printBlock";
 import { initReadCsvBlock } from "../constants/blocks/readCsvBlock";
-import { initVariablesBlocks } from "../constants/blocks/variables";
+import { initVariablesBlocks } from "../constants/blocks/variablesBlock";
 
 const BlocksService = {
   variables: [],

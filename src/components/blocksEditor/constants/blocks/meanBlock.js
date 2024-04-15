@@ -16,16 +16,6 @@ export const initMeanBlock = () => {
       this.setColour(0);
       this.setTooltip("Calcula promedios de filas o columnas del DataFrame.");
     },
-
-    validateInput: function (newValue) {
-      // Acepta el valor si son letras o números
-      var regex = /^[a-zA-Z0-9]+$/;
-      if (regex.test(newValue)) {
-        return newValue;
-      } else {
-        return "";
-      }
-    },
   };
 
   pythonGenerator["mean"] = function (block) {

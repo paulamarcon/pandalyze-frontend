@@ -47,7 +47,6 @@ const CsvUploader = ({ updateDropdownOptions }) => {
       <h1>Subir CSV</h1>
       <input type="file" accept=".csv" onChange={handleFileChange} />
       <button onClick={handleSave}>Guardar</button>
-      <button onClick={updateCsvOptions}>Actualizar los dropdowns</button>
     </div>
   );
 };
