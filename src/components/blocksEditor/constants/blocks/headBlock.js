@@ -7,7 +7,7 @@ export const initHeadBlock = () => {
       this.appendDummyInput().appendField("head(");
       this.appendDummyInput().appendField(
         new Blockly.FieldTextInput("", this.validateInput), // Default value es ""
-        "N"
+        "argument"
       );
       this.appendDummyInput().appendField(")");
       this.setInputsInline(true);
@@ -28,7 +28,7 @@ export const initHeadBlock = () => {
   };
 
   pythonGenerator["head"] = function (block) {
-    var blockInput = block.getFieldValue("N");
+    var blockInput = block.getFieldValue("argument");
     var headCode = blockInput ? `head(${blockInput})` : "head()";
     return [headCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };
