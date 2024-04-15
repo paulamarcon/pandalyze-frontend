@@ -28,14 +28,6 @@ const BlocksEditor = ({ updateCode }) => {
   var workspace;
   const useFrontRef = useRef(true);
 
-  const onCreateVariableClick = (button) => {
-    // Blockly.Variables.createVariableButtonHandler(
-    //   button.getTargetWorkspace(),
-    //   null
-    //   //tipo de dato
-    // );
-  };
-
   useEffect(() => {
     BlocksService.initBlocks(useFrontRef);
 
@@ -46,7 +38,7 @@ const BlocksEditor = ({ updateCode }) => {
 
     workspace.registerButtonCallback(
       "createVariableCallbackKey",
-      onCreateVariableClick
+      BlocksService.onCreateVariableClick.bind(BlocksService)
     );
 
     workspace.addChangeListener(onBlocksChange);
@@ -74,11 +66,7 @@ const BlocksEditor = ({ updateCode }) => {
       return updatedCsvResponse;
     };
 
-    // Actualizar los bloques en el workspace
-    workspace = Blockly.getMainWorkspace();
-    const blocksXML = Blockly.Xml.workspaceToDom(workspace);
-    workspace.clear();
-    Blockly.Xml.domToWorkspace(blocksXML, workspace);
+    BlocksService.refreshWorkspace();
   };
 
   return (

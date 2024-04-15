@@ -40,6 +40,12 @@ export const toolbox = {
           kind: "block",
           type: "head",
         },
+      ],
+    },
+    {
+      kind: "category",
+      name: "Variables",
+      contents: [
         {
           kind: "block",
           type: "info",
@@ -53,14 +59,14 @@ export const toolbox = {
           text: "Crear variable",
           callbackKey: "createVariableCallbackKey",
         },
-        // {
-        //   kind: "block",
-        //   type: "variables_get",
-        // },
-        // {
-        //   kind: "block",
-        //   type: "variables_set",
-        // },
+        {
+          kind: "block",
+          type: "variables_get",
+        },
+        {
+          kind: "block",
+          type: "variables_set",
+        },
       ],
     },
     {
