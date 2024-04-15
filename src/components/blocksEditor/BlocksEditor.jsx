@@ -5,6 +5,24 @@ import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./constants/toolbox";
 import BlocksService from "./services/BlocksService";
 
+// Blockly.Themes.Custom = Blockly.Theme.defineTheme("custom", {
+//   base: Blockly.Themes.Classic,
+//   fontStyle: {
+//     family: "Arial",
+//     size: 12,
+//   },
+//   componentStyles: {
+//     workspaceBackgroundColour: "white",
+//     toolboxBackgroundColour: "#E6E4E4",
+//     toolboxForegroundColour: "black",
+//     flyoutBackgroundColour: "#303030",
+//     flyoutForegroundColour: "#ccc",
+//     flyoutOpacity: 0.8,
+//     scrollbarColour: "#797979",
+//     scrollbarOpacity: 0.4,
+//   },
+// });
+
 const BlocksEditor = ({ updateCode }) => {
   const [csvResponse, setCsvResponse] = useState([["Alumnos", "1"]]);
   var workspace;
@@ -23,6 +41,7 @@ const BlocksEditor = ({ updateCode }) => {
 
     workspace = Blockly.inject("blocklyDiv", {
       toolbox: toolbox,
+      // theme: "custom",
     });
 
     workspace.registerButtonCallback(

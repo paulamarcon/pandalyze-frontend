@@ -13,7 +13,9 @@ export const initHeadBlock = () => {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(260);
-      this.setTooltip("Returns the first n rows of the DataFrame.");
+      this.setTooltip(
+        "Muestra las primeras filas de un DataFrame. Por defecto las primeras 5."
+      );
       this.setHelpUrl("");
     },
 

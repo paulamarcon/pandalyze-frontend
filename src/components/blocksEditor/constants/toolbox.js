@@ -4,6 +4,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Text",
+      colour: "10",
       contents: [
         {
           kind: "block",
@@ -14,6 +15,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Control",
+      colour: "80",
       contents: [
         {
           kind: "block",
@@ -22,8 +24,13 @@ export const toolbox = {
       ],
     },
     {
+      kind: "sep",
+      gap: "8",
+    },
+    {
       kind: "category",
-      name: "Custom",
+      name: "Pandas",
+      colour: "160",
       contents: [
         {
           kind: "block",
@@ -32,6 +39,14 @@ export const toolbox = {
         {
           kind: "block",
           type: "head",
+        },
+        {
+          kind: "block",
+          type: "info",
+        },
+        {
+          kind: "block",
+          type: "mean",
         },
         {
           kind: "button",
@@ -47,6 +62,15 @@ export const toolbox = {
         //   type: "variables_set",
         // },
       ],
+    },
+    {
+      kind: "sep",
+      gap: "8",
+    },
+    {
+      kind: "category",
+      name: "Plotly",
+      colour: "210",
     },
   ],
 };
