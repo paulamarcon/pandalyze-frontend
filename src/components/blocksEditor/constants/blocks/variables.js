@@ -40,8 +40,9 @@ export const initVariablesBlocks = () => {
 
   pythonGenerator.forBlock["variables_get"] = function (block, generator) {
     var variableName = block.getField("variableGetterKey").getText();
-    return variableName;
+    return [variableName, pythonGenerator.ORDER_ATOMIC];
   };
+
   pythonGenerator.forBlock["variables_set"] = function (block, generator) {
     var variableName = block.getField("variableSetterKey").getText();
     var value =
