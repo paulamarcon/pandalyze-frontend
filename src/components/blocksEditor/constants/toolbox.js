@@ -40,12 +40,6 @@ export const toolbox = {
           kind: "block",
           type: "head",
         },
-      ],
-    },
-    {
-      kind: "category",
-      name: "Variables",
-      contents: [
         {
           kind: "block",
           type: "info",
@@ -54,6 +48,13 @@ export const toolbox = {
           kind: "block",
           type: "mean",
         },
+      ],
+    },
+    {
+      kind: "category",
+      name: "Variables",
+      colour: "280",
+      contents: [
         {
           kind: "button",
           text: "Crear variable",
