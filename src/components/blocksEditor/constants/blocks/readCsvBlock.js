@@ -5,7 +5,7 @@ export const initReadCsvBlock = (useFrontRef) => {
   Blockly.Blocks["read_csv"] = {
     init: function () {
       this.appendDummyInput()
-        .appendField("csvs")
+        .appendField("read_csv")
         .appendField(
           new Blockly.FieldDropdown(this.generateOptions),
           "csvOptions"

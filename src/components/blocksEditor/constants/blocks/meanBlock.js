@@ -4,7 +4,8 @@ import { pythonGenerator } from "blockly/python";
 export const initMeanBlock = () => {
   Blockly.Blocks["mean"] = {
     init: function () {
-      this.appendDummyInput().appendField("mean(");
+      this.appendValueInput("VALUE").setCheck(null);
+      this.appendDummyInput().appendField(".mean(");
       this.appendDummyInput()
         .appendField(
           new Blockly.FieldTextInput("", this.validateInput),
@@ -19,8 +20,19 @@ export const initMeanBlock = () => {
   };
 
   pythonGenerator["mean"] = function (block) {
+    var blockInput = pythonGenerator.valueToCode(
+      block,
+      "VALUE",
+      pythonGenerator.ORDER_NONE
+    );
     var columnName = block.getFieldValue("COLUMN_NAME");
-    var meanCode = columnName ? `mean(${columnName})` : "mean()";
+    var meanCode = blockInput
+      ? columnName
+        ? `${blockInput}.mean(${columnName})`
+        : `${blockInput}.mean()`
+      : columnName
+      ? `.mean(${columnName})`
+      : ".mean()";
     return [meanCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };
 };
