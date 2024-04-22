@@ -26,7 +26,7 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
 
   return (
     <div style={{ width: "50%" }}>
-      <button class="btn btn-primary" onClick={handleSubmit}>
+      <button className="btn btn-primary" onClick={handleSubmit}>
         Ejecutar código Python
       </button>
       <div
