@@ -4,20 +4,13 @@ export const toolbox = {
     {
       kind: "category",
       name: "Variables",
+      custom: "VariablesCategory",
       colour: "280",
       contents: [
         {
           kind: "button",
           text: "Crear variable",
           callbackKey: "createVariableCallbackKey",
-        },
-        {
-          kind: "block",
-          type: "variables_get",
-        },
-        {
-          kind: "block",
-          type: "variables_set",
         },
       ],
     },
@@ -70,7 +63,6 @@ export const toolbox = {
         },
       ],
     },
-
     {
       kind: "sep",
       gap: "8",

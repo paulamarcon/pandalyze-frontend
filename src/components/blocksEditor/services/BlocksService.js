@@ -5,6 +5,7 @@ import { initMeanBlock } from "../constants/blocks/meanBlock";
 import { initPrintBlock } from "../constants/blocks/printBlock";
 import { initReadCsvBlock } from "../constants/blocks/readCsvBlock";
 import { initVariablesBlocks } from "../constants/blocks/variablesBlock";
+import { toolbox } from "../constants/toolbox";
 
 const BlocksService = {
   variables: [],
@@ -16,6 +17,34 @@ const BlocksService = {
     initInfoBlock();
     initMeanBlock();
     initVariablesBlocks();
+  },
+
+  onRefreshFlyout() {
+    if (this.variables.length === 0) {
+      return [
+        {
+          kind: "button",
+          text: "Crear variable",
+          callbackKey: "createVariableCallbackKey",
+        },
+      ];
+    } else {
+      return [
+        {
+          kind: "button",
+          text: "Crear variable",
+          callbackKey: "createVariableCallbackKey",
+        },
+        {
+          kind: "block",
+          type: "variables_get",
+        },
+        {
+          kind: "block",
+          type: "variables_set",
+        },
+      ];
+    }
   },
 
   onCreateVariableClick(button) {
@@ -37,6 +66,13 @@ const BlocksService = {
           index.toString(),
         ]);
       };
+
+      if (this.variables.length === 1) {
+        // Actualizar la flyout en el workspace*/
+        const flyout = Blockly.getMainWorkspace().getFlyout();
+        flyout.hide();
+        flyout.show(toolbox);
+      }
 
       this.refreshWorkspace();
     }

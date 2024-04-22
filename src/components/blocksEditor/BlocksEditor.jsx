@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import CsvUploader from "../csvUploader/CsvUploader";
-import Blockly from "blockly";
+import Blockly, { Workspace } from "blockly";
 import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./constants/toolbox";
 import BlocksService from "./services/BlocksService";
@@ -29,24 +29,36 @@ const BlocksEditor = ({ updateCode }) => {
   const useFrontRef = useRef(true);
 
   useEffect(() => {
-    BlocksService.initBlocks(useFrontRef);
-
     workspace = Blockly.inject("blocklyDiv", {
       toolbox: toolbox,
       // theme: "custom",
     });
+
+    //console.log("items", workspace.getToolbox().getToolboxItems()[0]);
+    //console.log("func", workspace.getToolbox().getToolboxItems()[0].getDiv());
+    BlocksService.initBlocks(useFrontRef, workspace);
 
     workspace.registerButtonCallback(
       "createVariableCallbackKey",
       BlocksService.onCreateVariableClick.bind(BlocksService)
     );
 
+    workspace.registerToolboxCategoryCallback(
+      "VariablesCategory",
+      BlocksService.onRefreshFlyout.bind(BlocksService)
+    );
+
     workspace.addChangeListener(onBlocksChange);
   }, []);
 
+  const updateCategoryCallback = (workspace) => {
+    console.log("asd");
+    return [];
+  };
+
   const onBlocksChange = (event) => {
     //TODO ojo con esta linea
-    const workspace = Blockly.getMainWorkspace();
+    //const workspace = Blockly.getMainWorkspace();
 
     useFrontRef.current = true;
     const frontendCode = pythonGenerator.workspaceToCode(workspace);
@@ -72,7 +84,6 @@ const BlocksEditor = ({ updateCode }) => {
   return (
     <div style={{ width: "50%" }}>
       <CsvUploader updateDropdownOptions={updateDropdownOptions} />
-
       <div id="blocklyDiv" style={{ flex: 1, height: "680px" }}></div>
     </div>
   );
