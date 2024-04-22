@@ -26,8 +26,20 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
 
   return (
     <div style={{ width: "50%" }}>
-      <button onClick={handleSubmit}>Run Python Code</button>
-      <pre>{response}</pre>
+      <button class="btn btn-primary" onClick={handleSubmit}>
+        Ejecutar código Python
+      </button>
+      <div
+        style={{
+          border: "1px solid #ced4da",
+          width: "100%",
+          height: "30%",
+          marginBottom: "10px",
+          marginTop: "34px",
+        }}
+      >
+        {response ? <pre>{response}</pre> : <span>Consola</span>}
+      </div>
       <CodeMirror
         value={frontendCode}
         height="200px"

@@ -4,7 +4,8 @@ import { pythonGenerator } from "blockly/python";
 export const initHeadBlock = () => {
   Blockly.Blocks["head"] = {
     init: function () {
-      this.appendDummyInput().appendField("head(");
+      this.appendValueInput("VALUE").setCheck(null);
+      this.appendDummyInput().appendField(".head(");
       this.appendDummyInput().appendField(
         new Blockly.FieldTextInput("", this.validateInput), // Default value es ""
         "argument"
@@ -30,8 +31,19 @@ export const initHeadBlock = () => {
   };
 
   pythonGenerator["head"] = function (block) {
-    var blockInput = block.getFieldValue("argument");
-    var headCode = blockInput ? `head(${blockInput})` : "head()";
+    var blockInput = pythonGenerator.valueToCode(
+      block,
+      "VALUE",
+      pythonGenerator.ORDER_NONE
+    );
+    var argumentInput = block.getFieldValue("argument");
+    var headCode = blockInput
+      ? argumentInput
+        ? `${blockInput}.head(${argumentInput})`
+        : `${blockInput}.head()`
+      : argumentInput
+      ? `.head(${argumentInput})`
+      : ".head()";
     return [headCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };
 };

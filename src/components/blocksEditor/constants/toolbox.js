@@ -16,19 +16,8 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Text",
-      colour: "10",
-      contents: [
-        {
-          kind: "block",
-          type: "read_csv",
-        },
-      ],
-    },
-    {
-      kind: "category",
       name: "Control",
-      colour: "80",
+      colour: "210",
       contents: [
         {
           kind: "block",
@@ -45,6 +34,10 @@ export const toolbox = {
       name: "Pandas",
       colour: "160",
       contents: [
+        {
+          kind: "block",
+          type: "read_csv",
+        },
         {
           kind: "block",
           type: "print_with_argument",
@@ -70,7 +63,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Plotly",
-      colour: "210",
+      colour: "80",
     },
   ],
 };

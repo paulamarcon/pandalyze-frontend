@@ -17,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <h3>Pandalyze: aprender Ciencia de Datos con programación en bloques</h3>
       <div style={{ display: "flex" }}>
         <BlocksEditor updateCode={updateCode} />
         <PythonEditor frontendCode={frontendCode} backendCode={backendCode} />
