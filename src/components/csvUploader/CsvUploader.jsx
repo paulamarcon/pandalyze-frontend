@@ -47,6 +47,16 @@ const CsvUploader = ({ updateDropdownOptions }) => {
       <strong>Subir CSV</strong>
       <div style={{ marginBottom: "10px" }}>
         <input type="file" accept=".csv" onChange={handleFileChange} />
+        {/* TODO: hacer que funcione lo de abajo pero mostrando el texto del archivo seleccionado como hace el input de arriba */}
+        {/* <label htmlFor="files" className="btn btn-primary">
+          Seleccionar CSV
+        </label>
+        <input
+          id="files"
+          accept=".csv"
+          type="file"
+          onChange={handleFileChange}
+        /> */}
         <button className="btn btn-primary" onClick={handleSave}>
           Guardar
         </button>

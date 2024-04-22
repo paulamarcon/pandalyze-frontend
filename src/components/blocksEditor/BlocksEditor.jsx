@@ -5,6 +5,7 @@ import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./constants/toolbox";
 import BlocksService from "./services/BlocksService";
 
+// TODO: agregar un theme para los estilos, en lo posible el modernTheme porque es el mas lindo
 // Blockly.Themes.Custom = Blockly.Theme.defineTheme("custom", {
 //   base: Blockly.Themes.Classic,
 //   fontStyle: {
