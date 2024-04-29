@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import CsvUploader from "../csvUploader/CsvUploader";
-import Blockly, { Workspace } from "blockly";
+import Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./constants/toolbox";
 import BlocksService from "./services/BlocksService";
@@ -35,9 +35,7 @@ const BlocksEditor = ({ updateCode }) => {
       // theme: "custom",
     });
 
-    //console.log("items", workspace.getToolbox().getToolboxItems()[0]);
-    //console.log("func", workspace.getToolbox().getToolboxItems()[0].getDiv());
-    BlocksService.initBlocks(useFrontRef, workspace);
+    BlocksService.initBlocks(useFrontRef);
 
     workspace.registerButtonCallback(
       "createVariableCallbackKey",
@@ -52,14 +50,9 @@ const BlocksEditor = ({ updateCode }) => {
     workspace.addChangeListener(onBlocksChange);
   }, []);
 
-  const updateCategoryCallback = (workspace) => {
-    console.log("asd");
-    return [];
-  };
-
   const onBlocksChange = (event) => {
     //TODO ojo con esta linea
-    //const workspace = Blockly.getMainWorkspace();
+    const workspace = Blockly.getMainWorkspace();
 
     useFrontRef.current = true;
     const frontendCode = pythonGenerator.workspaceToCode(workspace);

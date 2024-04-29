@@ -20,7 +20,7 @@ export const initInfoBlock = () => {
       "VALUE",
       pythonGenerator.ORDER_NONE
     );
-    var infoCode = blockInput ? `${blockInput}.info()` : ".info()";
+    var infoCode = `${blockInput}.info()`;
     return [infoCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };
 };

@@ -6,6 +6,10 @@ import { initPrintBlock } from "../constants/blocks/printBlock";
 import { initReadCsvBlock } from "../constants/blocks/readCsvBlock";
 import { initVariablesBlocks } from "../constants/blocks/variablesBlock";
 import { toolbox } from "../constants/toolbox";
+import { initLineBlock } from "../constants/blocks/plotly/lineBlock";
+import { initPropertyBlock } from "../constants/blocks/propertyBlock";
+import { initBarBlock } from "../constants/blocks/plotly/barBlock";
+import { initScatterBlock } from "../constants/blocks/plotly/scatterBlock";
 
 const BlocksService = {
   variables: [],
@@ -17,6 +21,10 @@ const BlocksService = {
     initInfoBlock();
     initMeanBlock();
     initVariablesBlocks();
+    initPropertyBlock();
+    initLineBlock();
+    initBarBlock();
+    initScatterBlock();
   },
 
   onRefreshFlyout() {
@@ -42,6 +50,10 @@ const BlocksService = {
         {
           kind: "block",
           type: "variables_set",
+        },
+        {
+          kind: "block",
+          type: "property",
         },
       ];
     }

@@ -26,13 +26,8 @@ export const initMeanBlock = () => {
       pythonGenerator.ORDER_NONE
     );
     var columnName = block.getFieldValue("COLUMN_NAME");
-    var meanCode = blockInput
-      ? columnName
-        ? `${blockInput}.mean(${columnName})`
-        : `${blockInput}.mean()`
-      : columnName
-      ? `.mean(${columnName})`
-      : ".mean()";
+    var meanCode = `${blockInput}.mean(${columnName})`;
+
     return [meanCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };
 };

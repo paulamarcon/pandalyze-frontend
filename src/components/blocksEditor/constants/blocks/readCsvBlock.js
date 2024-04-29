@@ -24,7 +24,7 @@ export const initReadCsvBlock = (useFrontRef) => {
     var selectedValue = block.getField("csvOptions").getText();
 
     if (useFrontRef.current) {
-      const code = `pd.read_csv(${selectedValue})`;
+      const code = `pandas.read_csv(${selectedValue})`;
       return [code, pythonGenerator.ORDER_FUNCTION_CALL];
     } else {
       //from app.services.csv_service import read_csv

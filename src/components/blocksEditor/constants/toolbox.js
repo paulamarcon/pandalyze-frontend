@@ -64,6 +64,20 @@ export const toolbox = {
       kind: "category",
       name: "Plotly",
       colour: "80",
+      contents: [
+        {
+          kind: "block",
+          type: "line",
+        },
+        {
+          kind: "block",
+          type: "bar",
+        },
+        {
+          kind: "block",
+          type: "scatter",
+        },
+      ],
     },
   ],
 };

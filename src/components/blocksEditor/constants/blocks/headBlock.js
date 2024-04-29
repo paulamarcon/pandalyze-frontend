@@ -37,13 +37,8 @@ export const initHeadBlock = () => {
       pythonGenerator.ORDER_NONE
     );
     var argumentInput = block.getFieldValue("argument");
-    var headCode = blockInput
-      ? argumentInput
-        ? `${blockInput}.head(${argumentInput})`
-        : `${blockInput}.head()`
-      : argumentInput
-      ? `.head(${argumentInput})`
-      : ".head()";
+    var headCode = `${blockInput}.head(${argumentInput})`;
+
     return [headCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };
 };

@@ -15,7 +15,7 @@ export const initVariablesBlocks = () => {
     },
 
     generateOptions: function () {
-      return [["Getter1", "1"]];
+      return [[]];
     },
   };
 
@@ -36,7 +36,7 @@ export const initVariablesBlocks = () => {
     },
 
     generateOptions: function () {
-      return [["Setter1", "1"]];
+      return [[]];
     },
   };
 
