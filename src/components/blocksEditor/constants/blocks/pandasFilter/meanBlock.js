@@ -5,17 +5,11 @@ export const initMeanBlock = () => {
   Blockly.Blocks["mean"] = {
     init: function () {
       this.appendValueInput("VALUE").setCheck(null);
-      this.appendDummyInput().appendField(".mean(");
-      this.appendDummyInput()
-        .appendField(
-          new Blockly.FieldTextInput("", this.validateInput),
-          "COLUMN_NAME"
-        )
-        .appendField(")");
+      this.appendDummyInput().appendField(".mean()");
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(0);
-      this.setTooltip("Calcula promedios de filas o columnas del DataFrame.");
+      this.setTooltip("Calcula el promedio de una columna del DataFrame.");
     },
   };
 
@@ -25,8 +19,7 @@ export const initMeanBlock = () => {
       "VALUE",
       pythonGenerator.ORDER_NONE
     );
-    var columnName = block.getFieldValue("COLUMN_NAME");
-    var meanCode = `${blockInput}.mean(${columnName})`;
+    var meanCode = `${blockInput}.mean()`;
 
     return [meanCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };

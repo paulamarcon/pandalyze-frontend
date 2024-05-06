@@ -50,6 +50,6 @@ export const initVariablesBlocks = () => {
     var value =
       generator.valueToCode(block, "VALUE", pythonGenerator.ORDER_NONE) ||
       "None";
-    return variableName + " = " + value;
+    return variableName + " = " + value + "\n";
   };
 };

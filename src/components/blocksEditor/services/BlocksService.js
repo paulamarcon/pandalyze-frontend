@@ -1,7 +1,6 @@
 import Blockly from "blockly";
 import { initHeadBlock } from "../constants/blocks/headBlock";
 import { initInfoBlock } from "../constants/blocks/infoBlock";
-import { initMeanBlock } from "../constants/blocks/meanBlock";
 import { initPrintBlock } from "../constants/blocks/printBlock";
 import { initReadCsvBlock } from "../constants/blocks/readCsvBlock";
 import { initVariablesBlocks } from "../constants/blocks/variablesBlock";
@@ -10,6 +9,10 @@ import { initLineBlock } from "../constants/blocks/plotly/lineBlock";
 import { initPropertyBlock } from "../constants/blocks/propertyBlock";
 import { initBarBlock } from "../constants/blocks/plotly/barBlock";
 import { initScatterBlock } from "../constants/blocks/plotly/scatterBlock";
+import { initMeanBlock } from "../constants/blocks/pandasFilter/meanBlock";
+import { initMaxBlock } from "../constants/blocks/pandasFilter/maxBlock";
+import { initMinBlock } from "../constants/blocks/pandasFilter/minBlock";
+import { initCountBlock } from "../constants/blocks/pandasFilter/countBlock";
 
 const BlocksService = {
   variables: [],
@@ -19,12 +22,15 @@ const BlocksService = {
     initReadCsvBlock(useFrontRef);
     initHeadBlock();
     initInfoBlock();
-    initMeanBlock();
     initVariablesBlocks();
     initPropertyBlock();
     initLineBlock();
     initBarBlock();
     initScatterBlock();
+    initMeanBlock();
+    initMaxBlock();
+    initMinBlock();
+    initCountBlock();
   },
 
   onRefreshFlyout() {

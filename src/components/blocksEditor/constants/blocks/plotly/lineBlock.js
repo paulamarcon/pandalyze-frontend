@@ -16,7 +16,7 @@ export const initLineBlock = () => {
       this.setOutput(true, null);
       this.setColour(80);
       this.setTooltip(
-        "Muestra un gráfico de lineas a partir de columnas x e y de un CSV."
+        "Muestra un gráfico de lineas a partir de columnas x e y de un DataFrame."
       );
       this.setHelpUrl("");
     },

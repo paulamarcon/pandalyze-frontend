@@ -52,6 +52,18 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "count",
+        },
+        {
+          kind: "block",
+          type: "max",
+        },
+        {
+          kind: "block",
+          type: "min",
+        },
+        {
+          kind: "block",
           type: "mean",
         },
       ],
