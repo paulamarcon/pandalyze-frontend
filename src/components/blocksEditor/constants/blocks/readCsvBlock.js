@@ -27,7 +27,6 @@ export const initReadCsvBlock = (useFrontRef) => {
       const code = `pandas.read_csv(${selectedValue})`;
       return [code, pythonGenerator.ORDER_FUNCTION_CALL];
     } else {
-      //from app.services.csv_service import read_csv
       const code = `read_csv(${selectedKey})`;
       return [code, pythonGenerator.ORDER_FUNCTION_CALL];
     }

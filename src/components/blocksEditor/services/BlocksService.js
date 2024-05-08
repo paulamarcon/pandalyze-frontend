@@ -16,7 +16,9 @@ import { initCountBlock } from "../constants/blocks/pandasFilter/countBlock";
 import { initCustomComparisonBlock } from "../constants/blocks/comparisonBlock";
 
 const BlocksService = {
+  //TODO: Ojo aca, servicio con estado puede bardear si es uno solo para varios usuarios?
   variables: [],
+  csvsData: [],
 
   initBlocks(useFrontRef) {
     initPrintBlock();
@@ -24,7 +26,7 @@ const BlocksService = {
     initHeadBlock();
     initInfoBlock();
     initVariablesBlocks();
-    initPropertyBlock();
+    initPropertyBlock(this.csvsData, this.variables);
     initLineBlock();
     initBarBlock();
     initScatterBlock();
@@ -33,6 +35,22 @@ const BlocksService = {
     initMinBlock();
     initCountBlock();
     initCustomComparisonBlock();
+  },
+
+  // Se dispara cuando el usuario guarda un Csv
+  onCsvUpload(csvData) {
+    this.csvsData.push(csvData);
+
+    const readCsvBlockDropdownOptions = this.csvsData.map((csvData) => [
+      csvData.filename,
+      `${csvData.id}`,
+    ]);
+
+    Blockly.Blocks["read_csv"].generateOptions = function () {
+      return readCsvBlockDropdownOptions;
+    };
+
+    this.refreshWorkspace();
   },
 
   onRefreshFlyout() {

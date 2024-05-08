@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import BlocksService from "../blocksEditor/services/BlocksService";
 
 const CsvUploader = ({
-  updateDropdownOptions,
   setShowSuccessCsvUploadAlert,
   setShowInitialInstructionsAlert,
 }) => {
@@ -49,9 +49,11 @@ const CsvUploader = ({
   };
 
   const updateCsvOptions = (jsonData) => {
-    const newOptions = [[jsonData.fileName, `${jsonData.csvId}`]];
-
-    updateDropdownOptions(newOptions);
+    BlocksService.onCsvUpload({
+      id: jsonData.csvId,
+      filename: jsonData.fileName,
+      columnsNames: jsonData.columnsNames,
+    });
   };
 
   return (
