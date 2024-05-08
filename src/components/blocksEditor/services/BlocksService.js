@@ -12,7 +12,9 @@ import { initBarBlock } from "../constants/blocks/plotly/barBlock";
 import { initScatterBlock } from "../constants/blocks/plotly/scatterBlock";
 
 const BlocksService = {
+  //TODO: Ojo aca, servicio con estado puede bardear si es uno solo para varios usuarios?
   variables: [],
+  csvsData: [],
 
   initBlocks(useFrontRef) {
     initPrintBlock();
@@ -21,10 +23,26 @@ const BlocksService = {
     initInfoBlock();
     initMeanBlock();
     initVariablesBlocks();
-    initPropertyBlock();
+    initPropertyBlock(this.csvsData, this.variables);
     initLineBlock();
     initBarBlock();
     initScatterBlock();
+  },
+
+  // Se dispara cuando el usuario guarda un Csv
+  onCsvUpload(csvData) {
+    this.csvsData.push(csvData);
+
+    const readCsvBlockDropdownOptions = this.csvsData.map((csvData) => [
+      csvData.filename,
+      `${csvData.id}`,
+    ]);
+
+    Blockly.Blocks["read_csv"].generateOptions = function () {
+      return readCsvBlockDropdownOptions;
+    };
+
+    this.refreshWorkspace();
   },
 
   onRefreshFlyout() {

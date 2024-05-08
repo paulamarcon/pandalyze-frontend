@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import CsvUploader from "../csvUploader/CsvUploader";
 import Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
@@ -25,7 +25,6 @@ import BlocksService from "./services/BlocksService";
 // });
 
 const BlocksEditor = ({ updateCode }) => {
-  const [csvResponse, setCsvResponse] = useState([["Alumnos", "1"]]);
   var workspace;
   const useFrontRef = useRef(true);
 
@@ -60,24 +59,20 @@ const BlocksEditor = ({ updateCode }) => {
     useFrontRef.current = false;
     const backendCode = pythonGenerator.workspaceToCode(workspace);
 
+    /*Puede servir?
+    if (
+      event.type === Blockly.Events.BLOCK_CHANGE &&
+      event.name === "csvOptions"
+    ) {
+      BlocksService.changeCsvColumnsDropdown(event.newValue);
+    }*/
+
     updateCode(frontendCode, backendCode);
-  };
-
-  const updateDropdownOptions = (newOptions) => {
-    const updatedCsvResponse = [...csvResponse, ...newOptions];
-
-    setCsvResponse(updatedCsvResponse);
-
-    Blockly.Blocks["read_csv"].generateOptions = function () {
-      return updatedCsvResponse;
-    };
-
-    BlocksService.refreshWorkspace();
   };
 
   return (
     <div style={{ width: "50%" }}>
-      <CsvUploader updateDropdownOptions={updateDropdownOptions} />
+      <CsvUploader />
       <div id="blocklyDiv" style={{ flex: 1, height: "680px" }}></div>
     </div>
   );

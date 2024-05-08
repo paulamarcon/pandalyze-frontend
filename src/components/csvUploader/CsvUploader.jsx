@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import BlocksService from "../blocksEditor/services/BlocksService";
 
-const CsvUploader = ({ updateDropdownOptions }) => {
+const CsvUploader = () => {
   const [csvFile, setCsvFile] = useState(null);
 
   // Función para manejar la carga del archivo CSV en el front
@@ -37,9 +38,11 @@ const CsvUploader = ({ updateDropdownOptions }) => {
   };
 
   const updateCsvOptions = (jsonData) => {
-    const newOptions = [[jsonData.fileName, `${jsonData.csvId}`]];
-
-    updateDropdownOptions(newOptions);
+    BlocksService.onCsvUpload({
+      id: jsonData.csvId,
+      filename: jsonData.fileName,
+      columnsNames: jsonData.columnsNames,
+    });
   };
 
   return (
