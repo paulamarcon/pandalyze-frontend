@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
+import "./styles.css";
 
 const PythonEditor = ({ frontendCode, backendCode }) => {
   const [response, setResponse] = useState("");
@@ -25,24 +26,16 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
   };
 
   return (
-    <div style={{ width: "50%" }}>
-      <button className="btn btn-primary" onClick={handleSubmit}>
+    <div className="python-editor-container">
+      <button className="btn btn-success mt-4" onClick={handleSubmit}>
         Ejecutar código Python
       </button>
-      <div
-        style={{
-          border: "1px solid #ced4da",
-          width: "100%",
-          height: "30%",
-          marginBottom: "10px",
-          marginTop: "34px",
-        }}
-      >
+      <div className="console">
         {response ? <pre>{response}</pre> : <span>Consola</span>}
       </div>
       <CodeMirror
         value={frontendCode}
-        height="200px"
+        height="450px"
         theme="light"
         readOnly={true}
         extensions={[python({ jsx: true })]}

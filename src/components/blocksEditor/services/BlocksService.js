@@ -13,6 +13,7 @@ import { initMeanBlock } from "../constants/blocks/pandasFilter/meanBlock";
 import { initMaxBlock } from "../constants/blocks/pandasFilter/maxBlock";
 import { initMinBlock } from "../constants/blocks/pandasFilter/minBlock";
 import { initCountBlock } from "../constants/blocks/pandasFilter/countBlock";
+import { initCustomComparisonBlock } from "../constants/blocks/comparisonBlock";
 
 const BlocksService = {
   variables: [],
@@ -31,6 +32,7 @@ const BlocksService = {
     initMaxBlock();
     initMinBlock();
     initCountBlock();
+    initCustomComparisonBlock();
   },
 
   onRefreshFlyout() {

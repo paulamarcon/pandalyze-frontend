@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 
-const CsvUploader = ({ updateDropdownOptions }) => {
+const CsvUploader = ({
+  updateDropdownOptions,
+  setShowSuccessCsvUploadAlert,
+  setShowInitialInstructionsAlert,
+}) => {
   const [csvFile, setCsvFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   // Función para manejar la carga del archivo CSV en el front
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    setSelectedFile(file);
     if (file && file.type === "text/csv") {
       setCsvFile(file);
     } else {
       alert("Por favor, seleccione un archivo CSV.");
+      setCsvFile(null);
     }
   };
 
@@ -26,6 +33,11 @@ const CsvUploader = ({ updateDropdownOptions }) => {
         .then((response) => response.json())
         .then((jsonData) => {
           updateCsvOptions(jsonData);
+          setShowSuccessCsvUploadAlert(true);
+          setShowInitialInstructionsAlert(false);
+          setTimeout(() => {
+            setShowSuccessCsvUploadAlert(false);
+          }, 10000);
         })
         .catch((error) => {
           console.log("Error:", error);
@@ -46,9 +58,9 @@ const CsvUploader = ({ updateDropdownOptions }) => {
     <div>
       <strong>Subir CSV</strong>
       <div style={{ marginBottom: "10px" }}>
-        <input type="file" accept=".csv" onChange={handleFileChange} />
-        {/* TODO: hacer que funcione lo de abajo pero mostrando el texto del archivo seleccionado como hace el input de arriba */}
-        {/* <label htmlFor="files" className="btn btn-primary">
+        {/* <input type="file" accept=".csv" onChange={handleFileChange} /> */}
+        {/* TODO: si no gusta cómo quedó, seguir usando el input comentado de la linea de arriba */}
+        <label htmlFor="files" className="btn btn-primary">
           Seleccionar CSV
         </label>
         <input
@@ -56,9 +68,13 @@ const CsvUploader = ({ updateDropdownOptions }) => {
           accept=".csv"
           type="file"
           onChange={handleFileChange}
-        /> */}
+          style={{ display: "none" }}
+        />
+        <span id="selectedFileName">
+          {selectedFile ? selectedFile.name : "Sin archivos seleccionados"}
+        </span>
         <button className="btn btn-primary" onClick={handleSave}>
-          Guardar
+          Guardar CSV
         </button>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./constants/toolbox";
 import BlocksService from "./services/BlocksService";
+import "./styles.css";
 
 // TODO: agregar un theme para los estilos, en lo posible el modernTheme porque es el mas lindo
 // Blockly.Themes.Custom = Blockly.Theme.defineTheme("custom", {
@@ -24,7 +25,11 @@ import BlocksService from "./services/BlocksService";
 //   },
 // });
 
-const BlocksEditor = ({ updateCode }) => {
+const BlocksEditor = ({
+  updateCode,
+  setShowSuccessCsvUploadAlert,
+  setShowInitialInstructionsAlert,
+}) => {
   const [csvResponse, setCsvResponse] = useState([["Alumnos", "1"]]);
   var workspace;
   const useFrontRef = useRef(true);
@@ -76,8 +81,12 @@ const BlocksEditor = ({ updateCode }) => {
   };
 
   return (
-    <div style={{ width: "50%" }}>
-      <CsvUploader updateDropdownOptions={updateDropdownOptions} />
+    <div className="blocks-editor-container">
+      <CsvUploader
+        updateDropdownOptions={updateDropdownOptions}
+        setShowSuccessCsvUploadAlert={setShowSuccessCsvUploadAlert}
+        setShowInitialInstructionsAlert={setShowInitialInstructionsAlert}
+      />
       <div id="blocklyDiv" style={{ flex: 1, height: "680px" }}></div>
     </div>
   );
