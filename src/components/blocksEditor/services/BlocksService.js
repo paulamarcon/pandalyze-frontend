@@ -26,7 +26,7 @@ const BlocksService = {
     initHeadBlock();
     initInfoBlock();
     initVariablesBlocks();
-    initPropertyBlock(this.csvsData, this.variables);
+    initPropertyBlock(this.csvsData);
     initLineBlock();
     initBarBlock();
     initScatterBlock();
