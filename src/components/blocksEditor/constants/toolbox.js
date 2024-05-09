@@ -58,52 +58,60 @@ export const toolbox = {
           type: "read_csv",
         },
         {
-          kind: "block",
-          type: "print_with_argument",
+          kind: "category",
+          name: "Información",
+          contents: [
+            {
+              kind: "block",
+              type: "head",
+            },
+            {
+              kind: "block",
+              type: "info",
+            },
+            {
+              kind: "block",
+              type: "describe",
+            },
+            {
+              kind: "block",
+              type: "dtypes",
+            },
+            {
+              kind: "block",
+              type: "column",
+            },
+            {
+              kind: "block",
+              type: "shape",
+            },
+          ],
         },
         {
-          kind: "block",
-          type: "head",
-        },
-        {
-          kind: "block",
-          type: "info",
-        },
-        {
-          kind: "block",
-          type: "describe",
-        },
-        {
-          kind: "block",
-          type: "dtypes",
-        },
-        {
-          kind: "block",
-          type: "column",
-        },
-        {
-          kind: "block",
-          type: "shape",
-        },
-        {
-          kind: "block",
-          type: "count",
-        },
-        {
-          kind: "block",
-          type: "max",
-        },
-        {
-          kind: "block",
-          type: "min",
-        },
-        {
-          kind: "block",
-          type: "mean",
-        },
-        {
-          kind: "block",
-          type: "nullSum",
+          kind: "category",
+          name: "Filtros",
+          contents: [
+            {
+              kind: "block",
+              type: "count",
+            },
+            {
+              kind: "block",
+              type: "max",
+            },
+            {
+              kind: "block",
+              type: "min",
+            },
+            {
+              kind: "block",
+              type: "mean",
+            },
+            {
+              kind: "block",
+              type: "nullSum",
+            },
+          ],
         },
       ],
     },
@@ -127,6 +135,21 @@ export const toolbox = {
         {
           kind: "block",
           type: "scatter",
+        },
+      ],
+    },
+    {
+      kind: "sep",
+      gap: "8",
+    },
+    {
+      kind: "category",
+      name: "Output",
+      colour: "150",
+      contents: [
+        {
+          kind: "block",
+          type: "print_with_argument",
         },
       ],
     },

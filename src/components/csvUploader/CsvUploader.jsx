@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import BlocksService from "../blocksEditor/services/BlocksService";
+import "./CsvUploaderStyles.css";
 
 const CsvUploader = ({
   setShowSuccessCsvUploadAlert,
   setShowInitialInstructionsAlert,
 }) => {
   const [csvFile, setCsvFile] = useState(null);
-  const [selectedFile, setSelectedFile] = useState(null);
 
   // Función para manejar la carga del archivo CSV en el front
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setSelectedFile(file);
     if (file && file.type === "text/csv") {
       setCsvFile(file);
     } else {
@@ -33,6 +32,7 @@ const CsvUploader = ({
         .then((response) => response.json())
         .then((jsonData) => {
           updateCsvOptions(jsonData);
+          setCsvFile(null);
           setShowSuccessCsvUploadAlert(true);
           setShowInitialInstructionsAlert(false);
           setTimeout(() => {
@@ -72,12 +72,12 @@ const CsvUploader = ({
           onChange={handleFileChange}
           style={{ display: "none" }}
         />
-        <span id="selectedFileName">
-          {selectedFile ? selectedFile.name : "Sin archivos seleccionados"}
-        </span>
-        <button className="btn btn-primary" onClick={handleSave}>
-          Guardar CSV
-        </button>
+        <span className="file-name-separation">{csvFile?.name}</span>
+        {csvFile && (
+          <button className="btn btn-secondary" onClick={handleSave}>
+            Guardar CSV
+          </button>
+        )}
       </div>
     </div>
   );
