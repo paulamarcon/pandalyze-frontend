@@ -9,7 +9,7 @@ export const initComparisonBlock = () => {
       this.appendValueInput("columnNameValue").setCheck(null);
       this.appendDummyInput().appendField(
         new Blockly.FieldDropdown([
-          ["=", "EQUAL"],
+          ["==", "EQUAL"],
           [">", "GREATER_THAN"],
           ["<", "LESS_THAN"],
           [">=", "GREATER_THAN_OR_EQUAL"],
@@ -42,21 +42,11 @@ export const initComparisonBlock = () => {
         "columnNameValue",
         pythonGenerator.ORDER_NONE
       ) || 0;
-    var operator = block.getFieldValue("OPERATOR");
+
+    var operator = block.getField("OPERATOR").getText();
     var rightValue = block.getFieldValue("rightValue");
 
-    // Convertir el operador a su equivalente en Python
-    var operatorMapping = {
-      EQUAL: "==",
-      GREATER_THAN: ">",
-      LESS_THAN: "<",
-      GREATER_THAN_OR_EQUAL: ">=",
-      LESS_THAN_OR_EQUAL: "<=",
-      NOT_EQUAL: "!=",
-    };
-    var operatorPython = operatorMapping[operator];
-
-    var comparisonCode = `${dataFrameValue}[${columnNameValue} ${operatorPython} ${rightValue}]`;
+    var comparisonCode = `${dataFrameValue}[${columnNameValue} ${operator} ${rightValue}]`;
 
     return [comparisonCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };

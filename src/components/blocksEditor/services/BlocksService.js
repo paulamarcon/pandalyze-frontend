@@ -19,6 +19,7 @@ import { initCountBlock } from "../constants/blocks/pandasFilter/countBlock";
 import { initNullSumBlock } from "../constants/blocks/pandasFilter/nullColumnCounterBlock";
 import { initComparisonBlock } from "../constants/blocks/comparisonBlock";
 import { initDescribeBlock } from "../constants/blocks/describeBlock";
+import { initPrimitiveBlocks } from "../constants/blocks/primitiveBlocks";
 
 const BlocksService = {
   //TODO: Ojo aca, servicio con estado puede bardear si es uno solo para varios usuarios?
@@ -35,7 +36,7 @@ const BlocksService = {
     initDataTypeBlock();
     initDescribeBlock();
     initVariablesBlocks();
-    initPropertyBlock(this.csvsData, this.variables);
+    initPropertyBlock(this.csvsData);
     initLineBlock();
     initBarBlock();
     initScatterBlock();
@@ -45,6 +46,7 @@ const BlocksService = {
     initCountBlock();
     initNullSumBlock();
     initComparisonBlock();
+    initPrimitiveBlocks();
   },
 
   // Se dispara cuando el usuario guarda un Csv

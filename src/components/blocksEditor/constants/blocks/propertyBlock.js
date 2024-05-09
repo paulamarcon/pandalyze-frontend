@@ -1,7 +1,7 @@
 import Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
 
-export const initPropertyBlock = (csvsData, variables) => {
+export const initPropertyBlock = (csvsData) => {
   Blockly.Blocks["property"] = {
     init: function () {
       this.appendValueInput("blockInput").setCheck(null);
@@ -24,16 +24,18 @@ export const initPropertyBlock = (csvsData, variables) => {
   pythonGenerator["property"] = function (block) {
     const blockInput = this.getInputTargetBlock("blockInput");
 
-    const blockInputVariableName = blockInput
-      ?.getField("variableGetterKey")
-      ?.getText();
-    const csvId = blockInput?.getFieldValue("csvOptions");
+    let csvId;
+    const variableName = blockInput?.getField("variableGetterKey")?.getText();
+    const csvOption = blockInput?.getFieldValue("csvOptions");
 
-    //Valor default para el dropdown si no tiene un input block
-    if (!blockInput) {
-      const dropdownField = block.getField("dropdown");
-      dropdownField.menuGenerator_ = [["Columna", "Columna"]];
-      dropdownField.setValue("Columna");
+    //Si es un bloque read_csv o si es un bloque variables_get con un csv seteado, recupero el csvId
+    if (csvOption) {
+      csvId = csvOption;
+    } else if (variableName) {
+      const setterBlock = findSetterBlock(variableName);
+      csvId = setterBlock
+        ?.getInputTargetBlock("VALUE")
+        ?.getFieldValue("csvOptions");
     }
 
     if (csvId) {
@@ -43,7 +45,7 @@ export const initPropertyBlock = (csvsData, variables) => {
 
       const currentOptions = this.getField("dropdown").getOptions();
 
-      // Si cambiaron las opciones del dropdown actualizo el workspace
+      // Si cambiaron las opciones del dropdown, lo actualizo
       const optionsChanged =
         JSON.stringify(blockInputCsvColumnsNames) !==
         JSON.stringify(currentOptions);
@@ -52,9 +54,12 @@ export const initPropertyBlock = (csvsData, variables) => {
         dropdownField.menuGenerator_ = blockInputCsvColumnsNames;
         dropdownField.setValue(blockInputCsvColumnsNames[0][1]); //default: 1er columna humanReadable
       }
+    } else {
+      //Default si no ingresa bloque, o si el bloque no es de tipo dataframe
+      const dropdownField = block.getField("dropdown");
+      dropdownField.menuGenerator_ = [["Columna", "Columna"]];
+      dropdownField.setValue("Columna");
     }
-
-    //TODO: Falta soporte para bloque de variable
 
     var blockInputCode = pythonGenerator.valueToCode(
       block,
@@ -66,4 +71,13 @@ export const initPropertyBlock = (csvsData, variables) => {
 
     return [propertyCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };
+
+  //Encuentra el bloque "variables_set" que setea a la variable variableName
+  function findSetterBlock(variableName) {
+    return Blockly.getMainWorkspace()
+      .getAllBlocks()
+      .find((block) => {
+        return block.getField("variableSetterKey")?.getText() === variableName;
+      });
+  }
 };
