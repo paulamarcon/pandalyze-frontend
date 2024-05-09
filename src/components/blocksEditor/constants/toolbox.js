@@ -21,11 +21,26 @@ export const toolbox = {
       contents: [
         {
           kind: "block",
-          type: "controls_if",
+          type: "comparison",
+        },
+      ],
+    },
+    {
+      kind: "category",
+      name: "Primitivos",
+      colour: "290",
+      contents: [
+        {
+          kind: "block",
+          type: "primitive_number",
         },
         {
           kind: "block",
-          type: "comparison",
+          type: "primitive_text",
+        },
+        {
+          kind: "block",
+          type: "primitive_boolean",
         },
       ],
     },

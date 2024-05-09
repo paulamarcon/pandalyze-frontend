@@ -14,6 +14,7 @@ import { initMaxBlock } from "../constants/blocks/pandasFilter/maxBlock";
 import { initMinBlock } from "../constants/blocks/pandasFilter/minBlock";
 import { initCountBlock } from "../constants/blocks/pandasFilter/countBlock";
 import { initCustomComparisonBlock } from "../constants/blocks/comparisonBlock";
+import { initPrimitiveBlocks } from "../constants/blocks/primitiveBlocks";
 
 const BlocksService = {
   //TODO: Ojo aca, servicio con estado puede bardear si es uno solo para varios usuarios?
@@ -35,6 +36,7 @@ const BlocksService = {
     initMinBlock();
     initCountBlock();
     initCustomComparisonBlock();
+    initPrimitiveBlocks();
   },
 
   // Se dispara cuando el usuario guarda un Csv
