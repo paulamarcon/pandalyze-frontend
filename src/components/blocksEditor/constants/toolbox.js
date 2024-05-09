@@ -56,6 +56,22 @@ export const toolbox = {
         },
         {
           kind: "block",
+          type: "describe",
+        },
+        {
+          kind: "block",
+          type: "dtypes",
+        },
+        {
+          kind: "block",
+          type: "column",
+        },
+        {
+          kind: "block",
+          type: "shape",
+        },
+        {
+          kind: "block",
           type: "count",
         },
         {
@@ -69,6 +85,10 @@ export const toolbox = {
         {
           kind: "block",
           type: "mean",
+        },
+        {
+          kind: "block",
+          type: "nullSum",
         },
       ],
     },

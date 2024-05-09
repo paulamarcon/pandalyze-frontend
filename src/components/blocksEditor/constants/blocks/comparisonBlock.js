@@ -1,7 +1,7 @@
 import Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
 
-export const initCustomComparisonBlock = () => {
+export const initComparisonBlock = () => {
   Blockly.Blocks["comparison"] = {
     init: function () {
       this.appendValueInput("dataFrameValue").setCheck(null);

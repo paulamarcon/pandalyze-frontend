@@ -1,19 +1,24 @@
 import Blockly from "blockly";
+import { toolbox } from "../constants/toolbox";
 import { initHeadBlock } from "../constants/blocks/headBlock";
 import { initInfoBlock } from "../constants/blocks/infoBlock";
+import { initColumnBlock } from "../constants/blocks/columnBlock";
+import { initShapeBlock } from "../constants/blocks/shapeBlock";
+import { initDataTypeBlock } from "../constants/blocks/dataTypeBlock";
 import { initPrintBlock } from "../constants/blocks/printBlock";
 import { initReadCsvBlock } from "../constants/blocks/readCsvBlock";
 import { initVariablesBlocks } from "../constants/blocks/variablesBlock";
-import { toolbox } from "../constants/toolbox";
-import { initLineBlock } from "../constants/blocks/plotly/lineBlock";
 import { initPropertyBlock } from "../constants/blocks/propertyBlock";
+import { initLineBlock } from "../constants/blocks/plotly/lineBlock";
 import { initBarBlock } from "../constants/blocks/plotly/barBlock";
 import { initScatterBlock } from "../constants/blocks/plotly/scatterBlock";
 import { initMeanBlock } from "../constants/blocks/pandasFilter/meanBlock";
 import { initMaxBlock } from "../constants/blocks/pandasFilter/maxBlock";
 import { initMinBlock } from "../constants/blocks/pandasFilter/minBlock";
 import { initCountBlock } from "../constants/blocks/pandasFilter/countBlock";
-import { initCustomComparisonBlock } from "../constants/blocks/comparisonBlock";
+import { initNullSumBlock } from "../constants/blocks/pandasFilter/nullColumnCounterBlock";
+import { initComparisonBlock } from "../constants/blocks/comparisonBlock";
+import { initDescribeBlock } from "../constants/blocks/describeBlock";
 
 const BlocksService = {
   //TODO: Ojo aca, servicio con estado puede bardear si es uno solo para varios usuarios?
@@ -25,6 +30,10 @@ const BlocksService = {
     initReadCsvBlock(useFrontRef);
     initHeadBlock();
     initInfoBlock();
+    initColumnBlock();
+    initShapeBlock();
+    initDataTypeBlock();
+    initDescribeBlock();
     initVariablesBlocks();
     initPropertyBlock(this.csvsData, this.variables);
     initLineBlock();
@@ -34,7 +43,8 @@ const BlocksService = {
     initMaxBlock();
     initMinBlock();
     initCountBlock();
-    initCustomComparisonBlock();
+    initNullSumBlock();
+    initComparisonBlock();
   },
 
   // Se dispara cuando el usuario guarda un Csv
