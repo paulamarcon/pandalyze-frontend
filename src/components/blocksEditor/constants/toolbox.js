@@ -109,6 +109,10 @@ export const toolbox = {
             },
             {
               kind: "block",
+              type: "unique",
+            },
+            {
+              kind: "block",
               type: "nullSum",
             },
           ],
@@ -150,6 +154,10 @@ export const toolbox = {
         {
           kind: "block",
           type: "print_with_argument",
+        },
+        {
+          kind: "block",
+          type: "show",
         },
       ],
     },

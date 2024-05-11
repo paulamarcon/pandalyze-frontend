@@ -11,7 +11,9 @@ export const initPrintBlock = () => {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour(160);
-      this.setTooltip("");
+      this.setTooltip(
+        "Imprime en consola el resultado de la ejecución de los bloques"
+      );
       this.setHelpUrl("");
     },
   };
