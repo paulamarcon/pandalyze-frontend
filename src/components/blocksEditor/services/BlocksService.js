@@ -22,6 +22,7 @@ import { initUniqueBlock } from "../constants/blocks/pandasFilter/uniqueBlock";
 import { initComparisonBlock } from "../constants/blocks/comparisonBlock";
 import { initDescribeBlock } from "../constants/blocks/describeBlock";
 import { initPrimitiveBlocks } from "../constants/blocks/primitiveBlocks";
+import { initPieBlock } from "../constants/blocks/plotly/pieBlock";
 
 const BlocksService = {
   //TODO: Ojo aca, servicio con estado puede bardear si es uno solo para varios usuarios?
@@ -43,6 +44,7 @@ const BlocksService = {
     initLineBlock();
     initBarBlock();
     initScatterBlock();
+    initPieBlock();
     initMeanBlock();
     initMaxBlock();
     initMinBlock();

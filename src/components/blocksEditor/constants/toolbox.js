@@ -140,6 +140,10 @@ export const toolbox = {
           kind: "block",
           type: "scatter",
         },
+        {
+          kind: "block",
+          type: "pie",
+        },
       ],
     },
     {
