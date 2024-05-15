@@ -36,6 +36,9 @@ const BlocksEditor = ({
   useEffect(() => {
     workspace = Blockly.inject("blocklyDiv", {
       toolbox: toolbox,
+      zoom: {
+        controls: true,
+      },
       // theme: "custom",
     });
 
@@ -51,7 +54,17 @@ const BlocksEditor = ({
       BlocksService.onRefreshFlyout.bind(BlocksService)
     );
 
-    workspace.addChangeListener(onBlocksChange);
+    workspace.addChangeListener(function (event) {
+      onBlocksChange(event);
+
+      // Agregar la lógica adicional para el evento de clic en el bloque
+      if (event.type === "click" && event.targetType === "block") {
+        var clickedBlockId = event.blockId; // ID del bloque que se ha hecho clic
+        console.log("Se hizo clic en un bloque con ID: " + clickedBlockId);
+        var clickedBlock = workspace.getBlockById(clickedBlockId);
+        console.log("clickedBlock", clickedBlock);
+      }
+    });
   }, []);
 
   const onBlocksChange = (event) => {
@@ -81,7 +94,7 @@ const BlocksEditor = ({
         setShowSuccessCsvUploadAlert={setShowSuccessCsvUploadAlert}
         setShowInitialInstructionsAlert={setShowInitialInstructionsAlert}
       />
-      <div id="blocklyDiv" style={{ flex: 1, height: "680px" }}></div>
+      <div id="blocklyDiv" style={{ flex: 1, height: "400px" }}></div>
     </div>
   );
 };

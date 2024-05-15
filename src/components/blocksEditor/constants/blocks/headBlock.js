@@ -18,6 +18,9 @@ export const initHeadBlock = () => {
         "Muestra las primeras filas de un DataFrame. Por defecto las primeras 5."
       );
       this.setHelpUrl("");
+      this.setCommentText(
+        "Este bloque toma un DataFrame y devuelve las primeras filas según el número especificado en el campo de texto."
+      );
     },
 
     validateInput: function (newValue) {

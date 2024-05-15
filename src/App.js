@@ -60,7 +60,7 @@ function App() {
           aprender Ciencia de Datos con programación en bloques
         </span>
       </p>
-      <div style={{ display: "flex" }}>
+      <div>
         <BlocksEditor
           updateCode={updateCode}
           setShowSuccessCsvUploadAlert={setShowSuccessCsvUploadAlert}

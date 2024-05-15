@@ -163,6 +163,10 @@ export const toolbox = {
           kind: "block",
           type: "show",
         },
+        {
+          kind: "block",
+          type: "showInConsole",
+        },
       ],
     },
   ],
