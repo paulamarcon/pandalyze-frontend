@@ -54,8 +54,9 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
   };
 
   useEffect(() => {
+    console.log("backendResponse", backendResponse);
     // Hace foco en la consola cuando response tiene algo, sino hace foco arriba
-    if (response) {
+    if (backendResponse.output || backendResponse.plots) {
       const consoleElement = document.querySelector(".console");
       if (consoleElement) {
         consoleElement.scrollIntoView({ behavior: "smooth" });
@@ -63,7 +64,7 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, [response]);
+  }, [backendResponse]);
 
   return (
     <>
