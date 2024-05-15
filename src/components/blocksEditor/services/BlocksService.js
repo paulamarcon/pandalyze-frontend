@@ -53,6 +53,7 @@ const BlocksService = {
     initUniqueBlock();
     initComparisonBlock();
     initPrimitiveBlocks();
+    initShowInConsoleBlock(useFrontRef);
   },
 
   // Se dispara cuando el usuario guarda un Csv
@@ -124,7 +125,7 @@ const BlocksService = {
       };
 
       if (this.variables.length === 1) {
-        // Actualizar la flyout en el workspace*/
+        // Actualizar la flyout en el workspace
         const flyout = Blockly.getMainWorkspace().getFlyout();
         flyout.hide();
         flyout.show(toolbox);

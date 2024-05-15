@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import "./styles.css";
+import Plot from "react-plotly.js";
 
 const PythonEditor = ({ frontendCode, backendCode }) => {
-  const [response, setResponse] = useState("");
+  const [backendResponse, setBackendResponse] = useState({
+    output: "",
+    plots: "", //graficos de plotly
+  });
 
   //Pegada al back para correr el codigo
   const handleSubmit = () => {
@@ -17,11 +21,35 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
       body: JSON.stringify({ code: pythonCode }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        setResponse(data.output);
+      .then((jsonData) => {
+        let plots = [];
+        try {
+          // Verificar si jsonData.plots es un array
+          if (Array.isArray(jsonData.plots)) {
+            plots = jsonData.plots.map((plot) => {
+              // Intentar analizar cada elemento del array
+              try {
+                return JSON.parse(plot);
+              } catch (error) {
+                console.error("Error parsing plot JSON:", error);
+                return null;
+              }
+            });
+          } else {
+            console.error("Invalid plots data:", jsonData.plots);
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+
+        setBackendResponse({
+          output: jsonData.output,
+          plots: plots,
+        });
       })
       .catch((error) => {
         console.error("Error:", error);
+        setBackendResponse({ output: error.message });
       });
   };
 
@@ -31,7 +59,11 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
         Ejecutar código Python
       </button>
       <div className="console">
-        {response ? <pre>{response}</pre> : <span>Consola</span>}
+        {backendResponse.output ? (
+          <pre>{backendResponse.output}</pre>
+        ) : (
+          <span>Consola</span>
+        )}
       </div>
       <CodeMirror
         value={frontendCode}
@@ -40,6 +72,13 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
         readOnly={true}
         extensions={[python({ jsx: true })]}
       />
+      {backendResponse.plots?.length && (
+        <>
+          {backendResponse.plots.map((plot, index) => (
+            <Plot key={index} data={plot.data} layout={plot.layout} />
+          ))}
+        </>
+      )}
     </div>
   );
 };
