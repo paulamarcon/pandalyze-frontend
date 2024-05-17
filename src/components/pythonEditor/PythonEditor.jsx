@@ -5,41 +5,38 @@ import "./styles.css";
 import Plot from "react-plotly.js";
 
 const PythonEditor = ({ frontendCode, backendCode }) => {
-  const [backendResponse, setBackendResponse] = useState({
-    output: "",
-    plots: "", //graficos de plotly
-  });
+  const [backendResponse, setBackendResponse] = useState({});
 
   //Pegada al back para correr el codigo
   const handleSubmit = () => {
     const pythonCode = backendCode;
-    fetch("http://127.0.0.1:5000/run_python_code", {
+    fetch("http://127.0.0.1:5000/runPythonCode", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ code: pythonCode }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        // Si el backend rompe lanza el error al catch. Sino, lo jsonifica
+        if (!response.ok) {
+          return response.text().then((errorMessage) => {
+            throw new Error(errorMessage);
+          });
+        }
+        return response.json();
+      })
       .then((jsonData) => {
         let plots = [];
-        try {
-          // Verificar si jsonData.plots es un array
-          if (Array.isArray(jsonData.plots)) {
-            plots = jsonData.plots.map((plot) => {
-              // Intentar analizar cada elemento del array
-              try {
-                return JSON.parse(plot);
-              } catch (error) {
-                console.error("Error parsing plot JSON:", error);
-                return null;
-              }
-            });
-          } else {
-            console.error("Invalid plots data:", jsonData.plots);
-          }
-        } catch (error) {
-          console.error("Error:", error);
+        if (Array.isArray(jsonData.plots)) {
+          plots = jsonData.plots.map((plot) => {
+            try {
+              return JSON.parse(plot);
+            } catch (error) {
+              console.error("Error parsing plot JSON:", error);
+              return null;
+            }
+          });
         }
 
         setBackendResponse({
@@ -48,19 +45,19 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
         });
       })
       .catch((error) => {
-        console.error("Error:", error);
-        setBackendResponse({ output: error.message });
+        console.error("Backend error:", error);
+        setBackendResponse({
+          output: JSON.parse(error.message).pythonError,
+          codeExecutionError: true,
+        });
       });
   };
 
   useEffect(() => {
-    console.log("backendResponse", backendResponse);
-    // Hace foco en la consola cuando response tiene algo, sino hace foco arriba
     if (backendResponse.output || backendResponse.plots) {
-      const consoleElement = document.querySelector(".console");
-      if (consoleElement) {
-        consoleElement.scrollIntoView({ behavior: "smooth" });
-      }
+      document
+        .querySelector(".console")
+        ?.scrollIntoView({ behavior: "smooth" });
     } else {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -80,20 +77,22 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
           extensions={[python({ jsx: true })]}
         />
       </div>
-      <div className="console">
-        {backendResponse.output ? (
-          <pre>{backendResponse.output}</pre>
-        ) : (
+      <div
+        className={
+          "console" +
+          (backendResponse.codeExecutionError ? " console-error" : "")
+        }
+      >
+        {backendResponse.output && (
+          <pre className="code-output">{backendResponse.output}</pre>
+        )}
+        {backendResponse.plots?.map((plot, index) => (
+          <Plot key={index} data={plot.data} layout={plot.layout} />
+        ))}
+        {!backendResponse.output && !backendResponse.plots && (
           <span>Consola</span>
         )}
       </div>
-      {backendResponse.plots?.length && (
-        <>
-          {backendResponse.plots.map((plot, index) => (
-            <Plot key={index} data={plot.data} layout={plot.layout} />
-          ))}
-        </>
-      )}
     </>
   );
 };
