@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
-import CsvUploader from "../csvUploader/CsvUploader";
+import React, { useEffect, useRef, useState } from "react";
 import Blockly from "blockly";
-import { pythonGenerator } from "blockly/python";
-import { toolbox } from "./constants/toolbox";
-import BlocksService from "./services/BlocksService";
 import "./styles.css";
+import { pythonGenerator } from "blockly/python";
+import CsvUploader from "../csvUploader/CsvUploader";
+import BlockInfoModal from "../blockInfoModal/BlockInfoModal";
+import BlocksService from "./services/BlocksService";
+import { toolbox } from "./constants/toolbox";
+import { blocksInfo } from "./constants/blocksInfo";
 
 // TODO: agregar un theme para los estilos, en lo posible el modernTheme porque es el mas lindo
 // Blockly.Themes.Custom = Blockly.Theme.defineTheme("custom", {
@@ -32,6 +34,19 @@ const BlocksEditor = ({
 }) => {
   var workspace;
   const useFrontRef = useRef(true);
+  const [openBlockInfoModal, setOpenBlockInfoModal] = useState(false);
+  const [block, setBlock] = useState(null);
+  const mouseTrackerRef = useRef({ x: null, y: null });
+  const [mouseClickPosition, setMouseClickPosition] = useState({
+    x: null,
+    y: null,
+  });
+
+  const handleMouseMove = (event) => {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    mouseTrackerRef.current = { x: mouseX, y: mouseY };
+  };
 
   useEffect(() => {
     workspace = Blockly.inject("blocklyDiv", {
@@ -41,6 +56,9 @@ const BlocksEditor = ({
       },
       // theme: "custom",
     });
+
+    //TODO: falta hacer el remove del event en algun lado por ahí
+    document.addEventListener("mousemove", handleMouseMove);
 
     BlocksService.initBlocks(useFrontRef);
 
@@ -56,13 +74,24 @@ const BlocksEditor = ({
 
     workspace.addChangeListener(function (event) {
       onBlocksChange(event);
-
-      // Agregar la lógica adicional para el evento de clic en el bloque
       if (event.type === "click" && event.targetType === "block") {
-        var clickedBlockId = event.blockId; // ID del bloque que se ha hecho clic
-        console.log("Se hizo clic en un bloque con ID: " + clickedBlockId);
-        var clickedBlock = workspace.getBlockById(clickedBlockId);
-        console.log("clickedBlock", clickedBlock);
+        var clickedBlockId = event.blockId; // Recupero el ID del bloque sobre el que se hizo clic
+        var clickedBlock = workspace.getBlockById(clickedBlockId); // Recupero más información sobre el bloque que se clickeó
+        // A partir del type del bloque obtengo la información a mostrar en el modal
+        const block = blocksInfo.find(
+          (block) => block.blockType === clickedBlock.type
+        );
+        if (block) {
+          setOpenBlockInfoModal((prev) => !prev);
+          setBlock(block);
+          // Seteo la posición del mouse para saber donde abrir el modal
+          setMouseClickPosition({
+            x: mouseTrackerRef.current.x,
+            y: mouseTrackerRef.current.y,
+          });
+        }
+      } else if (event.targetType !== "block") {
+        setOpenBlockInfoModal(false);
       }
     });
   }, []);
@@ -95,6 +124,9 @@ const BlocksEditor = ({
         setShowInitialInstructionsAlert={setShowInitialInstructionsAlert}
       />
       <div id="blocklyDiv" style={{ flex: 1, height: "400px" }}></div>
+      {openBlockInfoModal && (
+        <BlockInfoModal {...block} mouseClickPosition={mouseClickPosition} />
+      )}
     </div>
   );
 };
