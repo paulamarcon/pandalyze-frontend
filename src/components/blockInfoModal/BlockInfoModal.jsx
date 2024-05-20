@@ -9,6 +9,7 @@ const BlockInfoModal = ({ blockTitle, blockInfo, mouseClickPosition }) => {
   return (
     <div className="thoughtBubbleStyle" style={dynamicStyle}>
       <h5>{blockTitle}</h5>
+      <hr />
       <p>{blockInfo}</p>
       <div className="beforeStyle beforeAfterStyle"></div>
       <div className="afterStyle beforeAfterStyle"></div>

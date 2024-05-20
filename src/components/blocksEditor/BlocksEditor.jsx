@@ -123,7 +123,7 @@ const BlocksEditor = ({
         setShowSuccessCsvUploadAlert={setShowSuccessCsvUploadAlert}
         setShowInitialInstructionsAlert={setShowInitialInstructionsAlert}
       />
-      <div id="blocklyDiv" style={{ flex: 1, height: "400px" }}></div>
+      <div id="blocklyDiv" style={{ height: "400px" }}></div>
       {openBlockInfoModal && (
         <BlockInfoModal {...block} mouseClickPosition={mouseClickPosition} />
       )}
