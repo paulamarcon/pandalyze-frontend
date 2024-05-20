@@ -1,5 +1,10 @@
 export const blocksInfo = [
   {
+    blockType: "read_csv",
+    blockTitle: "'Read CSV'",
+    blockInfo: "Convierte a DataFrame el CSV ingresado.",
+  },
+  {
     blockType: "head",
     blockTitle: "'Head'",
     blockInfo:
