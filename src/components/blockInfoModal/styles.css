@@ -1,0 +1,30 @@
+.thoughtBubbleStyle {
+  position: absolute;
+  background: #17a2b8;
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  width: 200px;
+  z-index: 9999;
+}
+
+.beforeAfterStyle {
+  content: "";
+  position: absolute;
+  background: #17a2b8;
+  border-radius: 50%;
+}
+
+.beforeStyle {
+  width: 20px;
+  height: 20px;
+  bottom: -10px;
+  left: 20px;
+}
+
+.afterStyle {
+  width: 12px;
+  height: 12px;
+  bottom: -25px;
+  left: 40px;
+}
