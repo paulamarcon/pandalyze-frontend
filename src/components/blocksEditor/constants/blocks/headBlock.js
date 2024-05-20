@@ -4,14 +4,6 @@ import { pythonGenerator } from "blockly/python";
 export const initHeadBlock = () => {
   Blockly.Blocks["head"] = {
     init: function () {
-      this.appendDummyInput().appendField(String.fromCodePoint(0x1f6c8));
-      // TODO: PENSAR SI DEJAR IMAGEN O SIMBOLO INFO
-      // this.appendDummyInput().appendField(
-      //   new Blockly.FieldImage("path/to/info_icon.png", 15, 15, {
-      //     alt: "ℹ️",
-      //     flipRtl: "FALSE",
-      //   })
-      // );
       this.appendValueInput("VALUE").setCheck(null);
       this.appendDummyInput().appendField(".head(");
       this.appendDummyInput().appendField(
