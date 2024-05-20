@@ -1,0 +1,81 @@
+id,nombre,correo,grado,promedio,edad
+1,Juan Pérez,juan.perez@gmail.com,10,85.5,16
+2,María Gómez,maria.gomez@gmail.com,11,92.3,17
+3,Carlos Rodríguez,carlos.rodriguez@gmail.com,9,78.9,15
+4,Ana Martínez,ana.martinez@gmail.com,12,88.1,18
+5,Pablo López,pablo.lopez@gmail.com,10,76.4,16
+6,Lucía García,lucia.garcia@gmail.com,11,94.7,17
+7,Luis Hernández,luis.hernandez@gmail.com,9,81.2,15
+8,Sofía Díaz,sofia.diaz@gmail.com,12,90.6,18
+9,Daniel Sánchez,daniel.sanchez@gmail.com,10,79.8,16
+10,Valentina Pérez,valentina.perez@gmail.com,11,87.3,17
+11,Alejandro Gutiérrez,alejandro.gutierrez@gmail.com,9,75.6,15
+12,Paula González,paula.gonzalez@gmail.com,12,93.2,18
+13,Martín Romero,martin.romero@gmail.com,10,82.4,16
+14,Andrea Álvarez,andrea.alvarez@gmail.com,11,89.7,17
+15,Santiago Torres,santiago.torres@gmail.com,9,77.8,15
+16,Valeria Ruiz,valeria.ruiz@gmail.com,12,91.4,18
+17,Diego Jiménez,diego.jimenez@gmail.com,10,80.3,16
+18,Elena Suárez,elena.suarez@gmail.com,11,88.5,17
+19,Manuela Castro,manuela.castro@gmail.com,9,74.2,15
+20,Mateo Flores,mateo.flores@gmail.com,12,95.2,18
+21,Isabella Morales,isabella.morales@gmail.com,10,83.6,16
+22,Mariana Ortega,mariana.ortega@gmail.com,11,90.2,17
+23,Hugo Delgado,hugo.delgado@gmail.com,9,79.1,15
+24,Camila Reyes,camila.reyes@gmail.com,12,87.9,18
+25,Fernando Molina,fernando.molina@gmail.com,10,76.8,16
+26,Julieta Soto,julieta.soto@gmail.com,11,92.1,17
+27,Victoria Castillo,victoria.castillo@gmail.com,9,78.5,15
+28,Emilio Medina,emilio.medina@gmail.com,10,84.9,16
+29,Clara Ruiz,clara.ruiz@gmail.com,11,89.3,17
+30,Alexander Gómez,alexander.gomez@gmail.com,9,76.2,15
+31,Valeria Vargas,valeria.vargas@gmail.com,12,93.7,18
+32,Marcos Sánchez,marcos.sanchez@gmail.com,10,82.5,16
+33,Emma Martínez,emma.martinez@gmail.com,11,90.4,17
+34,Aaron Castro,aaron.castro@gmail.com,9,78.1,15
+35,Laura Díaz,laura.diaz@gmail.com,12,87.2,18
+36,Daniel Torres,daniel.torres@gmail.com,10,77.3,16
+37,Luciana González,luciana.gonzalez@gmail.com,11,92.8,17
+38,Miguel Flores,miguel.flores@gmail.com,9,75.9,15
+39,Ana Victoria Ramírez,ana.ramirez@gmail.com,12,88.6,18
+40,Leonardo Rodríguez,leonardo.rodriguez@gmail.com,10,80.4,16
+41,Julia Sánchez,julia.sanchez@gmail.com,11,89.5,17
+42,Andrés Ramírez,andres.ramirez@gmail.com,9,76.7,15
+43,Isabel García,isabel.garcia@gmail.com,12,94.1,18
+44,Nicolás Torres,nicolas.torres@gmail.com,10,81.8,16
+45,Valeria Soto,valeria.soto@gmail.com,11,90.9,17
+46,Gabriel Díaz,gabriel.diaz@gmail.com,9,78.3,15
+47,Luciana López,luciana.lopez@gmail.com,12,87.6,18
+48,Fernando Gómez,fernando.gomez@gmail.com,10,79.5,16
+49,Valentina Ramírez,valentina.ramirez@gmail.com,11,88.2,17
+50,Santiago Martínez,santiago.martinez@gmail.com,9,75.4,15
+51,Daniela Castro,daniela.castro@gmail.com,12,86.3,18
+52,Mateo Pérez,mateo.perez@gmail.com,10,82.9,16
+53,Catalina Torres,catalina.torres@gmail.com,11,91.2,17
+54,Emilio García,emilio.garcia@gmail.com,9,77.1,15
+55,Ana Paula Martínez,ana.martinez2@gmail.com,12,88.9,18
+56,Matías Sánchez,matias.sanchez@gmail.com,10,80.6,16
+57,Isabella Hernández,isabella.hernandez@gmail.com,11,89.8,17
+58,Joaquín Gutiérrez,joaquin.gutierrez@gmail.com,9,76.5,15
+59,Natalia Díaz,natalia.diaz@gmail.com,12,87.4,18
+60,Diego Medina,diego.medina@gmail.com,10,81.2,16
+61,Valentina Suárez,valentina.suarez@gmail.com,11,90.5,17
+62,Marcos Vargas,marcos.vargas@gmail.com,9,77.8,15
+63,Sofía Castro,sofia.castro@gmail.com,12,86.7,18
+64,Juan José López,juan.lopez@gmail.com,10,82.4,16
+65,María José Soto,mariajose.soto@gmail.com,11,89.6,17
+66,Miguel Ángel Pérez,miguelangel.perez@gmail.com,9,76.3,15
+67,Laura Rodríguez,laura.rodriguez@gmail.com,12,88.3,18
+68,Gabriel Gómez,gabriel.gomez2@gmail.com,10,81.5,16
+69,Valentina García,valentina.garcia@gmail.com,11,90.8,17
+70,José Manuel Díaz,josemanuel.diaz@gmail.com,9,77.2,15
+71,Ana Laura Martínez,analaura.martinez@gmail.com,12,86.9,18
+72,Felipe López,felipe.lopez@gmail.com,10,82.1,16
+73,María Fernanda Sánchez,mariafernanda.sanchez@gmail.com,11,89.9,17
+74,Leonardo Gutiérrez,leonardo.gutierrez@gmail.com,9,76.6,15
+75,Sofía Rodríguez,sofia.rodriguez@gmail.com,12,88.5,18
+76,José Antonio Torres,joseantonio.torres@gmail.com,10,82.7,16
+77,Amanda Díaz,amanda.diaz@gmail.com,11,90.7,17
+78,Rodrigo Ramírez,rodrigo.ramirez@gmail.com,9,77.4,15
+79,Andrea García,andrea.garcia@gmail.com,12,87.1,18
+80,Juan Carlos Pérez,juancarlos.perez@gmail.com,10,81.9,16

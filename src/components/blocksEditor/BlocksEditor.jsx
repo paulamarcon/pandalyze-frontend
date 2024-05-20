@@ -7,6 +7,7 @@ import BlockInfoModal from "../blockInfoModal/BlockInfoModal";
 import BlocksService from "./services/BlocksService";
 import { toolbox } from "./constants/toolbox";
 import { blocksInfo } from "./constants/blocksInfo";
+import defaultBlocks from "./constants/blocks/defaultBlocks.json";
 
 // TODO: agregar un theme para los estilos, en lo posible el modernTheme porque es el mas lindo
 // Blockly.Themes.Custom = Blockly.Theme.defineTheme("custom", {
@@ -94,6 +95,8 @@ const BlocksEditor = ({
         setOpenBlockInfoModal(false);
       }
     });
+
+    Blockly.serialization.workspaces.load(defaultBlocks, workspace);
   }, []);
 
   const onBlocksChange = (event) => {
