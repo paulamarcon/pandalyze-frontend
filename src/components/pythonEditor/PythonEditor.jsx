@@ -66,7 +66,11 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
   return (
     <>
       <div className="code-part">
-        <button className="btn btn-success mt-4 mb-2" onClick={handleSubmit}>
+        <button
+          className="btn btn-success mt-4"
+          style={{ marginBottom: "10px" }}
+          onClick={handleSubmit}
+        >
           Ejecutar código Python
         </button>
         <CodeMirror
@@ -89,9 +93,7 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
         {backendResponse.plots?.map((plot, index) => (
           <Plot key={index} data={plot.data} layout={plot.layout} />
         ))}
-        {!backendResponse.output && !backendResponse.plots && (
-          <span>Consola</span>
-        )}
+        {!backendResponse.output && !backendResponse.plots && <h5>Consola</h5>}
       </div>
     </>
   );

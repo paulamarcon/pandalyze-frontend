@@ -31,6 +31,6 @@ export const initShowInConsoleBlock = (useFrontRef) => {
     */
     return useFrontRef.current || !blockInput
       ? `${blockInput}.show()\n`
-      : `jsonPlots.append(pio.to_json(${blockInput}, pretty=True))`;
+      : `jsonPlots.append(pio.to_json(${blockInput}, pretty=True))\n`;
   };
 };
