@@ -1,74 +1,103 @@
 export const blocksInfo = [
   {
     blockType: "head",
-    blockInfo: "Soy el bloque head",
+    blockTitle: "Bloque 'Head'",
+    blockInfo:
+      "Por defecto obtiene las primeras 5 filas del DataFrame y, sino, se puede indicar la cantidad deseada.",
   },
   {
     blockType: "info",
-    blockInfo: "Soy el bloque info",
+    blockTitle: "Bloque 'Info'",
+    blockInfo:
+      "Obtiene características del DataFrame, incluyendo las columnas, tipos de datos y memoria utilizada.",
   },
   {
     blockType: "describe",
-    blockInfo: "Soy el bloque describe",
+    blockTitle: "Bloque 'Describe'",
+    blockInfo:
+      "Genera estadísticas de las columnas numéricas del DataFrame: promedio, valor máximo, mínimo, entre otros.",
   },
   {
     blockType: "dtypes",
-    blockInfo: "Soy el bloque dtypes",
+    blockTitle: "Bloque 'Dtypes'",
+    blockInfo: "Obtiene los tipos de datos de las columnas del DataFrame.",
   },
   {
-    blockType: "columns",
-    blockInfo: "Soy el bloque columns",
+    blockType: "column",
+    blockTitle: "Bloque 'Columns'",
+    blockInfo: "Obtiene los nombres de las columnas del DataFrame.",
   },
   {
     blockType: "shape",
-    blockInfo: "Soy el bloque shape",
+    blockTitle: "Bloque 'Shape'",
+    blockInfo: "Obtiene el número de filas y columnas del DataFrame.",
   },
   {
     blockType: "count",
-    blockInfo: "Soy el bloque count",
+    blockTitle: "Bloque 'Count'",
+    blockInfo:
+      "Obtiene la cantidad de valores no nulos que hay en cada columna del DataFrame.",
   },
   {
     blockType: "max",
-    blockInfo: "Soy el bloque max",
+    blockTitle: "Bloque 'Max'",
+    blockInfo: "Obtiene el valor máximo de cada columna del DataFrame.",
   },
   {
     blockType: "min",
-    blockInfo: "Soy el bloque min",
+    blockTitle: "Bloque 'Min'",
+    blockInfo: "Obtiene el valor mínimo de cada columna del DataFrame.",
   },
   {
     blockType: "mean",
-    blockInfo: "Soy el bloque mean",
+    blockTitle: "Bloque 'Mean'",
+    blockInfo:
+      "Calcula el promedio de cada columna del DataFrame. Todas ellas deben ser numéricas para que funcione.",
   },
   {
     blockType: "unique",
-    blockInfo: "Soy el bloque unique",
+    blockTitle: "Bloque 'Unique'",
+    blockInfo:
+      "Obtiene los valores únicos de una columna específica del DataFrame.",
   },
   {
     blockType: "nullSum",
-    blockInfo: "Soy el bloque nullSum",
+    blockTitle: "Bloque 'IsNull + Sum'",
+    blockInfo:
+      "Obtiene la cantidad de valores nulos de cada columna del DataFrame.",
   },
   {
     blockType: "bar",
-    blockInfo: "Soy el bloque bar",
+    blockTitle: "Bloque 'Bar'",
+    blockInfo:
+      "Genera un gráfico de barras a partir de dos columnas del DataFrame (x, y).",
   },
   {
     blockType: "line",
-    blockInfo: "Soy el bloque line",
+    blockTitle: "Bloque 'Line'",
+    blockInfo:
+      "Genera un gráfico de líneas a partir de dos columnas del DataFrame (x, y).",
   },
   {
     blockType: "pie",
-    blockInfo: "Soy el bloque pie",
+    blockTitle: "Bloque 'Pie'",
+    blockInfo:
+      "Genera un gráfico de torta a partir de dos columnas del DataFrame. La de 'values' debe ser numérica.",
   },
   {
     blockType: "scatter",
-    blockInfo: "Soy el bloque scatter",
+    blockTitle: "Bloque 'Scatter'",
+    blockInfo:
+      "Genera un gráfico de puntos a partir de dos columnas del DataFrame (x, y).",
   },
   {
     blockType: "show",
-    blockInfo: "Soy el bloque show",
+    blockTitle: "Bloque 'Show'",
+    blockInfo: "Imprime en una pestaña nueva el gráfico generado.",
   },
   {
     blockType: "showInConsole",
-    blockInfo: "Soy el bloque showInConsole",
+    blockTitle: "Bloque 'Show'",
+    blockInfo: "Imprime en consola el gráfico generado.",
   },
 ];
