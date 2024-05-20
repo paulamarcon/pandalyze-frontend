@@ -4,6 +4,7 @@ import { pythonGenerator } from "blockly/python";
 export const initPropertyBlock = (csvsData) => {
   Blockly.Blocks["property"] = {
     init: function () {
+      this.appendDummyInput().appendField("data_frame =");
       this.appendValueInput("blockInput").setCheck(null);
       this.appendDummyInput().appendField(
         new Blockly.FieldDropdown([["Columna", "Columna"]]),

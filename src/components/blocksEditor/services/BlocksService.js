@@ -97,10 +97,6 @@ const BlocksService = {
           kind: "block",
           type: "variables_set",
         },
-        {
-          kind: "block",
-          type: "property",
-        },
       ];
     }
   },

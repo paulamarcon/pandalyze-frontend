@@ -68,7 +68,7 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
       <div className="code-part">
         <button
           className="btn btn-success mt-4"
-          style={{ marginBottom: "10px" }}
+          style={{ marginBottom: "16px" }}
           onClick={handleSubmit}
         >
           Ejecutar código Python

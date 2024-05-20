@@ -1,8 +1,29 @@
 export const blocksInfo = [
   {
+    blockType: "variables_set",
+    blockTitle: "'Setter'",
+    blockInfo: "Asigna valor a la variable.",
+  },
+  {
+    blockType: "variables_get",
+    blockTitle: "'Getter'",
+    blockInfo: "Obtiene el valor de la variable.",
+  },
+  {
+    blockType: "comparison",
+    blockTitle: "'Comparación'",
+    blockInfo: "Realiza una comparación.",
+  },
+  {
     blockType: "read_csv",
     blockTitle: "'Read CSV'",
     blockInfo: "Convierte a DataFrame el CSV ingresado.",
+  },
+  {
+    blockType: "property",
+    blockTitle: "'Columnas'",
+    blockInfo:
+      "A partir de un DataFrame, obtiene sus columnas para poder operar con ellas.",
   },
   {
     blockType: "head",
@@ -94,6 +115,11 @@ export const blocksInfo = [
     blockTitle: "'Scatter'",
     blockInfo:
       "Genera un gráfico de puntos a partir de dos columnas del DataFrame (x, y).",
+  },
+  {
+    blockType: "print_with_argument",
+    blockTitle: "'Print'",
+    blockInfo: "Imprime en consola el resultado de las operaciones realizadas.",
   },
   {
     blockType: "show",

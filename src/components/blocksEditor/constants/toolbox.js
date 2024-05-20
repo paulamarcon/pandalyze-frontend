@@ -58,6 +58,10 @@ export const toolbox = {
           type: "read_csv",
         },
         {
+          kind: "block",
+          type: "property",
+        },
+        {
           kind: "category",
           name: "Información",
           contents: [
