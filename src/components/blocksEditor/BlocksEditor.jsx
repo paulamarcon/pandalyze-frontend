@@ -85,11 +85,15 @@ const BlocksEditor = ({
         if (block) {
           setOpenBlockInfoModal((prev) => !prev);
           setBlock(block);
+
+          const workspaceDiv = document.getElementById("blocklyDiv");
+          const workspaceRect = workspaceDiv.getBoundingClientRect();
+
+          const relativeX = mouseTrackerRef.current.x - workspaceRect.left;
+          const relativeY = mouseTrackerRef.current.y - workspaceRect.top;
+
           // Seteo la posición del mouse para saber donde abrir el modal
-          setMouseClickPosition({
-            x: mouseTrackerRef.current.x,
-            y: mouseTrackerRef.current.y,
-          });
+          setMouseClickPosition({ x: relativeX, y: relativeY });
         }
       } else if (event.targetType !== "block") {
         setOpenBlockInfoModal(false);

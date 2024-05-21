@@ -2,8 +2,8 @@ import "./styles.css";
 
 const BlockInfoModal = ({ blockTitle, blockInfo, mouseClickPosition }) => {
   const dynamicStyle = {
-    top: mouseClickPosition.y - 180,
-    left: mouseClickPosition.x - 100,
+    top: mouseClickPosition.y - 35,
+    left: mouseClickPosition.x - 80,
   };
 
   return (
