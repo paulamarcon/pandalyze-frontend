@@ -28,7 +28,7 @@ const CsvUploader = ({
 
     // Llamar a la función para cargar el archivo CSV predeterminado
     loadDefaultCsv();
-  }, []);
+  });
 
   // Función para manejar la carga del archivo CSV en el front
   const handleFileChange = (event) => {
@@ -75,7 +75,7 @@ const CsvUploader = ({
           updateCsvOptions(jsonData);
           setCsvFile(null);
           setShowSuccessCsvUploadAlert(true);
-          setShowInitialInstructionsAlert(false);
+          // setShowInitialInstructionsAlert(false);
           setTimeout(() => {
             setShowSuccessCsvUploadAlert(false);
           }, 10000);

@@ -71,7 +71,7 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
           style={{ marginBottom: "16px" }}
           onClick={handleSubmit}
         >
-          Ejecutar código Python
+          Ejecutar código
         </button>
         <CodeMirror
           value={frontendCode}

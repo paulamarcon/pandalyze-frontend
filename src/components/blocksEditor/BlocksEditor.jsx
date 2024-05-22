@@ -8,25 +8,7 @@ import BlocksService from "./services/BlocksService";
 import { toolbox } from "./constants/toolbox";
 import { blocksInfo } from "./constants/blocksInfo";
 import defaultBlocks from "./constants/blocks/defaultBlocks.json";
-
-// TODO: agregar un theme para los estilos, en lo posible el modernTheme porque es el mas lindo
-// Blockly.Themes.Custom = Blockly.Theme.defineTheme("custom", {
-//   base: Blockly.Themes.Classic,
-//   fontStyle: {
-//     family: "Arial",
-//     size: 12,
-//   },
-//   componentStyles: {
-//     workspaceBackgroundColour: "white",
-//     toolboxBackgroundColour: "#E6E4E4",
-//     toolboxForegroundColour: "black",
-//     flyoutBackgroundColour: "#303030",
-//     flyoutForegroundColour: "#ccc",
-//     flyoutOpacity: 0.8,
-//     scrollbarColour: "#797979",
-//     scrollbarOpacity: 0.4,
-//   },
-// });
+import ErrorAlert from "../errorAlert/ErrorAlert";
 
 const BlocksEditor = ({
   updateCode,
@@ -42,6 +24,7 @@ const BlocksEditor = ({
     x: null,
     y: null,
   });
+  const [errorAlertText, setErrorAlertText] = useState("");
 
   const handleMouseMove = (event) => {
     const mouseX = event.clientX;
@@ -55,7 +38,6 @@ const BlocksEditor = ({
       zoom: {
         controls: true,
       },
-      // theme: "custom",
     });
 
     //TODO: falta hacer el remove del event en algun lado por ahí
@@ -65,7 +47,7 @@ const BlocksEditor = ({
 
     workspace.registerButtonCallback(
       "createVariableCallbackKey",
-      BlocksService.onCreateVariableClick.bind(BlocksService)
+      handleCreateVariableClick
     );
 
     workspace.registerToolboxCategoryCallback(
@@ -103,6 +85,18 @@ const BlocksEditor = ({
     Blockly.serialization.workspaces.load(defaultBlocks, workspace);
   }, []);
 
+  const handleCreateVariableClick = () => {
+    const result = BlocksService.onCreateVariableClick();
+    if (result && result !== "") {
+      setErrorAlertText(result);
+      setTimeout(() => {
+        setErrorAlertText("");
+      }, 3000);
+    } else {
+      setErrorAlertText("");
+    }
+  };
+
   const onBlocksChange = (event) => {
     //TODO ojo con esta linea
     const workspace = Blockly.getMainWorkspace();
@@ -133,6 +127,9 @@ const BlocksEditor = ({
       <div id="blocklyDiv" style={{ height: "400px" }}></div>
       {openBlockInfoModal && (
         <BlockInfoModal {...block} mouseClickPosition={mouseClickPosition} />
+      )}
+      {errorAlertText && errorAlertText !== "" && (
+        <ErrorAlert errorAlertText={errorAlertText} />
       )}
     </div>
   );

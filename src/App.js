@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import BlocksEditor from "./components/blocksEditor/BlocksEditor";
 import PythonEditor from "./components/pythonEditor/PythonEditor";
+import WelcomeModal from "./components/welcomeModal/WelcomeModal";
 
 function App() {
   const [frontendCode, setFrontendCode] = useState("");
@@ -29,6 +30,9 @@ function App() {
   return (
     <div className="app-container">
       {showInitialInstructionsAlert && (
+        <WelcomeModal handleCloseInitialAlert={handleCloseInitialAlert} />
+      )}
+      {/* {showInitialInstructionsAlert && (
         <div className="alert alert-secondary" role="alert">
           ¡Bienvenidos! En la sección de la izquierda verán los bloques
           disponibles. Arrástrelos para ver su traducción al lenguaje Python y
@@ -41,8 +45,8 @@ function App() {
             onClick={handleCloseInitialAlert}
           ></button>
         </div>
-      )}
-      {showSuccessCsvUploadAlert && (
+      )} */}
+      {/* {showSuccessCsvUploadAlert && (
         <div className="alert alert-success" role="alert">
           ¡El archivo CSV se cargó correctamente! Ahora arrastre el bloque
           'read_csv' de la sección Pandas para continuar.
@@ -53,7 +57,7 @@ function App() {
             onClick={handleCloseCSVAlert}
           ></button>
         </div>
-      )}
+      )} */}
       <p className="app-entire-title">
         <span className="title">Pandalyze: </span>
         <span className="subtitle">

@@ -103,7 +103,11 @@ const BlocksService = {
 
   onCreateVariableClick(button) {
     const variableName = prompt("Nombra tu variable:");
-    if (variableName !== null && variableName.trim() !== "") {
+    if (
+      variableName !== null &&
+      variableName?.trim() !== "" &&
+      !this.variables?.includes(variableName)
+    ) {
       this.variables.push(variableName);
 
       // Actualizar las opciones de los bloques get y set
@@ -129,6 +133,11 @@ const BlocksService = {
       }
 
       this.refreshWorkspace();
+      return "";
+    } else if (variableName?.trim() === "") {
+      return "El nombre de la variable no puede estar vacío.";
+    } else if (this.variables?.includes(variableName)) {
+      return "La variable ya existe.";
     }
   },
 
