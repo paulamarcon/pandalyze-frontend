@@ -5,11 +5,11 @@ export const initShowInConsoleBlock = (useFrontRef) => {
   Blockly.Blocks["showInConsole"] = {
     init: function () {
       this.appendValueInput("VALUE").setCheck(null);
-      this.appendDummyInput().appendField(".showInConsole()");
+      this.appendDummyInput().appendField(".show()");
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#DE2F87");
+      this.setColour("160");
       this.setTooltip(
         "Muestra el gráfico formado con Plotly en consola: barras, puntos, líneas o de torta."
       );

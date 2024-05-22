@@ -51,7 +51,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Pandas",
-      colour: "160",
+      colour: "10",
       contents: [
         {
           kind: "block",
@@ -64,6 +64,7 @@ export const toolbox = {
         {
           kind: "category",
           name: "Información",
+          colour: "#D19C77",
           contents: [
             {
               kind: "block",
@@ -94,6 +95,7 @@ export const toolbox = {
         {
           kind: "category",
           name: "Filtros",
+          colour: "#5D4839",
           contents: [
             {
               kind: "block",
@@ -156,16 +158,12 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Output",
+      name: "Salida",
       colour: "150",
       contents: [
         {
           kind: "block",
           type: "print_with_argument",
-        },
-        {
-          kind: "block",
-          type: "show",
         },
         {
           kind: "block",

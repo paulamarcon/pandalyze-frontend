@@ -8,7 +8,7 @@ export const initMinBlock = () => {
       this.appendDummyInput().appendField(".min()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour(210);
+      this.setColour("#5D4839");
       this.setTooltip("Obtiene el valor mínimo de una columna del DataFrame.");
     },
   };

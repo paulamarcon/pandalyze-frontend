@@ -6,7 +6,6 @@ import { initColumnBlock } from "../constants/blocks/columnBlock";
 import { initShapeBlock } from "../constants/blocks/shapeBlock";
 import { initDataTypeBlock } from "../constants/blocks/dataTypeBlock";
 import { initPrintBlock } from "../constants/blocks/printBlock";
-import { initShowBlock } from "../constants/blocks/plotly/showBlock";
 import { initReadCsvBlock } from "../constants/blocks/readCsvBlock";
 import { initVariablesBlocks } from "../constants/blocks/variablesBlock";
 import { initPropertyBlock } from "../constants/blocks/propertyBlock";
@@ -32,7 +31,6 @@ const BlocksService = {
 
   initBlocks(useFrontRef) {
     initPrintBlock();
-    initShowBlock();
     initReadCsvBlock(useFrontRef);
     initHeadBlock();
     initInfoBlock();

@@ -7,7 +7,7 @@ export const initComparisonBlock = () => {
       this.appendDummyInput().appendField("data_frame =");
       this.appendValueInput("dataFrameValue").setCheck(null);
       this.appendDummyInput().appendField("[");
-      this.appendDummyInput().appendField("column =");
+      this.appendDummyInput().appendField("columna =");
       this.appendValueInput("columnNameValue").setCheck(null);
       this.appendDummyInput().appendField(
         new Blockly.FieldDropdown([

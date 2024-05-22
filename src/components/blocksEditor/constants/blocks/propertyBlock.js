@@ -12,7 +12,7 @@ export const initPropertyBlock = (csvsData) => {
       );
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour(280);
+      this.setColour(10);
       this.setTooltip("Permite acceder a las propiedades de una variable.");
       this.setHelpUrl("");
     },

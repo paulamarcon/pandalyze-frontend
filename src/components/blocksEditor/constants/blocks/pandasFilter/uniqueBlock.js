@@ -4,11 +4,12 @@ import { pythonGenerator } from "blockly/python";
 export const initUniqueBlock = () => {
   Blockly.Blocks["unique"] = {
     init: function () {
+      this.appendDummyInput().appendField("columna =");
       this.appendValueInput("VALUE").setCheck(null);
       this.appendDummyInput().appendField(".unique()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#DC0000");
+      this.setColour("#5D4839");
       this.setTooltip(
         "Muestra todos los elementos únicos de una columna de un DataFrame."
       );

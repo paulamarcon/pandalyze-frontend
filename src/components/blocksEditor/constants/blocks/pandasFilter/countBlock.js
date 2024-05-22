@@ -8,7 +8,7 @@ export const initCountBlock = () => {
       this.appendDummyInput().appendField(".count()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour(502);
+      this.setColour("#5D4839");
       this.setTooltip(
         "Obtiene la cantidad de elementos en una columna del DataFrame."
       );

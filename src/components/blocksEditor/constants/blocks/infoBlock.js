@@ -4,12 +4,13 @@ import { pythonGenerator } from "blockly/python";
 export const initInfoBlock = () => {
   Blockly.Blocks["info"] = {
     init: function () {
+      this.appendDummyInput().appendField("data_frame =");
       this.appendValueInput("VALUE") // Agrega la entrada de valor interna
         .setCheck(null); // Permite cualquier tipo de bloque
       this.appendDummyInput().appendField(".info()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour(30);
+      this.setColour("#D19C77");
       this.setTooltip("Obtiene información del DataFrame.");
     },
   };

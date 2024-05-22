@@ -4,11 +4,12 @@ import { pythonGenerator } from "blockly/python";
 export const initColumnBlock = () => {
   Blockly.Blocks["column"] = {
     init: function () {
+      this.appendDummyInput().appendField("data_frame =");
       this.appendValueInput("VALUE").setCheck(null);
       this.appendDummyInput().appendField(".columns");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour(650);
+      this.setColour("#D19C77");
       this.setTooltip("Muestra los nombres de las columnas de un DataFrame.");
       this.setHelpUrl("");
     },

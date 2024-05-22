@@ -4,11 +4,12 @@ import { pythonGenerator } from "blockly/python";
 export const initDescribeBlock = () => {
   Blockly.Blocks["describe"] = {
     init: function () {
+      this.appendDummyInput().appendField("data_frame =");
       this.appendValueInput("VALUE").setCheck(null);
       this.appendDummyInput().appendField(".describe()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#2E2B2B");
+      this.setColour("#D19C77");
       this.setTooltip(
         "Muestra estadísticas descriptivas de las columnas numéricas de un DataFrame."
       );

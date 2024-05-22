@@ -8,7 +8,7 @@ export const initNullSumBlock = () => {
       this.appendDummyInput().appendField(".isnull().sum()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#37CB9E");
+      this.setColour("#5D4839");
       this.setTooltip(
         "Muestra la cantidad de elementos nulos que tiene cada columna de un DataFrame."
       );
