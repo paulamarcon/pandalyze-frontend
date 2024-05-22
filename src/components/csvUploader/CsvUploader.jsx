@@ -28,7 +28,7 @@ const CsvUploader = ({
 
     // Llamar a la función para cargar el archivo CSV predeterminado
     loadDefaultCsv();
-  });
+  }, []);
 
   // Función para manejar la carga del archivo CSV en el front
   const handleFileChange = (event) => {
