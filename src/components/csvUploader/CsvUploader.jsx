@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import BlocksService from "../blocksEditor/services/BlocksService";
-import "./CsvUploaderStyles.css";
-import defaultCsv from "./default.csv";
 import Blockly from "blockly";
+import "./CsvUploaderStyles.css";
+import BlocksService from "../blocksEditor/services/BlocksService";
+import defaultCsv from "./default.csv";
+import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
+import SuccessAlert from "../alerts/successAlert/SuccessAlert";
+import WarningAlert from "../alerts/warningAlert/WarningAlert";
 
-const CsvUploader = ({
-  setShowSuccessCsvUploadAlert,
-  setShowInitialInstructionsAlert,
-}) => {
+const CsvUploader = () => {
   const [csvFile, setCsvFile] = useState(null);
+  const [csvFileNames, setCsvFileNames] = useState([]);
+  const [errorAlertText, setErrorAlertText] = useState("");
+  const [successAlertText, setSuccessAlertText] = useState("");
+  const [warningAlertText, setWarningAlertText] = useState("");
 
   useEffect(() => {
     const loadDefaultCsv = async () => {
@@ -18,11 +22,16 @@ const CsvUploader = ({
         const csvBlob = new Blob([csvContent], { type: "text/csv" });
         const csvFile = new File([csvBlob], "Alumnos.csv");
 
-        console.log("Cargando default");
         handleSave(csvFile);
       } catch (error) {
-        console.error("Error al cargar el archivo CSV:", error);
-        alert("Error al cargar el archivo CSV.");
+        setErrorAlertText(
+          "Hubo un error al intentar cargar el CSV, inténtelo de nuevo."
+        );
+        setTimeout(() => {
+          setErrorAlertText("");
+        }, 3000);
+        setSuccessAlertText("");
+        setWarningAlertText("");
       }
     };
 
@@ -36,7 +45,12 @@ const CsvUploader = ({
     if (file && file.type === "text/csv") {
       setCsvFile(file);
     } else {
-      alert("Por favor, seleccione un archivo CSV.");
+      setWarningAlertText("Por favor, seleccione un archivo CSV.");
+      setTimeout(() => {
+        setWarningAlertText("");
+      }, 3000);
+      setSuccessAlertText("");
+      setErrorAlertText("");
       setCsvFile(null);
     }
   };
@@ -60,7 +74,23 @@ const CsvUploader = ({
 
   // Función para enviar el archivo CSV al back y guardarlo en la BD
   const handleSave = (defaultCsvFile) => {
-    const file = csvFile ? csvFile : defaultCsvFile;
+    let file;
+    if (csvFile) {
+      if (csvFileNames.includes(csvFile?.name)) {
+        setErrorAlertText("Ya existe un CSV con ese nombre.");
+        setTimeout(() => {
+          setErrorAlertText("");
+        }, 3000);
+        setCsvFile(null);
+        setSuccessAlertText("");
+        setWarningAlertText("");
+        return;
+      }
+      file = csvFile;
+    } else {
+      file = defaultCsvFile;
+    }
+    setCsvFileNames((prevCsvFileNames) => [...prevCsvFileNames, file?.name]);
 
     if (file) {
       const formData = new FormData();
@@ -74,26 +104,42 @@ const CsvUploader = ({
         .then((jsonData) => {
           updateCsvOptions(jsonData);
           setCsvFile(null);
-          setShowSuccessCsvUploadAlert(true);
-          // setShowInitialInstructionsAlert(false);
-          setTimeout(() => {
-            setShowSuccessCsvUploadAlert(false);
-          }, 10000);
+          if (file !== defaultCsvFile) {
+            setSuccessAlertText("CSV cargado correctamente.");
+            setTimeout(() => {
+              setSuccessAlertText("");
+            }, 3000);
+            setErrorAlertText("");
+            setWarningAlertText("");
+          }
         })
         .catch((error) => {
-          console.log("Error:", error);
-          alert("Error al conectarse al servidor.");
+          setErrorAlertText(
+            "Hubo un error al intentar conectarse al servidor."
+          );
+          setTimeout(() => {
+            setErrorAlertText("");
+          }, 3000);
+          setSuccessAlertText("");
+          setWarningAlertText("");
         });
     } else {
-      alert("Por favor, seleccione un archivo CSV antes de guardar.");
+      setWarningAlertText(
+        "Por favor, seleccione un archivo CSV antes de guardar."
+      );
+      setTimeout(() => {
+        setWarningAlertText("");
+      }, 3000);
+      setSuccessAlertText("");
+      setErrorAlertText("");
     }
   };
 
   const updateCsvOptions = (jsonData) => {
     BlocksService.onCsvUpload({
       id: jsonData.csvId,
-      filename: jsonData.fileName,
-      columnsNames: jsonData.columnsNames,
+      filename: jsonData?.fileName,
+      columnsNames: jsonData?.columnsNames,
     });
   };
 
@@ -121,6 +167,15 @@ const CsvUploader = ({
           </button>
         )}
       </div>
+      {errorAlertText && errorAlertText !== "" && (
+        <ErrorAlert errorAlertText={errorAlertText} />
+      )}
+      {successAlertText && successAlertText !== "" && (
+        <SuccessAlert successAlertText={successAlertText} />
+      )}
+      {warningAlertText && warningAlertText !== "" && (
+        <WarningAlert warningAlertText={warningAlertText} />
+      )}
     </div>
   );
 };

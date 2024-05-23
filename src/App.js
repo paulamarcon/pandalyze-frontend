@@ -7,8 +7,6 @@ import WelcomeModal from "./components/welcomeModal/WelcomeModal";
 function App() {
   const [frontendCode, setFrontendCode] = useState("");
   const [backendCode, setBackendCode] = useState("");
-  const [showSuccessCsvUploadAlert, setShowSuccessCsvUploadAlert] =
-    useState(false);
   const [showInitialInstructionsAlert, setShowInitialInstructionsAlert] =
     useState(true);
 
@@ -20,9 +18,6 @@ function App() {
     //console.log("back ", backendCode);
   };
 
-  const handleCloseCSVAlert = () => {
-    setShowSuccessCsvUploadAlert(false);
-  };
   const handleCloseInitialAlert = () => {
     setShowInitialInstructionsAlert(false);
   };
@@ -32,32 +27,6 @@ function App() {
       {showInitialInstructionsAlert && (
         <WelcomeModal handleCloseInitialAlert={handleCloseInitialAlert} />
       )}
-      {/* {showInitialInstructionsAlert && (
-        <div className="alert alert-secondary" role="alert">
-          ¡Bienvenidos! En la sección de la izquierda verán los bloques
-          disponibles. Arrástrelos para ver su traducción al lenguaje Python y
-          luego presione 'Ejecutar código Python' para ver resultados en
-          consola.
-          <button
-            type="button"
-            className="btn-close button-close-alert"
-            aria-label="Close"
-            onClick={handleCloseInitialAlert}
-          ></button>
-        </div>
-      )} */}
-      {/* {showSuccessCsvUploadAlert && (
-        <div className="alert alert-success" role="alert">
-          ¡El archivo CSV se cargó correctamente! Ahora arrastre el bloque
-          'read_csv' de la sección Pandas para continuar.
-          <button
-            type="button"
-            className="btn-close button-close-alert"
-            aria-label="Close"
-            onClick={handleCloseCSVAlert}
-          ></button>
-        </div>
-      )} */}
       <p className="app-entire-title">
         <span className="title">Pandalyze: </span>
         <span className="subtitle">
@@ -65,11 +34,7 @@ function App() {
         </span>
       </p>
       <div>
-        <BlocksEditor
-          updateCode={updateCode}
-          setShowSuccessCsvUploadAlert={setShowSuccessCsvUploadAlert}
-          setShowInitialInstructionsAlert={setShowInitialInstructionsAlert}
-        />
+        <BlocksEditor updateCode={updateCode} />
         <PythonEditor frontendCode={frontendCode} backendCode={backendCode} />
       </div>
     </div>

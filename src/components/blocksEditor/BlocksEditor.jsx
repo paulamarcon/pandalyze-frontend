@@ -8,13 +8,9 @@ import BlocksService from "./services/BlocksService";
 import { toolbox } from "./constants/toolbox";
 import { blocksInfo } from "./constants/blocksInfo";
 import defaultBlocks from "./constants/blocks/defaultBlocks.json";
-import ErrorAlert from "../errorAlert/ErrorAlert";
+import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
 
-const BlocksEditor = ({
-  updateCode,
-  setShowSuccessCsvUploadAlert,
-  setShowInitialInstructionsAlert,
-}) => {
+const BlocksEditor = ({ updateCode }) => {
   var workspace;
   const useFrontRef = useRef(true);
   const [openBlockInfoModal, setOpenBlockInfoModal] = useState(false);
@@ -120,10 +116,7 @@ const BlocksEditor = ({
 
   return (
     <div className="blocks-editor-container">
-      <CsvUploader
-        setShowSuccessCsvUploadAlert={setShowSuccessCsvUploadAlert}
-        setShowInitialInstructionsAlert={setShowInitialInstructionsAlert}
-      />
+      <CsvUploader />
       <div id="blocklyDiv" style={{ height: "400px" }}></div>
       {openBlockInfoModal && (
         <BlockInfoModal {...block} mouseClickPosition={mouseClickPosition} />
