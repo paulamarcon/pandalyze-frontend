@@ -14,10 +14,7 @@ export const initHeadBlock = () => {
       this.appendDummyInput().appendField(")");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#D19C77");
-      this.setTooltip(
-        "Muestra las primeras filas de un DataFrame. Por defecto las primeras 5."
-      );
+      this.setColour(10);
       this.setHelpUrl("");
     },
 

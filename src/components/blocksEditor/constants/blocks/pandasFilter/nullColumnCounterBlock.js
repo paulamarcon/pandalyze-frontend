@@ -9,9 +9,6 @@ export const initNullSumBlock = () => {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("#5D4839");
-      this.setTooltip(
-        "Muestra la cantidad de elementos nulos que tiene cada columna de un DataFrame."
-      );
       this.setHelpUrl("");
     },
   };

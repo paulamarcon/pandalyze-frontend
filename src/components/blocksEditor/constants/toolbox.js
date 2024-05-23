@@ -5,7 +5,7 @@ export const toolbox = {
       kind: "category",
       name: "Variables",
       custom: "VariablesCategory",
-      colour: "280",
+      colour: "#B48AE6",
       contents: [
         {
           kind: "button",
@@ -17,7 +17,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Control",
-      colour: "210",
+      colour: "280",
       contents: [
         {
           kind: "block",
@@ -28,7 +28,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Primitivos",
-      colour: "290",
+      colour: "#4B168B",
       contents: [
         {
           kind: "block",
@@ -51,7 +51,7 @@ export const toolbox = {
     {
       kind: "category",
       name: "Pandas",
-      colour: "10",
+      colour: "#D19C77",
       contents: [
         {
           kind: "block",
@@ -64,7 +64,7 @@ export const toolbox = {
         {
           kind: "category",
           name: "Información",
-          colour: "#D19C77",
+          colour: "10",
           contents: [
             {
               kind: "block",

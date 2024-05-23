@@ -9,8 +9,7 @@ export const initColumnBlock = () => {
       this.appendDummyInput().appendField(".columns");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#D19C77");
-      this.setTooltip("Muestra los nombres de las columnas de un DataFrame.");
+      this.setColour(10);
       this.setHelpUrl("");
     },
   };

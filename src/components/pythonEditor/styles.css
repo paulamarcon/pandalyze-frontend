@@ -7,10 +7,11 @@
   background-color: #fff;
   border: 1px solid #ced4da;
   padding: 10px;
-  width: 100%;
+  width: 50%;
   height: 350px;
   overflow-y: auto;
   overflow-x: auto;
+  float: left;
 }
 
 .code-output {

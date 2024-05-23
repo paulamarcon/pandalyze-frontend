@@ -9,7 +9,6 @@ export const initMeanBlock = () => {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("#5D4839");
-      this.setTooltip("Calcula el promedio de una columna del DataFrame.");
     },
   };
 

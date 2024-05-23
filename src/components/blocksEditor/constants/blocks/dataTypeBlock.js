@@ -9,10 +9,7 @@ export const initDataTypeBlock = () => {
       this.appendDummyInput().appendField(".dtypes");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#D19C77");
-      this.setTooltip(
-        "Muestra el tipo de dato de cada columna de un DataFrame."
-      );
+      this.setColour(10);
       this.setHelpUrl("");
     },
   };

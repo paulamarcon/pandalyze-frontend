@@ -10,9 +10,6 @@ export const initUniqueBlock = () => {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("#5D4839");
-      this.setTooltip(
-        "Muestra todos los elementos únicos de una columna de un DataFrame."
-      );
       this.setHelpUrl("");
     },
   };

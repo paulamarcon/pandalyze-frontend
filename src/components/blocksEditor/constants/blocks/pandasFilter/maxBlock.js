@@ -9,7 +9,6 @@ export const initMaxBlock = () => {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("#5D4839");
-      this.setTooltip("Obtiene el valor máximo de una columna del DataFrame.");
     },
   };
 

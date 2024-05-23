@@ -9,7 +9,6 @@ export const initMinBlock = () => {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("#5D4839");
-      this.setTooltip("Obtiene el valor mínimo de una columna del DataFrame.");
     },
   };
 

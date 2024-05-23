@@ -7,8 +7,7 @@ export const initPrimitiveBlocks = () => {
     init: function () {
       this.appendDummyInput().appendField(new Blockly.FieldNumber(0), "NUMBER");
       this.setOutput(true, "Number");
-      this.setColour(230);
-      this.setTooltip("Este bloque representa un número.");
+      this.setColour("#4B168B");
       this.setHelpUrl("");
     },
   };
@@ -21,8 +20,7 @@ export const initPrimitiveBlocks = () => {
         .appendField(new Blockly.FieldTextInput(""), "TEXT")
         .appendField('"');
       this.setOutput(true, "String");
-      this.setColour(160);
-      this.setTooltip("Este bloque representa un texto.");
+      this.setColour("#4B168B");
       this.setHelpUrl("");
     },
   };
@@ -38,8 +36,7 @@ export const initPrimitiveBlocks = () => {
         "BOOLEAN"
       );
       this.setOutput(true, "Boolean");
-      this.setColour(120);
-      this.setTooltip("Este bloque representa un booleano.");
+      this.setColour("#4B168B");
       this.setHelpUrl("");
     },
   };

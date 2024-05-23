@@ -90,10 +90,20 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
         {backendResponse.output && (
           <pre className="code-output">{backendResponse.output}</pre>
         )}
+        {!backendResponse.output && <h5>Consola</h5>}
+      </div>
+      <div
+        className={
+          "console" +
+          (backendResponse.codeExecutionError ? " console-error" : "")
+        }
+      >
         {backendResponse.plots?.map((plot, index) => (
           <Plot key={index} data={plot.data} layout={plot.layout} />
         ))}
-        {!backendResponse.output && !backendResponse.plots && <h5>Consola</h5>}
+        {(!backendResponse.plots || backendResponse?.plots?.length === 0) && (
+          <h5>Consola gráfica</h5>
+        )}
       </div>
     </>
   );

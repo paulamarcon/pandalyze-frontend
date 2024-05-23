@@ -9,10 +9,7 @@ export const initDescribeBlock = () => {
       this.appendDummyInput().appendField(".describe()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#D19C77");
-      this.setTooltip(
-        "Muestra estadísticas descriptivas de las columnas numéricas de un DataFrame."
-      );
+      this.setColour(10);
       this.setHelpUrl("");
     },
   };

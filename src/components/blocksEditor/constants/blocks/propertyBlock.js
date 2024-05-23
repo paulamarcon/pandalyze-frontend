@@ -12,8 +12,7 @@ export const initPropertyBlock = (csvsData) => {
       );
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour(10);
-      this.setTooltip("Permite acceder a las propiedades de una variable.");
+      this.setColour("#D19C77");
       this.setHelpUrl("");
     },
     /*Puede servir?

@@ -10,8 +10,7 @@ export const initInfoBlock = () => {
       this.appendDummyInput().appendField(".info()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#D19C77");
-      this.setTooltip("Obtiene información del DataFrame.");
+      this.setColour(10);
     },
   };
 

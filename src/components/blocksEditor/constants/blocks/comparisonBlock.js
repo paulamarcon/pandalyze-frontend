@@ -24,8 +24,7 @@ export const initComparisonBlock = () => {
       this.appendDummyInput().appendField("]");
       this.setInputsInline(true);
       this.setOutput(true, "Boolean");
-      this.setColour(210);
-      this.setTooltip("Realiza una comparación entre dos valores.");
+      this.setColour(280);
     },
   };
 

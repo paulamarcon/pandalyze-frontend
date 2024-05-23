@@ -10,9 +10,6 @@ export const initShowInConsoleBlock = (useFrontRef) => {
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("160");
-      this.setTooltip(
-        "Muestra el gráfico formado con Plotly en consola: barras, puntos, líneas o de torta."
-      );
       this.setHelpUrl("");
     },
   };

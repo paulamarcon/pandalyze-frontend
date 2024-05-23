@@ -15,9 +15,6 @@ export const initBarBlock = () => {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(80);
-      this.setTooltip(
-        "Muestra un gráfico de barras a partir de columnas x e y de un DataFrame."
-      );
       this.setHelpUrl("");
     },
   };

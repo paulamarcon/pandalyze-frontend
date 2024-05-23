@@ -9,10 +9,7 @@ export const initShapeBlock = () => {
       this.appendDummyInput().appendField(".shape");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#D19C77");
-      this.setTooltip(
-        "Muestra las dimensiones que tiene un DataFrame. Filas x Columnas."
-      );
+      this.setColour(10);
       this.setHelpUrl("");
     },
   };

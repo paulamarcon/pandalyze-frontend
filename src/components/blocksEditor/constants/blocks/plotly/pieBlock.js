@@ -15,9 +15,6 @@ export const initPieBlock = () => {
       this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour(80);
-      this.setTooltip(
-        "Muestra un gráfico de torta a partir de columnas de un DataFrame. En 'values' va la columna numérica y en 'names' la columna de strings o ambas numéricas"
-      );
       this.setHelpUrl("");
     },
   };
