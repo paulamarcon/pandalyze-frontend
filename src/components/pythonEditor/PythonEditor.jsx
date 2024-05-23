@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import "./styles.css";
-import Plot from "react-plotly.js";
 
-const PythonEditor = ({ frontendCode, backendCode }) => {
-  const [backendResponse, setBackendResponse] = useState({});
-
+const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
   //Pegada al back para correr el codigo
   const handleSubmit = () => {
     const pythonCode = backendCode;
@@ -40,28 +37,22 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
         }
 
         setBackendResponse({
+          codeExecutionError: false,
           output: jsonData.output,
           plots: plots,
         });
       })
       .catch((error) => {
-        console.error("Backend error:", error);
+        const errorMessage = JSON.parse(error.message);
+        console.warn("Error en el codigo:", errorMessage);
+
         setBackendResponse({
-          output: JSON.parse(error.message).pythonError,
           codeExecutionError: true,
+          personalizedError: errorMessage.personalized_error,
+          originalError: errorMessage.original_error,
         });
       });
   };
-
-  useEffect(() => {
-    if (backendResponse.output || backendResponse.plots) {
-      document
-        .querySelector(".console")
-        ?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [backendResponse]);
 
   return (
     <>
@@ -80,30 +71,6 @@ const PythonEditor = ({ frontendCode, backendCode }) => {
           readOnly={true}
           extensions={[python({ jsx: true })]}
         />
-      </div>
-      <div
-        className={
-          "console" +
-          (backendResponse.codeExecutionError ? " console-error" : "")
-        }
-      >
-        {backendResponse.output && (
-          <pre className="code-output">{backendResponse.output}</pre>
-        )}
-        {!backendResponse.output && <h5>Consola</h5>}
-      </div>
-      <div
-        className={
-          "console" +
-          (backendResponse.codeExecutionError ? " console-error" : "")
-        }
-      >
-        {backendResponse.plots?.map((plot, index) => (
-          <Plot key={index} data={plot.data} layout={plot.layout} />
-        ))}
-        {(!backendResponse.plots || backendResponse?.plots?.length === 0) && (
-          <h5>Consola gráfica</h5>
-        )}
       </div>
     </>
   );

@@ -1,0 +1,21 @@
+.consoles-container {
+  display: flex;
+}
+
+.console {
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  height: 350px;
+  overflow-y: auto;
+  overflow-x: auto;
+  flex: 1; /* Las consolas ocuparán el espacio disponible */
+}
+
+.code-output {
+  overflow: initial;
+}
+
+.console-error {
+  background-color: #ffcccc;
+}
