@@ -23,3 +23,7 @@
 .button-close-alert {
   float: right;
 }
+
+.editors-flex-container {
+  display: flex;
+}
