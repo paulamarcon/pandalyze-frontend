@@ -93,6 +93,12 @@ export const blocksInfo = [
       "Obtiene la cantidad de valores nulos de cada columna del DataFrame.",
   },
   {
+    blockType: "sort",
+    blockTitle: "'Sort'",
+    blockInfo:
+      "Ordena el DataFrame de forma ascendente a partir del nombre de una columna. Debe ser una cadena de texto.",
+  },
+  {
     blockType: "bar",
     blockTitle: "'Bar'",
     blockInfo:
