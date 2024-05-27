@@ -96,7 +96,7 @@ export const blocksInfo = [
     blockType: "sort",
     blockTitle: "'Sort'",
     blockInfo:
-      "Ordena el DataFrame de forma ascendente a partir del nombre de una columna. Debe ser una cadena de texto.",
+      "Ordena el DataFrame de forma ascendente o descendente a partir de una columna.",
   },
   {
     blockType: "bar",
