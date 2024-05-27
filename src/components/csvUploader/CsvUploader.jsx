@@ -17,10 +17,10 @@ const CsvUploader = () => {
   useEffect(() => {
     const loadDefaultCsv = async () => {
       try {
-        const response = await fetch(defaultCsv);
+        const response = await fetch(defaultCsv); //TODO por q verga hago un fetch?
         const csvContent = await response.text();
         const csvBlob = new Blob([csvContent], { type: "text/csv" });
-        const csvFile = new File([csvBlob], "Alumnos.csv");
+        const csvFile = new File([csvBlob], "Lagos.csv");
 
         handleSave(csvFile);
       } catch (error) {
@@ -145,13 +145,12 @@ const CsvUploader = () => {
 
   return (
     <div>
-      <button onClick={exportWorkspaceToJson}>Exportar Workspace a JSON</button>
-      <strong>Subir CSV</strong>
-      <div style={{ marginBottom: "10px" }}>
+      {/* <button onClick={exportWorkspaceToJson}>Exportar Workspace a JSON</button> */}
+      <div style={{ marginBottom: "16px" }}>
         {/* <input type="file" accept=".csv" onChange={handleFileChange} /> */}
         {/* TODO: si no gusta cómo quedó, seguir usando el input comentado de la linea de arriba */}
         <label htmlFor="files" className="btn btn-primary">
-          Seleccionar CSV
+          Cargar CSV
         </label>
         <input
           id="files"
@@ -160,9 +159,9 @@ const CsvUploader = () => {
           onChange={handleFileChange}
           style={{ display: "none" }}
         />
-        <span className="file-name-separation">{csvFile?.name}</span>
+        <span className="margin-right margin-left">{csvFile?.name}</span>
         {csvFile && (
-          <button className="btn btn-secondary" onClick={handleSave}>
+          <button className="btn btn-success margin-right" onClick={handleSave}>
             Guardar CSV
           </button>
         )}

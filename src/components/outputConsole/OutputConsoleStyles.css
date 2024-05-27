@@ -19,3 +19,7 @@
 .console-error {
   background-color: #ffcccc;
 }
+
+.console-warning {
+  background-color: #ffffcc;
+}
