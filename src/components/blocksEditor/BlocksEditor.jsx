@@ -9,6 +9,7 @@ import { toolbox } from "./constants/toolbox";
 import { blocksInfo } from "./constants/blocksInfo";
 import defaultBlocks from "./constants/blocks/defaultBlocks.json";
 import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
+import ExamplesDropdown from "../examplesDropdown/ExamplesDropdown";
 
 const BlocksEditor = ({ updateCode }) => {
   var workspace;
@@ -78,6 +79,7 @@ const BlocksEditor = ({ updateCode }) => {
       }
     });
 
+    //TODO: Hace falta tener esto si tenemos los ejemplos?
     Blockly.serialization.workspaces.load(defaultBlocks, workspace);
   }, []);
 
@@ -116,7 +118,10 @@ const BlocksEditor = ({ updateCode }) => {
 
   return (
     <div className="blocks-editor-container">
-      <CsvUploader />
+      <div className="workspace-buttons-container">
+        <CsvUploader />
+        <ExamplesDropdown />
+      </div>
       <div id="blocklyDiv" style={{ height: "400px" }}></div>
       {openBlockInfoModal && (
         <BlockInfoModal {...block} mouseClickPosition={mouseClickPosition} />

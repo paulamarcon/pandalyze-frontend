@@ -31,7 +31,11 @@ const OutputConsole = ({ backendResponse }) => {
 
       {/* Mostrar una sola consola si hay solo texto */}
       {backendResponse.output && !backendResponse.plots?.length && (
-        <div className="console">
+        <div
+          className={`console ${
+            backendResponse.codeEmptyWarning ? "console-warning" : ""
+          }`}
+        >
           <pre className="code-output">{backendResponse.output}</pre>
         </div>
       )}

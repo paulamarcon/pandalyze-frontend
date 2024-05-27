@@ -36,11 +36,21 @@ const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
           });
         }
 
-        setBackendResponse({
-          codeExecutionError: false,
-          output: jsonData.output,
-          plots: plots,
-        });
+        if (!plots.length && !jsonData.output) {
+          setBackendResponse({
+            codeExecutionError: false,
+            codeEmptyWarning: true,
+            output:
+              "La ejecución del código resultó en una respuesta vacía.\nPara visualizar texto o imágenes, utiliza los bloques de la categoría 'Salida'.",
+            plots: plots,
+          });
+        } else {
+          setBackendResponse({
+            codeExecutionError: false,
+            output: jsonData.output,
+            plots: plots,
+          });
+        }
       })
       .catch((error) => {
         const errorMessage = JSON.parse(error.message);
@@ -58,7 +68,7 @@ const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
     <>
       <div className="code-part">
         <button
-          className="btn btn-success mt-4"
+          className="btn btn-success"
           style={{ marginBottom: "16px" }}
           onClick={handleSubmit}
         >
