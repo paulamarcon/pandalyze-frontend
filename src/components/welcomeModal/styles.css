@@ -2,10 +2,15 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal-dialog {
+  max-width: 900px;
+}
+
 .modal-title {
   font-family: "Arial";
   font-size: 30px;
   text-align: center;
+  font-weight: 700;
 }
 
 .modal-body {
@@ -17,11 +22,9 @@
 
 .modal-body p {
   margin-bottom: 1rem;
+  font-size: 18px;
 }
 
-.modal-body h6 {
-  margin-top: 1.5rem;
-  font-family: "Arial";
-  color: #333;
-  text-align: right;
+.carousel-item img {
+  max-height: 400px;
 }

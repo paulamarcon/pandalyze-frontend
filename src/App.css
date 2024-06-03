@@ -5,10 +5,16 @@
 }
 
 .app-entire-title {
+  display: flex;
+  align-items: center;
   font-family: arial;
-  text-align: center;
   color: #5f6565;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title-container {
+  text-align: center;
+  flex-grow: 1;
 }
 
 .title {

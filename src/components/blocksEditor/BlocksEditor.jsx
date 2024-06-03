@@ -6,7 +6,7 @@ import CsvUploader from "../csvUploader/CsvUploader";
 import BlockInfoModal from "../blockInfoModal/BlockInfoModal";
 import BlocksService from "./services/BlocksService";
 import { toolbox } from "./constants/toolbox";
-import { blocksInfo } from "./constants/blocksInfo";
+import { blocksInfo } from "../blockInfoModal/blocksInfo";
 import defaultBlocks from "./constants/blocks/defaultBlocks.json";
 import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
 import ExamplesDropdown from "../examplesDropdown/ExamplesDropdown";

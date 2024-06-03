@@ -21,17 +21,30 @@ function App() {
     setShowInitialInstructionsAlert(false);
   };
 
+  const handleOpenInitialAlert = () => {
+    setShowInitialInstructionsAlert(true);
+  };
+
   return (
     <div className="app-container">
       {showInitialInstructionsAlert && (
         <WelcomeModal handleCloseInitialAlert={handleCloseInitialAlert} />
       )}
       <p className="app-entire-title">
-        <span className="title">Pandalyze: </span>
-        <span className="subtitle">
-          aprender Ciencia de Datos con programación en bloques
-        </span>
+        <button
+          className="btn btn-primary tutorial-button"
+          onClick={handleOpenInitialAlert}
+        >
+          Ver tutorial
+        </button>
+        <div class="title-container">
+          <span class="title">Pandalyze: </span>
+          <span class="subtitle">
+            aprender Ciencia de Datos con programación en bloques
+          </span>
+        </div>
       </p>
+
       <div className="editors-flex-container">
         <BlocksEditor updateCode={updateCode} />
         <PythonEditor
