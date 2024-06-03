@@ -26,7 +26,7 @@ const WorkspaceJsonUploader = () => {
   return (
     <>
       <button className="btn btn-danger" type="button" onClick={clearWorkspace}>
-        Limpiar workspace
+        Eliminar bloques
       </button>
       {/*<button
         className="btn btn-primary"

@@ -12,7 +12,7 @@ export const blocksInfo = [
   {
     blockType: "comparison",
     blockTitle: "'Comparación'",
-    blockInfo: "Realiza una comparación.",
+    blockInfo: "Realiza filtros dentro de columnas de un DataFrame.",
   },
   {
     blockType: "read_csv",
