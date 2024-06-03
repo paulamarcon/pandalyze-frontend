@@ -30,7 +30,7 @@ const BlocksService = {
   variables: [],
   csvsData: [],
 
-  initBlocks(useFrontRef) {
+  initBlocks(useFrontRef, loadingExampleRef) {
     initPrintBlock();
     initReadCsvBlock(useFrontRef);
     initHeadBlock();
@@ -40,7 +40,7 @@ const BlocksService = {
     initDataTypeBlock();
     initDescribeBlock();
     initVariablesBlocks();
-    initPropertyBlock(this.csvsData);
+    initPropertyBlock(this.csvsData, loadingExampleRef);
     initLineBlock();
     initBarBlock();
     initScatterBlock();

@@ -10,10 +10,12 @@ import { blocksInfo } from "./constants/blocksInfo";
 import defaultBlocks from "./constants/blocks/defaultBlocks.json";
 import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
 import ExamplesDropdown from "../examplesDropdown/ExamplesDropdown";
+import WorkspaceJsonUploader from "../workspaceJsonUploader/WorkspaceJsonUploader";
 
 const BlocksEditor = ({ updateCode }) => {
   var workspace;
   const useFrontRef = useRef(true);
+  const loadingExampleRef = useRef(undefined);
   const [openBlockInfoModal, setOpenBlockInfoModal] = useState(false);
   const [block, setBlock] = useState(null);
   const mouseTrackerRef = useRef({ x: null, y: null });
@@ -40,7 +42,7 @@ const BlocksEditor = ({ updateCode }) => {
     //TODO: falta hacer el remove del event en algun lado por ahí
     document.addEventListener("mousemove", handleMouseMove);
 
-    BlocksService.initBlocks(useFrontRef);
+    BlocksService.initBlocks(useFrontRef, loadingExampleRef);
 
     workspace.registerButtonCallback(
       "createVariableCallbackKey",
@@ -96,7 +98,6 @@ const BlocksEditor = ({ updateCode }) => {
   };
 
   const onBlocksChange = (event) => {
-    //TODO ojo con esta linea
     const workspace = Blockly.getMainWorkspace();
 
     useFrontRef.current = true;
@@ -105,14 +106,6 @@ const BlocksEditor = ({ updateCode }) => {
     useFrontRef.current = false;
     const backendCode = pythonGenerator.workspaceToCode(workspace);
 
-    /*Puede servir?
-    if (
-      event.type === Blockly.Events.BLOCK_CHANGE &&
-      event.name === "csvOptions"
-    ) {
-      BlocksService.changeCsvColumnsDropdown(event.newValue);
-    }*/
-
     updateCode(frontendCode, backendCode);
   };
 
@@ -120,7 +113,8 @@ const BlocksEditor = ({ updateCode }) => {
     <div className="blocks-editor-container">
       <div className="workspace-buttons-container">
         <CsvUploader />
-        <ExamplesDropdown />
+        <ExamplesDropdown loadingExampleRef={loadingExampleRef} />
+        <WorkspaceJsonUploader />
       </div>
       <div id="blocklyDiv" style={{ height: "400px" }}></div>
       {openBlockInfoModal && (

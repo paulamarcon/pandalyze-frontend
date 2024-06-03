@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import examplesData from "./examples.json";
 import Blockly from "blockly";
 
-const ExamplesDropdown = () => {
-  const [examples, setExamples] = useState(examplesData);
-
-  useEffect(() => {}, []);
-
+const ExamplesDropdown = ({ loadingExampleRef }) => {
   const handleDropdownItemClick = (exampleTitle) => {
-    const selectedExample = examples.find(
+    const selectedExample = examplesData.find(
       (example) => example.title === exampleTitle
     );
 
@@ -17,6 +13,7 @@ const ExamplesDropdown = () => {
 
   const loadExampleBlocksIntoWorkspace = (selectedExample) => {
     if (selectedExample) {
+      loadingExampleRef.current = selectedExample.id;
       Blockly.serialization.workspaces.load(
         selectedExample.blocks,
         Blockly.getMainWorkspace()
@@ -35,7 +32,7 @@ const ExamplesDropdown = () => {
         Ejemplos
       </button>
       <ul className="dropdown-menu">
-        {examples.map((example) => (
+        {examplesData.map((example) => (
           <li key={example.title}>
             <button
               className="dropdown-item"

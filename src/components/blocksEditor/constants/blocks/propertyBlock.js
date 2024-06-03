@@ -1,7 +1,7 @@
 import Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
 
-export const initPropertyBlock = (csvsData) => {
+export const initPropertyBlock = (csvsData, loadingExampleRef) => {
   Blockly.Blocks["property"] = {
     init: function () {
       this.appendDummyInput().appendField("data_frame =");
@@ -15,10 +15,15 @@ export const initPropertyBlock = (csvsData) => {
       this.setColour("#D19C77");
       this.setHelpUrl("");
     },
-    /*Puede servir?
-      onchange: function (event) {
-      console.log(event.type);
-    },*/
+  };
+
+  /*
+  Mapa que linkea el id del Example con la columna a mostrar 
+   key: exampleId
+   value: "columna" del example
+  */
+  const examplesMap = {
+    1: "Superficie (km²)",
   };
 
   pythonGenerator["property"] = function (block) {
@@ -52,8 +57,13 @@ export const initPropertyBlock = (csvsData) => {
       if (optionsChanged) {
         const dropdownField = block.getField("dropdown");
         dropdownField.menuGenerator_ = blockInputCsvColumnsNames;
-        dropdownField.setValue(blockInputCsvColumnsNames[0][1]); //default: 1er columna humanReadable
+        if (loadingExampleRef.current) {
+          dropdownField.setValue(examplesMap[loadingExampleRef.current]); //columna del example
+        } else {
+          dropdownField.setValue(blockInputCsvColumnsNames[0][1]); //default: 1er columna humanReadable
+        }
       }
+      loadingExampleRef.current = undefined;
     } else {
       //Default si no ingresa bloque, o si el bloque no es de tipo dataframe
       const dropdownField = block.getField("dropdown");
@@ -67,7 +77,7 @@ export const initPropertyBlock = (csvsData) => {
       pythonGenerator.ORDER_NONE
     );
     var dropdownInput = block.getFieldValue("dropdown");
-    var propertyCode = `${blockInputCode}.${dropdownInput}`;
+    var propertyCode = `${blockInputCode}["${dropdownInput}"]`;
 
     return [propertyCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };

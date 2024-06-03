@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Blockly from "blockly";
 import "./CsvUploaderStyles.css";
 import BlocksService from "../blocksEditor/services/BlocksService";
 import defaultCsv from "./default.csv";
@@ -53,23 +52,6 @@ const CsvUploader = () => {
       setErrorAlertText("");
       setCsvFile(null);
     }
-  };
-
-  const exportWorkspaceToJson = () => {
-    const state = Blockly.serialization.workspaces.save(
-      Blockly.getMainWorkspace()
-    );
-    const jsonString = JSON.stringify(state);
-    const blob = new Blob([jsonString], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "data.json";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
   };
 
   // Función para enviar el archivo CSV al back y guardarlo en la BD
@@ -144,28 +126,29 @@ const CsvUploader = () => {
   };
 
   return (
-    <div>
-      {/* <button onClick={exportWorkspaceToJson}>Exportar Workspace a JSON</button> */}
-      <div style={{ marginBottom: "16px" }}>
-        {/* <input type="file" accept=".csv" onChange={handleFileChange} /> */}
-        {/* TODO: si no gusta cómo quedó, seguir usando el input comentado de la linea de arriba */}
-        <label htmlFor="files" className="btn btn-primary">
-          Cargar CSV
-        </label>
-        <input
-          id="files"
-          accept=".csv"
-          type="file"
-          onChange={handleFileChange}
-          style={{ display: "none" }}
-        />
-        <span className="margin-right margin-left">{csvFile?.name}</span>
-        {csvFile && (
-          <button className="btn btn-success margin-right" onClick={handleSave}>
-            Guardar CSV
-          </button>
-        )}
-      </div>
+    <>
+      {/* <input type="file" accept=".csv" onChange={handleFileChange} /> */}
+      {/* TODO: si no gusta cómo quedó, seguir usando el input comentado de la linea de arriba */}
+      <label htmlFor="files" className="btn btn-primary">
+        Cargar CSV
+      </label>
+      <input
+        id="files"
+        accept=".csv"
+        type="file"
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
+      {csvFile?.name && (
+        <div className="margin-right margin-left overflow-ellipsis">
+          {csvFile.name}
+        </div>
+      )}
+      {csvFile && (
+        <button className="btn btn-success margin-right" onClick={handleSave}>
+          Guardar CSV
+        </button>
+      )}
       {errorAlertText && errorAlertText !== "" && (
         <ErrorAlert errorAlertText={errorAlertText} />
       )}
@@ -175,7 +158,7 @@ const CsvUploader = () => {
       {warningAlertText && warningAlertText !== "" && (
         <WarningAlert warningAlertText={warningAlertText} />
       )}
-    </div>
+    </>
   );
 };
 
