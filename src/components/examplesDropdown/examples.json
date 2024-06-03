@@ -1,6 +1,7 @@
 [
   {
-    "title": "Ejemplo 1",
+    "id": 1,
+    "title": "ASD",
     "blocks": {
       "blocks": {
         "languageVersion": 0,
@@ -15,9 +16,7 @@
                 "block": {
                   "type": "primitive_text",
                   "id": "wBeQ%_+h,vkrX@z/B(]4",
-                  "fields": {
-                    "TEXT": "Primeras 10 filas:"
-                  }
+                  "fields": { "TEXT": "Lagos con superficie mayor a 100km²:" }
                 }
               }
             },
@@ -28,19 +27,38 @@
                 "inputs": {
                   "ARGUMENT": {
                     "block": {
-                      "type": "head",
-                      "id": "YeCzcq^{vn7R)NgeR]mL",
-                      "fields": {
-                        "argument": "10"
-                      },
+                      "type": "comparison",
+                      "id": "O:gv!UB4WJwZRdk[`bFt",
+                      "fields": { "OPERATOR": "GREATER_THAN" },
                       "inputs": {
-                        "VALUE": {
+                        "dataFrameValue": {
                           "block": {
                             "type": "read_csv",
-                            "id": "%mZ|{yLz~V`#V8mBm5,O",
-                            "fields": {
-                              "csvOptions": "171"
+                            "id": "rwxHu/|]r)^~s^dF/eWo",
+                            "fields": { "csvOptions": "205" }
+                          }
+                        },
+                        "columnNameValue": {
+                          "block": {
+                            "type": "property",
+                            "id": "hvaFfm4]l@j%zd$|H3(D",
+                            "fields": { "dropdown": "Superficie (km²)" },
+                            "inputs": {
+                              "blockInput": {
+                                "block": {
+                                  "type": "read_csv",
+                                  "id": "%mZ|{yLz~V`#V8mBm5,O",
+                                  "fields": { "csvOptions": "205" }
+                                }
+                              }
                             }
+                          }
+                        },
+                        "rightValue": {
+                          "block": {
+                            "type": "primitive_number",
+                            "id": "LHXKCVQ.PWzsZQT4!BG$",
+                            "fields": { "NUMBER": 100 }
                           }
                         }
                       }
