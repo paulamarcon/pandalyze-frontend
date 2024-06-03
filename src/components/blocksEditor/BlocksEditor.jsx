@@ -9,6 +9,8 @@ import { toolbox } from "./constants/toolbox";
 import { blocksInfo } from "../blockInfoModal/blocksInfo";
 import defaultBlocks from "./constants/blocks/defaultBlocks.json";
 import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
+import SuccessAlert from "../alerts/successAlert/SuccessAlert";
+import WarningAlert from "../alerts/warningAlert/WarningAlert";
 import ExamplesDropdown from "../examplesDropdown/ExamplesDropdown";
 import WorkspaceJsonUploader from "../workspaceJsonUploader/WorkspaceJsonUploader";
 
@@ -24,6 +26,8 @@ const BlocksEditor = ({ updateCode }) => {
     y: null,
   });
   const [errorAlertText, setErrorAlertText] = useState("");
+  const [successAlertText, setSuccessAlertText] = useState("");
+  const [warningAlertText, setWarningAlertText] = useState("");
 
   const handleMouseMove = (event) => {
     const mouseX = event.clientX;
@@ -93,7 +97,14 @@ const BlocksEditor = ({ updateCode }) => {
         setErrorAlertText("");
       }, 3000);
     } else {
+      setSuccessAlertText(
+        "La variable se creó correctamente. Selecciónela desde el 'set/get'."
+      );
+      setTimeout(() => {
+        setSuccessAlertText("");
+      }, 3000);
       setErrorAlertText("");
+      setWarningAlertText("");
     }
   };
 
@@ -122,6 +133,12 @@ const BlocksEditor = ({ updateCode }) => {
       )}
       {errorAlertText && errorAlertText !== "" && (
         <ErrorAlert errorAlertText={errorAlertText} />
+      )}
+      {successAlertText && successAlertText !== "" && (
+        <SuccessAlert successAlertText={successAlertText} />
+      )}
+      {warningAlertText && warningAlertText !== "" && (
+        <WarningAlert warningAlertText={warningAlertText} />
       )}
     </div>
   );
