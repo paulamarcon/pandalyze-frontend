@@ -15,7 +15,6 @@ import ExamplesDropdown from "../examplesDropdown/ExamplesDropdown";
 import WorkspaceJsonUploader from "../workspaceJsonUploader/WorkspaceJsonUploader";
 
 const BlocksEditor = ({ updateCode }) => {
-  var workspace;
   const useFrontRef = useRef(true);
   const loadingExampleRef = useRef(undefined);
   const [openBlockInfoModal, setOpenBlockInfoModal] = useState(false);
@@ -36,7 +35,7 @@ const BlocksEditor = ({ updateCode }) => {
   };
 
   useEffect(() => {
-    workspace = Blockly.inject("blocklyDiv", {
+    const workspace = Blockly.inject("blocklyDiv", {
       toolbox: toolbox,
       zoom: {
         controls: true,
@@ -87,6 +86,7 @@ const BlocksEditor = ({ updateCode }) => {
 
     //TODO: Hace falta tener esto si tenemos los ejemplos?
     Blockly.serialization.workspaces.load(defaultBlocks, workspace);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCreateVariableClick = () => {

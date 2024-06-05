@@ -36,6 +36,7 @@ const CsvUploader = () => {
 
     // Llamar a la función para cargar el archivo CSV predeterminado
     loadDefaultCsv();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Función para manejar la carga del archivo CSV en el front
