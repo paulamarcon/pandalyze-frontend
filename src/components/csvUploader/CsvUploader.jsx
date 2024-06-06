@@ -5,7 +5,6 @@ import defaultCsv from "./default.csv";
 import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
 import SuccessAlert from "../alerts/successAlert/SuccessAlert";
 import WarningAlert from "../alerts/warningAlert/WarningAlert";
-import { API_URL } from "../../config";
 
 const CsvUploader = () => {
   const [csvFile, setCsvFile] = useState(null);
@@ -14,6 +13,7 @@ const CsvUploader = () => {
   const [successAlertText, setSuccessAlertText] = useState("");
   const [warningAlertText, setWarningAlertText] = useState("");
 
+  const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const loadDefaultCsv = async () => {
       try {

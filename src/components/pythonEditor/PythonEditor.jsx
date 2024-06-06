@@ -2,9 +2,10 @@ import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import "./styles.css";
-import { API_URL } from "../../config";
 
 const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
+  const API_URL = process.env.REACT_APP_API_URL;
+
   //Pegada al back para correr el codigo
   const handleSubmit = () => {
     const pythonCode = backendCode;
