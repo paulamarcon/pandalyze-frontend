@@ -37,9 +37,9 @@ function App() {
         >
           Ver tutorial
         </button>
-        <div class="title-container">
-          <span class="title">Pandalyze: </span>
-          <span class="subtitle">
+        <div className="title-container">
+          <span className="title">Pandalyze: </span>
+          <span className="subtitle">
             aprender Ciencia de Datos con programación en bloques
           </span>
         </div>

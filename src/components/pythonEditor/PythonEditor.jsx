@@ -2,12 +2,13 @@ import React from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import "./styles.css";
+import { API_URL } from "../../config";
 
 const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
   //Pegada al back para correr el codigo
   const handleSubmit = () => {
     const pythonCode = backendCode;
-    fetch("http://127.0.0.1:5000/runPythonCode", {
+    fetch(`${API_URL}/runPythonCode`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

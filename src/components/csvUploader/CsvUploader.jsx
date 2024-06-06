@@ -5,6 +5,7 @@ import defaultCsv from "./default.csv";
 import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
 import SuccessAlert from "../alerts/successAlert/SuccessAlert";
 import WarningAlert from "../alerts/warningAlert/WarningAlert";
+import { API_URL } from "../../config";
 
 const CsvUploader = () => {
   const [csvFile, setCsvFile] = useState(null);
@@ -79,7 +80,7 @@ const CsvUploader = () => {
       const formData = new FormData();
       formData.append("csv", file);
 
-      fetch("http://127.0.0.1:5000/uploadCsv", {
+      fetch(`${API_URL}/uploadCsv`, {
         method: "POST",
         body: formData,
       })
