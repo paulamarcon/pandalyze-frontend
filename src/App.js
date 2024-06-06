@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import BlocksEditor from "./components/blocksEditor/BlocksEditor";
 import PythonEditor from "./components/pythonEditor/PythonEditor";
@@ -11,6 +11,34 @@ function App() {
   const [backendResponse, setBackendResponse] = useState({});
   const [showInitialInstructionsAlert, setShowInitialInstructionsAlert] =
     useState(true);
+
+  // Función para realizar la solicitud a heathCheck
+  const fetchHealthCheck = async () => {
+    try {
+      const response = await fetch(
+        "https://pandalyze-backend-prod.onrender.com/healthCheck"
+      );
+      if (response.ok) {
+        console.log("Health Check successful");
+      } else {
+        console.error("Health Check failed");
+      }
+    } catch (error) {
+      console.error("Error during Health Check:", error);
+    }
+  };
+
+  // Efecto para realizar la solicitud cada 5 minutos
+  useEffect(() => {
+    // Realiza la primera solicitud al montar el componente
+    fetchHealthCheck();
+
+    // Establece un intervalo para realizar la solicitud cada 5 minutos (300,000 milisegundos)
+    const intervalId = setInterval(fetchHealthCheck, 300000);
+
+    // Limpia el intervalo al desmontar el componente para evitar fugas de memoria
+    return () => clearInterval(intervalId);
+  }, []);
 
   const updateCode = (frontendCode, backendCode) => {
     setFrontendCode(frontendCode);
