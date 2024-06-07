@@ -16,7 +16,7 @@ function App() {
   const fetchHealthCheck = async () => {
     try {
       const response = await fetch(
-        "https://pandalyze-backend-prod.onrender.com/healthCheck"
+        "https://pandalyze-backend-prod.onrender.com/healthCheck?from=react-front"
       );
       if (response.ok) {
         console.log("Health Check successful");
@@ -33,8 +33,8 @@ function App() {
     // Realiza la primera solicitud al montar el componente
     fetchHealthCheck();
 
-    // Establece un intervalo para realizar la solicitud cada 5 minutos (300,000 milisegundos)
-    const intervalId = setInterval(fetchHealthCheck, 300000);
+    // Establece un intervalo para realizar la solicitud cada 3 minutos (180,000 milisegundos)
+    const intervalId = setInterval(fetchHealthCheck, 180000);
 
     // Limpia el intervalo al desmontar el componente para evitar fugas de memoria
     return () => clearInterval(intervalId);
