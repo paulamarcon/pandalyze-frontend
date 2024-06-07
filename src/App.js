@@ -15,9 +15,9 @@ function App() {
   // Función para realizar la solicitud a heathCheck
   const fetchHealthCheck = async () => {
     try {
-      const response = await fetch(
-        "https://pandalyze-backend-prod.onrender.com/healthCheck?from=react-front"
-      );
+      const response = await fetch("https://pandalyze-backend-prod.onrender.com/healthCheck?from=react-front-with-TO", {
+        timeout: 5000 // 5 segundos por si se cuelga el back
+      });
       if (response.ok) {
         console.log("Health Check successful");
       } else {
