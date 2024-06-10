@@ -16,7 +16,7 @@ function App() {
   const fetchHealthCheck = async () => {
     try {
       const response = await fetch(
-        "https://pandalyze-backend-prod.onrender.com/healthCheck"
+        "https://pandalyze123.pythonanywhere.com/healthCheck"
       );
       if (response.ok) {
         console.log("Health Check successful");
