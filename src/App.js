@@ -16,7 +16,7 @@ function App() {
   const fetchHealthCheck = async () => {
     try {
       const response = await fetch(
-        "https://pandalyze123.pythonanywhere.com/healthCheck",
+        "https://pandalyze-backend-prod.onrender.com/healthCheck",
         {
           timeout: 5000, // 5 segundos por si se cuelga el back
         }
