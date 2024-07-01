@@ -10,16 +10,16 @@ export const welcomeModalInfo = [
   },
   {
     description:
-      "Utilizando el read_csv, a modo de ejemplo, se creó un gráfico de barras, pero además podrá crear variables, obtener información del CSV, generar otros gráficos y ¡mucho más!",
+      "En este ejemplo se generó un gráfico de barras con el dataset cargado. Probá crear variables, obtener información del CSV, generar otros gráficos y ¡mucho más!",
     image: "/assets/slideThree.png",
   },
   {
     description:
-      "¡Podrá también ver la traducción de los bloques a código Python, ejecutarlo...",
+      "¡Podrás también ver la traducción de los bloques a código Python, ejecutarlo...",
     image: "/assets/slideFour.gif",
   },
   {
-    description: "...y ver el resultado final en consola!",
+    description: "...y ver el resultado final.",
     image: "/assets/slideFive.png",
   },
   {

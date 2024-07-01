@@ -16,17 +16,6 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Control",
-      colour: "280",
-      contents: [
-        {
-          kind: "block",
-          type: "comparison",
-        },
-      ],
-    },
-    {
-      kind: "category",
       name: "Primitivos",
       colour: "#4B168B",
       contents: [
@@ -54,12 +43,19 @@ export const toolbox = {
       colour: "#D19C77",
       contents: [
         {
-          kind: "block",
-          type: "read_csv",
-        },
-        {
-          kind: "block",
-          type: "property",
+          kind: "category",
+          name: "TODO: rename",
+          colour: "#CD853F",
+          contents: [
+            {
+              kind: "block",
+              type: "read_csv",
+            },
+            {
+              kind: "block",
+              type: "property",
+            },
+          ],
         },
         {
           kind: "category",
@@ -90,12 +86,16 @@ export const toolbox = {
               kind: "block",
               type: "shape",
             },
+            {
+              kind: "block",
+              type: "unique",
+            },
           ],
         },
         {
           kind: "category",
-          name: "Filtros",
-          colour: "#5D4839",
+          name: "Cálculos",
+          colour: "#800000",
           contents: [
             {
               kind: "block",
@@ -113,10 +113,13 @@ export const toolbox = {
               kind: "block",
               type: "mean",
             },
-            {
-              kind: "block",
-              type: "unique",
-            },
+          ],
+        },
+        {
+          kind: "category",
+          name: "Filtros",
+          colour: "#5D4839",
+          contents: [
             {
               kind: "block",
               type: "nullSum",
@@ -124,6 +127,14 @@ export const toolbox = {
             {
               kind: "block",
               type: "sort",
+            },
+            {
+              kind: "block",
+              type: "comparison",
+            },
+            {
+              kind: "block",
+              type: "groupby",
             },
           ],
         },

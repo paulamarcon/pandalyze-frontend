@@ -57,7 +57,14 @@ const WelcomeModal = ({ handleCloseInitialAlert }) => {
                         style={{ color: "black" }}
                         className="carousel-caption d-none d-md-block"
                       >
-                        <p>{item.description}</p>
+                        <p
+                          dangerouslySetInnerHTML={{
+                            __html: item.description.replace(
+                              /(read_csv)/g,
+                              "<strong>$1</strong>"
+                            ),
+                          }}
+                        />
                       </div>
                     </div>
                   ))}

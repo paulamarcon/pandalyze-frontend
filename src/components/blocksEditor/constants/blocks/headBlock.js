@@ -29,13 +29,13 @@ export const initHeadBlock = () => {
   };
 
   pythonGenerator["head"] = function (block) {
-    var blockInput = pythonGenerator.valueToCode(
+    const blockInput = pythonGenerator.valueToCode(
       block,
       "VALUE",
       pythonGenerator.ORDER_NONE
     );
-    var argumentInput = block.getFieldValue("argument");
-    var headCode = `${blockInput}.head(${argumentInput})`;
+    const argumentInput = block.getFieldValue("argument");
+    const headCode = `${blockInput}.head(${argumentInput})`;
 
     return [headCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };

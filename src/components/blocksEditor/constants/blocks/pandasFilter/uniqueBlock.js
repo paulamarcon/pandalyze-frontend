@@ -9,7 +9,7 @@ export const initUniqueBlock = () => {
       this.appendDummyInput().appendField(".unique()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#5D4839");
+      this.setColour(10);
       this.setHelpUrl("");
     },
   };

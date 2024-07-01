@@ -24,6 +24,7 @@ import { initScatterBlock } from "../constants/blocks/plotly/scatterBlock";
 import { initBarBlock } from "../constants/blocks/plotly/barBlock";
 import { initPieBlock } from "../constants/blocks/plotly/pieBlock";
 import { initShowInConsoleBlock } from "../constants/blocks/plotly/showInConsoleBlock";
+import { initGroupByBlock } from "../constants/blocks/pandasFilter/groupbyBlock";
 
 const BlocksService = {
   //TODO: Ojo aca, servicio con estado puede bardear si es uno solo para varios usuarios?
@@ -55,6 +56,7 @@ const BlocksService = {
     initComparisonBlock();
     initPrimitiveBlocks();
     initShowInConsoleBlock(useFrontRef);
+    initGroupByBlock();
   },
 
   // Se dispara cuando el usuario guarda un Csv

@@ -24,7 +24,7 @@ export const initComparisonBlock = () => {
       this.appendDummyInput().appendField("]");
       this.setInputsInline(true);
       this.setOutput(true, "Boolean");
-      this.setColour(280);
+      this.setColour("#5D4839");
     },
   };
 

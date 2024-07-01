@@ -8,7 +8,7 @@ export const initMinBlock = () => {
       this.appendDummyInput().appendField(".min()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#5D4839");
+      this.setColour("#800000");
     },
   };
 

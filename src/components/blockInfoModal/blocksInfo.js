@@ -137,4 +137,10 @@ export const blocksInfo = [
     blockTitle: "'Show'",
     blockInfo: "Imprime en consola el gráfico generado.",
   },
+  {
+    blockType: "groupby",
+    blockTitle: "'Group by'",
+    blockInfo:
+      "Agrupa un DataFrame por una columna y permite aplicar operaciones agregadas (como suma, promedio o máximo) a cada grupo resultante.",
+  },
 ];
