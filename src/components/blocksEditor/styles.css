@@ -1,5 +1,11 @@
 .blocks-editor-container {
-  width: 65%;
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .blocks-editor-container {
+    width: 65%;
+  }
 }
 
 .workspace-buttons-container {

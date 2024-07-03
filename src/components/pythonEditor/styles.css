@@ -1,3 +1,9 @@
-.code-part {
-  width: 35%;
+.code-segment {
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .code-segment {
+    width: 35%;
+  }
 }

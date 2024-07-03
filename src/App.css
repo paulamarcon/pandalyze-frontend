@@ -33,3 +33,10 @@
 .editors-flex-container {
   display: flex;
 }
+
+@media screen and (max-width: 768px) {
+  /* Cambia 768px según tu necesidad para definir qué se considera móvil */
+  .editors-flex-container {
+    flex-direction: column;
+  }
+}

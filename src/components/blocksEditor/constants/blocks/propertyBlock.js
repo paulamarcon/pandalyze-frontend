@@ -12,7 +12,7 @@ export const initPropertyBlock = (csvsData, loadingExampleRef) => {
       );
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#D19C77");
+      this.setColour("#7D5A4B");
       this.setHelpUrl("");
     },
   };

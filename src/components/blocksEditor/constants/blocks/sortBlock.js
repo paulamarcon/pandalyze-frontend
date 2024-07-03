@@ -19,7 +19,7 @@ export const initSortBlock = () => {
       this.appendDummyInput().appendField(")");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#5D4839");
+      this.setColour("#000000");
     },
   };
 

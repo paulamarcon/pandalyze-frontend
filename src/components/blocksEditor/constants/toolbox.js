@@ -16,7 +16,7 @@ export const toolbox = {
     },
     {
       kind: "category",
-      name: "Primitivos",
+      name: "Literales",
       colour: "#4B168B",
       contents: [
         {
@@ -44,16 +44,12 @@ export const toolbox = {
       contents: [
         {
           kind: "category",
-          name: "TODO: rename",
+          name: "Acceso a datos",
           colour: "#CD853F",
           contents: [
             {
               kind: "block",
               type: "read_csv",
-            },
-            {
-              kind: "block",
-              type: "property",
             },
           ],
         },
@@ -113,24 +109,36 @@ export const toolbox = {
               kind: "block",
               type: "mean",
             },
+            {
+              kind: "block",
+              type: "nullSum",
+            },
           ],
         },
         {
           kind: "category",
           name: "Filtros",
-          colour: "#5D4839",
+          colour: "#7D5A4B",
           contents: [
             {
               kind: "block",
-              type: "nullSum",
+              type: "comparison",
             },
+
+            {
+              kind: "block",
+              type: "property",
+            },
+          ],
+        },
+        {
+          kind: "category",
+          name: "Distribución",
+          colour: "#000000",
+          contents: [
             {
               kind: "block",
               type: "sort",
-            },
-            {
-              kind: "block",
-              type: "comparison",
             },
             {
               kind: "block",

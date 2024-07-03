@@ -8,7 +8,7 @@ export const initNullSumBlock = () => {
       this.appendDummyInput().appendField(".isnull().sum()");
       this.setInputsInline(true);
       this.setOutput(true, null);
-      this.setColour("#5D4839");
+      this.setColour("#800000");
       this.setHelpUrl("");
     },
   };

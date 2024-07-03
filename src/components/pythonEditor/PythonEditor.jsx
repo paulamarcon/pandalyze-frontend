@@ -68,7 +68,7 @@ const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
 
   return (
     <>
-      <div className="code-part">
+      <div className="code-segment">
         <button
           className="btn btn-success"
           style={{ marginBottom: "16px" }}
