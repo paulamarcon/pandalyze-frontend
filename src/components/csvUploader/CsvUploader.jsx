@@ -12,12 +12,13 @@ const CsvUploader = () => {
   const [errorAlertText, setErrorAlertText] = useState("");
   const [successAlertText, setSuccessAlertText] = useState("");
   const [warningAlertText, setWarningAlertText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
     const loadDefaultCsv = async () => {
       try {
-        const response = await fetch(defaultCsv); //TODO por q verga hago un fetch?
+        const response = await fetch(defaultCsv);
         const csvContent = await response.text();
         const csvBlob = new Blob([csvContent], { type: "text/csv" });
         const csvFile = new File([csvBlob], "Lagos.csv");
@@ -95,17 +96,23 @@ const CsvUploader = () => {
             }, 3000);
             setErrorAlertText("");
             setWarningAlertText("");
+          } else {
+            setIsLoading(false);
+            setSuccessAlertText("¡Ya podés empezar a utilizar la aplicación!");
+            setTimeout(() => {
+              setSuccessAlertText("");
+            }, 5000);
+            setErrorAlertText("");
+            setWarningAlertText("");
           }
         })
         .catch((error) => {
-          setErrorAlertText(
-            "Hubo un error al intentar conectarse al servidor."
+          setIsLoading(true);
+          setWarningAlertText(
+            "La aplicación está cargando, por favor espere antes de usar."
           );
-          setTimeout(() => {
-            setErrorAlertText("");
-          }, 3000);
           setSuccessAlertText("");
-          setWarningAlertText("");
+          setErrorAlertText("");
         });
     } else {
       setWarningAlertText(
@@ -129,8 +136,6 @@ const CsvUploader = () => {
 
   return (
     <>
-      {/* <input type="file" accept=".csv" onChange={handleFileChange} /> */}
-      {/* TODO: si no gusta cómo quedó, seguir usando el input comentado de la linea de arriba */}
       <label htmlFor="files" className="btn btn-primary">
         Cargar CSV
       </label>
@@ -159,6 +164,11 @@ const CsvUploader = () => {
       )}
       {warningAlertText && warningAlertText !== "" && (
         <WarningAlert warningAlertText={warningAlertText} />
+      )}
+      {isLoading && (
+        <div class="spinner-border text-secondary spinner-style" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       )}
     </>
   );

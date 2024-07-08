@@ -7,8 +7,14 @@
 }
 
 .overflow-ellipsis {
-  width: 120px; /* Ancho antes de entrar en modo elipsis */
+  width: 120px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.spinner-style {
+  position: absolute;
+  top: 70px;
+  left: 950px;
 }
