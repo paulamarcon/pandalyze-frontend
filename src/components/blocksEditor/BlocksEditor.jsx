@@ -96,7 +96,7 @@ const BlocksEditor = ({ updateCode }) => {
       setTimeout(() => {
         setErrorAlertText("");
       }, 3000);
-    } else {
+    } else if (result !== undefined) {
       setSuccessAlertText(
         "La variable se creó correctamente. Selecciónela desde el 'set/get'."
       );
