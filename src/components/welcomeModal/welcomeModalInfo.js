@@ -10,16 +10,16 @@ export const welcomeModalInfo = [
   },
   {
     description:
-      "En este ejemplo se generó un gráfico de barras con el dataset cargado. Probá crear variables, obtener información del CSV, generar otros gráficos y ¡mucho más!",
+      "En este ejemplo se genera un gráfico de barras con el dataset cargado. Probá crear variables, obtener información del CSV, generar otros gráficos y ¡mucho más!",
     image: "/assets/slideThree.png",
   },
   {
     description:
-      "¡Podrás también ver la traducción de los bloques a código Python, ejecutarlo...",
+      "¡Podrás también ver la traducción de los bloques a código Python, ejecutarlo y...",
     image: "/assets/slideFour.gif",
   },
   {
-    description: "...y ver el resultado final.",
+    description: "...ver el resultado final!",
     image: "/assets/slideFive.png",
   },
   {
