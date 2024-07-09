@@ -15,7 +15,7 @@ export const initReadCsvBlock = (useFrontRef) => {
     },
 
     generateOptions: function () {
-      return [["Alumnos", "1"]];
+      return [["Cargando...", "1"]];
     },
   };
 

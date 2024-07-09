@@ -18,3 +18,11 @@
   top: 70px;
   left: 950px;
 }
+
+@media screen and (max-width: 769px) {
+  .mobile-spinner {
+    position: absolute;
+    top: 45px;
+    left: 570px;
+  }
+}

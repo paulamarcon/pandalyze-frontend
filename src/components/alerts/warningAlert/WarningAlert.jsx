@@ -3,7 +3,7 @@ import "../styles.css";
 
 const WarningAlert = ({ warningAlertText }) => {
   return (
-    <div className="alert alert-warning content" role="alert">
+    <div className="alert alert-warning content mobile-content" role="alert">
       {warningAlertText}
     </div>
   );

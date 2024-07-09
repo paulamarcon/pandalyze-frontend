@@ -28,3 +28,9 @@
 .carousel-item img {
   max-height: 400px;
 }
+
+@media screen and (max-width: 769px) {
+  .mobile-tutorial {
+    width: 710px;
+  }
+}

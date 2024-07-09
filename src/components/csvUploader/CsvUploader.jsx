@@ -166,7 +166,10 @@ const CsvUploader = () => {
         <WarningAlert warningAlertText={warningAlertText} />
       )}
       {isLoading && (
-        <div class="spinner-border text-secondary spinner-style" role="status">
+        <div
+          class="spinner-border text-secondary spinner-style mobile-spinner"
+          role="status"
+        >
           <span class="visually-hidden">Loading...</span>
         </div>
       )}

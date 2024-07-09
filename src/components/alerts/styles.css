@@ -3,3 +3,11 @@
   top: 60px;
   left: 450px;
 }
+
+@media screen and (max-width: 769px) {
+  .mobile-content {
+    position: absolute;
+    top: 30px;
+    left: 100px;
+  }
+}

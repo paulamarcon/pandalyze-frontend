@@ -5,7 +5,11 @@ import { welcomeModalInfo } from "./welcomeModalInfo";
 const WelcomeModal = ({ handleCloseInitialAlert }) => {
   return (
     <>
-      <div className="modal show" tabIndex="-1" style={{ display: "block" }}>
+      <div
+        className="modal show mobile-tutorial"
+        tabIndex="-1"
+        style={{ display: "block" }}
+      >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
