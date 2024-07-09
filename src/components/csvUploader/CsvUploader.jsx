@@ -87,6 +87,15 @@ const CsvUploader = () => {
       })
         .then((response) => response.json())
         .then((jsonData) => {
+          if (jsonData?.error) {
+            setErrorAlertText(jsonData.error);
+            setTimeout(() => {
+              setErrorAlertText("");
+            }, 3000);
+            setSuccessAlertText("");
+            setWarningAlertText("");
+            return;
+          }
           updateCsvOptions(jsonData);
           setCsvFile(null);
           if (file !== defaultCsvFile) {
