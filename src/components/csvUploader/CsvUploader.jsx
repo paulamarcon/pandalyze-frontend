@@ -6,13 +6,12 @@ import ErrorAlert from "../alerts/errorAlert/ErrorAlert";
 import SuccessAlert from "../alerts/successAlert/SuccessAlert";
 import WarningAlert from "../alerts/warningAlert/WarningAlert";
 
-const CsvUploader = () => {
+const CsvUploader = ({ isLoading, setIsLoading }) => {
   const [csvFile, setCsvFile] = useState(null);
   const [csvFileNames, setCsvFileNames] = useState([]);
   const [errorAlertText, setErrorAlertText] = useState("");
   const [successAlertText, setSuccessAlertText] = useState("");
   const [warningAlertText, setWarningAlertText] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
 
   const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
@@ -75,7 +74,6 @@ const CsvUploader = () => {
     } else {
       file = defaultCsvFile;
     }
-    setCsvFileNames((prevCsvFileNames) => [...prevCsvFileNames, file?.name]);
 
     if (file) {
       const formData = new FormData();
@@ -91,6 +89,10 @@ const CsvUploader = () => {
           setCsvFile(null);
           if (file !== defaultCsvFile) {
             setSuccessAlertText("CSV cargado correctamente.");
+            setCsvFileNames((prevCsvFileNames) => [
+              ...prevCsvFileNames,
+              file?.name,
+            ]);
             setTimeout(() => {
               setSuccessAlertText("");
             }, 3000);
@@ -135,7 +137,10 @@ const CsvUploader = () => {
 
   return (
     <>
-      <label htmlFor="files" className="btn btn-primary">
+      <label
+        htmlFor="files"
+        className={`btn btn-primary ${isLoading ? "disabled" : ""}`}
+      >
         Cargar CSV
       </label>
       <input
@@ -151,7 +156,11 @@ const CsvUploader = () => {
         </div>
       )}
       {csvFile && (
-        <button className="btn btn-success margin-right" onClick={handleSave}>
+        <button
+          disabled={isLoading}
+          className="btn btn-success margin-right"
+          onClick={handleSave}
+        >
           Guardar CSV
         </button>
       )}
