@@ -12,7 +12,7 @@ function App() {
   const [showInitialInstructionsAlert, setShowInitialInstructionsAlert] =
     useState(true);
 
-  // Función para realizar la solicitud a heathCheck
+  // Función para realizar la solicitud a healthCheck
   const fetchHealthCheck = async () => {
     try {
       const response = await fetch(
