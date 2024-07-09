@@ -11,6 +11,7 @@ function App() {
   const [backendResponse, setBackendResponse] = useState({});
   const [showInitialInstructionsAlert, setShowInitialInstructionsAlert] =
     useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Función para realizar la solicitud a healthCheck
   const fetchHealthCheck = async () => {
@@ -76,8 +77,13 @@ function App() {
       </div>
 
       <div className="editors-flex-container">
-        <BlocksEditor updateCode={updateCode} />
+        <BlocksEditor
+          updateCode={updateCode}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+        />
         <PythonEditor
+          isLoading={isLoading}
           frontendCode={frontendCode}
           backendCode={backendCode}
           setBackendResponse={setBackendResponse}

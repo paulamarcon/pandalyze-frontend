@@ -14,7 +14,7 @@ import WarningAlert from "../alerts/warningAlert/WarningAlert";
 import ExamplesDropdown from "../examplesDropdown/ExamplesDropdown";
 import WorkspaceJsonUploader from "../workspaceJsonUploader/WorkspaceJsonUploader";
 
-const BlocksEditor = ({ updateCode }) => {
+const BlocksEditor = ({ updateCode, isLoading, setIsLoading }) => {
   const useFrontRef = useRef(true);
   const loadingExampleRef = useRef(undefined);
   const [openBlockInfoModal, setOpenBlockInfoModal] = useState(false);
@@ -123,8 +123,11 @@ const BlocksEditor = ({ updateCode }) => {
   return (
     <div className="blocks-editor-container">
       <div className="workspace-buttons-container">
-        <CsvUploader />
-        <ExamplesDropdown loadingExampleRef={loadingExampleRef} />
+        <CsvUploader isLoading={isLoading} setIsLoading={setIsLoading} />
+        <ExamplesDropdown
+          loadingExampleRef={loadingExampleRef}
+          isLoading={isLoading}
+        />
         <WorkspaceJsonUploader />
       </div>
       <div id="blocklyDiv" style={{ height: "400px", width: "100%" }}></div>

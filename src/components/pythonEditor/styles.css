@@ -1,5 +1,11 @@
 .code-segment {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+
+  .run-code-button {
+    align-self: flex-end;
+  }
 }
 
 @media screen and (min-width: 769px) {

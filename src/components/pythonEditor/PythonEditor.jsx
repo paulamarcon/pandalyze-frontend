@@ -3,7 +3,12 @@ import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import "./styles.css";
 
-const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
+const PythonEditor = ({
+  frontendCode,
+  backendCode,
+  setBackendResponse,
+  isLoading,
+}) => {
   const API_URL = process.env.REACT_APP_API_URL;
 
   //Pegada al back para correr el codigo
@@ -83,7 +88,8 @@ const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
     <>
       <div className="code-segment">
         <button
-          className="btn btn-success"
+          disabled={isLoading}
+          className="btn btn-success run-code-button"
           style={{ marginBottom: "16px" }}
           onClick={handleSubmit}
         >

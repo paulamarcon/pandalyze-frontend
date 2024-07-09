@@ -2,7 +2,7 @@ import React from "react";
 import examplesData from "./examples.json";
 import Blockly from "blockly";
 
-const ExamplesDropdown = ({ loadingExampleRef }) => {
+const ExamplesDropdown = ({ loadingExampleRef, isLoading }) => {
   const handleDropdownItemClick = (exampleTitle) => {
     const selectedExample = examplesData.find(
       (example) => example.title === exampleTitle
@@ -28,6 +28,7 @@ const ExamplesDropdown = ({ loadingExampleRef }) => {
         type="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        disabled={isLoading}
       >
         Ejemplos
       </button>
