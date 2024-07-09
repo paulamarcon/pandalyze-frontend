@@ -60,7 +60,7 @@ function App() {
       {showInitialInstructionsAlert && (
         <WelcomeModal handleCloseInitialAlert={handleCloseInitialAlert} />
       )}
-      <p className="app-entire-title">
+      <div className="app-entire-title">
         <button
           className="btn btn-primary tutorial-button"
           onClick={handleOpenInitialAlert}
@@ -73,7 +73,7 @@ function App() {
             aprender Ciencia de Datos con programación en bloques
           </span>
         </div>
-      </p>
+      </div>
 
       <div className="editors-flex-container">
         <BlocksEditor updateCode={updateCode} />

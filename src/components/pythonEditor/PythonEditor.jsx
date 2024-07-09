@@ -55,7 +55,20 @@ const PythonEditor = ({ frontendCode, backendCode, setBackendResponse }) => {
         }
       })
       .catch((error) => {
-        const errorMessage = JSON.parse(error.message);
+        let errorMessage;
+
+        try {
+          // Intenta parsear el mensaje de error como JSON
+          errorMessage = JSON.parse(error.message);
+        } catch (e) {
+          // Si no es un JSON válido, crea un objeto de error personalizado
+          errorMessage = {
+            personalized_error:
+              "Debe esperar a que la aplicación esté lista para usar",
+            original_error: error.message,
+          };
+        }
+
         console.warn("Error en el codigo:", errorMessage);
 
         setBackendResponse({

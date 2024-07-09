@@ -5,11 +5,7 @@ import { welcomeModalInfo } from "./welcomeModalInfo";
 const WelcomeModal = ({ handleCloseInitialAlert }) => {
   return (
     <>
-      <div
-        className="modal show mobile-tutorial"
-        tabIndex="-1"
-        style={{ display: "block" }}
-      >
+      <div className="modal show" tabIndex="-1" style={{ display: "block" }}>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -40,7 +36,7 @@ const WelcomeModal = ({ handleCloseInitialAlert }) => {
                       type="button"
                       data-bs-target="#carouselExampleDark"
                       data-bs-slide-to={index}
-                      className={index === 0 && "active"}
+                      className={index === 0 ? "active" : undefined}
                       aria-current={index === 0 && "true"}
                       aria-label={`Slide ${index + 1}`}
                     ></button>
@@ -50,7 +46,9 @@ const WelcomeModal = ({ handleCloseInitialAlert }) => {
                   {welcomeModalInfo.map((item, index) => (
                     <div
                       key={index}
-                      className={`carousel-item ${index === 0 && "active"}`}
+                      className={`carousel-item ${
+                        index === 0 ? "active" : undefined
+                      }`}
                     >
                       <img
                         src={item.image}

@@ -12,7 +12,7 @@ const CsvUploader = () => {
   const [errorAlertText, setErrorAlertText] = useState("");
   const [successAlertText, setSuccessAlertText] = useState("");
   const [warningAlertText, setWarningAlertText] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
@@ -107,7 +107,6 @@ const CsvUploader = () => {
           }
         })
         .catch((error) => {
-          setIsLoading(true);
           setWarningAlertText(
             "La aplicación está cargando, por favor espere antes de usar."
           );
@@ -167,10 +166,10 @@ const CsvUploader = () => {
       )}
       {isLoading && (
         <div
-          class="spinner-border text-secondary spinner-style mobile-spinner"
+          className="spinner-border text-secondary spinner-style mobile-spinner"
           role="status"
         >
-          <span class="visually-hidden">Loading...</span>
+          <span className="visually-hidden">Loading...</span>
         </div>
       )}
     </>
