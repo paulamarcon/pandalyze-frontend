@@ -7,7 +7,9 @@ export const initGroupByBlock = () => {
       this.appendValueInput("DATAFRAME")
         .setCheck(null)
         .appendField("data_frame = ");
-      this.appendValueInput("COLUMN").setCheck(null).appendField(".groupby(");
+      this.appendValueInput("COLUMN")
+        .setCheck(null)
+        .appendField(".groupby(columna = ");
       this.appendDummyInput().appendField(")");
       this.setInputsInline(true);
       this.setOutput(true, null);

@@ -92,6 +92,7 @@ const CsvUploader = ({ isLoading, setIsLoading }) => {
             }, 3000);
             setSuccessAlertText("");
             setWarningAlertText("");
+            setCsvFile(null);
             return;
           }
           updateCsvOptions(jsonData);
