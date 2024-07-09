@@ -11,7 +11,9 @@ const CsvUploader = ({ isLoading, setIsLoading }) => {
   const [csvFileNames, setCsvFileNames] = useState([]);
   const [errorAlertText, setErrorAlertText] = useState("");
   const [successAlertText, setSuccessAlertText] = useState("");
-  const [warningAlertText, setWarningAlertText] = useState("");
+  const [warningAlertText, setWarningAlertText] = useState(
+    "La aplicación está cargando, por favor espere antes de usar."
+  );
 
   const API_URL = process.env.REACT_APP_API_URL;
   useEffect(() => {
