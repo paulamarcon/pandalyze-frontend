@@ -143,4 +143,16 @@ export const blocksInfo = [
     blockInfo:
       "Agrupa un DataFrame por una columna y permite aplicar operaciones agregadas (como suma, promedio o máximo) a cada grupo resultante.",
   },
+  {
+    blockType: "sum",
+    blockTitle: "'Sum'",
+    blockInfo:
+      "Se utiliza para sumar los valores numéricos en una Columna o un DataFrame.",
+  },
+  {
+    blockType: "valueCounts",
+    blockTitle: "'Values Counts'",
+    blockInfo:
+      "Cuenta cuántas veces aparece cada valor único en una Columna o DataFrame.",
+  },
 ];
