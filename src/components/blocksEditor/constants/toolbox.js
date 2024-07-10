@@ -113,6 +113,14 @@ export const toolbox = {
               kind: "block",
               type: "nullSum",
             },
+            {
+              kind: "block",
+              type: "sum",
+            },
+            {
+              kind: "block",
+              type: "valueCounts",
+            },
           ],
         },
         {

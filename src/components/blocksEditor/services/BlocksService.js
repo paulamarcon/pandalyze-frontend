@@ -25,9 +25,10 @@ import { initBarBlock } from "../constants/blocks/plotly/barBlock";
 import { initPieBlock } from "../constants/blocks/plotly/pieBlock";
 import { initShowInConsoleBlock } from "../constants/blocks/plotly/showInConsoleBlock";
 import { initGroupByBlock } from "../constants/blocks/pandasFilter/groupbyBlock";
+import { initSumBlock } from "../constants/blocks/pandasFilter/sumBlock";
+import { initValueCountsBlock } from "../constants/blocks/pandasFilter/valueCountsBlocks";
 
 const BlocksService = {
-  //TODO: Ojo aca, servicio con estado puede bardear si es uno solo para varios usuarios?
   variables: [],
   csvsData: [],
 
@@ -57,6 +58,8 @@ const BlocksService = {
     initPrimitiveBlocks();
     initShowInConsoleBlock(useFrontRef);
     initGroupByBlock();
+    initSumBlock();
+    initValueCountsBlock();
   },
 
   // Se dispara cuando el usuario guarda un Csv
