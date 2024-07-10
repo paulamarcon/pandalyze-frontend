@@ -13,20 +13,22 @@ import { initComparisonBlock } from "../constants/blocks/comparisonBlock";
 import { initDescribeBlock } from "../constants/blocks/describeBlock";
 import { initPrimitiveBlocks } from "../constants/blocks/primitiveBlocks";
 import { initSortBlock } from "../constants/blocks/sortBlock";
+import { initValuesBlock } from "../constants/blocks/valueBlock";
+import { initIndexBlock } from "../constants/blocks/indexBlock";
 import { initMeanBlock } from "../constants/blocks/pandasFilter/meanBlock";
 import { initMaxBlock } from "../constants/blocks/pandasFilter/maxBlock";
 import { initMinBlock } from "../constants/blocks/pandasFilter/minBlock";
 import { initCountBlock } from "../constants/blocks/pandasFilter/countBlock";
 import { initNullSumBlock } from "../constants/blocks/pandasFilter/nullColumnCounterBlock";
 import { initUniqueBlock } from "../constants/blocks/pandasFilter/uniqueBlock";
+import { initGroupByBlock } from "../constants/blocks/pandasFilter/groupbyBlock";
+import { initSumBlock } from "../constants/blocks/pandasFilter/sumBlock";
+import { initValueCountsBlock } from "../constants/blocks/pandasFilter/valueCountsBlocks";
 import { initLineBlock } from "../constants/blocks/plotly/lineBlock";
 import { initScatterBlock } from "../constants/blocks/plotly/scatterBlock";
 import { initBarBlock } from "../constants/blocks/plotly/barBlock";
 import { initPieBlock } from "../constants/blocks/plotly/pieBlock";
 import { initShowInConsoleBlock } from "../constants/blocks/plotly/showInConsoleBlock";
-import { initGroupByBlock } from "../constants/blocks/pandasFilter/groupbyBlock";
-import { initSumBlock } from "../constants/blocks/pandasFilter/sumBlock";
-import { initValueCountsBlock } from "../constants/blocks/pandasFilter/valueCountsBlocks";
 
 const BlocksService = {
   variables: [],
@@ -60,6 +62,8 @@ const BlocksService = {
     initGroupByBlock();
     initSumBlock();
     initValueCountsBlock();
+    initValuesBlock();
+    initIndexBlock();
   },
 
   // Se dispara cuando el usuario guarda un Csv

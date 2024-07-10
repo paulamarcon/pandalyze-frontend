@@ -51,6 +51,14 @@ export const toolbox = {
               kind: "block",
               type: "read_csv",
             },
+            {
+              kind: "block",
+              type: "values",
+            },
+            {
+              kind: "block",
+              type: "index",
+            },
           ],
         },
         {

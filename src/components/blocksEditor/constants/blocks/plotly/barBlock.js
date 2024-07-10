@@ -10,7 +10,8 @@ export const initBarBlock = () => {
       this.appendValueInput("xValue").setCheck(null);
       this.appendDummyInput().appendField(", y = ");
       this.appendValueInput("yValue").setCheck(null);
-
+      this.appendDummyInput().appendField(", title = ");
+      this.appendValueInput("title").setCheck(null);
       this.appendDummyInput().appendField(")");
       this.setInputsInline(true);
       this.setOutput(true, null);
@@ -35,7 +36,12 @@ export const initBarBlock = () => {
       "yValue",
       pythonGenerator.ORDER_NONE
     );
-    var lineCode = `plotly.bar(data_frame = ${dataFrameBlockInput}, x = ${xBlockInput}, y = ${yBlockInput})`;
+    var title = pythonGenerator.valueToCode(
+      block,
+      "title",
+      pythonGenerator.ORDER_NONE
+    );
+    var lineCode = `plotly.bar(data_frame = ${dataFrameBlockInput}, x = ${xBlockInput}, y = ${yBlockInput}, title = ${title})`;
 
     return [lineCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };

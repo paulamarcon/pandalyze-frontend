@@ -10,7 +10,8 @@ export const initPieBlock = () => {
       this.appendValueInput("xValue").setCheck(null);
       this.appendDummyInput().appendField(", names = ");
       this.appendValueInput("yValue").setCheck(null);
-
+      this.appendDummyInput().appendField(", title = ");
+      this.appendValueInput("title").setCheck(null);
       this.appendDummyInput().appendField(")");
       this.setInputsInline(true);
       this.setOutput(true, null);
@@ -35,7 +36,12 @@ export const initPieBlock = () => {
       "yValue",
       pythonGenerator.ORDER_NONE
     );
-    var pieCode = `plotly.pie(data_frame = ${dataFrameBlockInput}, values = ${xBlockInput}, names = ${yBlockInput})`;
+    var title = pythonGenerator.valueToCode(
+      block,
+      "title",
+      pythonGenerator.ORDER_NONE
+    );
+    var pieCode = `plotly.pie(data_frame = ${dataFrameBlockInput}, values = ${xBlockInput}, names = ${yBlockInput}, title = ${title})`;
 
     return [pieCode, pythonGenerator.ORDER_FUNCTION_CALL];
   };

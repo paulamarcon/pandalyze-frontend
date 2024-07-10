@@ -147,12 +147,22 @@ export const blocksInfo = [
     blockType: "sum",
     blockTitle: "'Sum'",
     blockInfo:
-      "Se utiliza para sumar los valores numéricos en una Columna o un DataFrame.",
+      "Se utiliza para sumar los valores numéricos en una columna o un DataFrame.",
   },
   {
     blockType: "valueCounts",
     blockTitle: "'Values Counts'",
     blockInfo:
-      "Cuenta cuántas veces aparece cada valor único en una Columna o DataFrame.",
+      "Cuenta cuántas veces aparece cada valor único en una columna o DataFrame.",
+  },
+  {
+    blockType: "values",
+    blockTitle: "'Values'",
+    blockInfo: "Obtiene los datos almacenados en una columna.",
+  },
+  {
+    blockType: "index",
+    blockTitle: "'Index'",
+    blockInfo: "Obtiene las etiquetas asociadas a los datos de una columna.",
   },
 ];
